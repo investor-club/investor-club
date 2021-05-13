@@ -21,7 +21,7 @@ export default class RouteContainer extends React.Component {
     return (
       <div>
         <h1>Hello from RouteContainer</h1>
-        <StartUpEvaluation />
+        <StartUpEvaluation /> 
         <SignUpChoice />
         <Route
           exact
