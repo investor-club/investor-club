@@ -1,19 +1,18 @@
 import React from 'react';
 
-export default class Q1place extends React.Component{
+export default class Q9experience extends React.Component{
     render(){
         if(this.props.flag) {
             return (
                 <div>
-                <label htmlFor="place">Where are you located?</label><br/>
-                <input 
+                    <label htmlFor="foundation">If you have a Pitch Deck you can upload it here:</label><br/>
+                    <input 
                     type='text'
-                    id='place'
-                    name='place'
-                    placeholder='q1'
+                    id='experience'
+                    name='experience'
                     // value=
                     // onChange=
-                />
+                    />
                 </div>
                 )
         } else {
@@ -24,3 +23,7 @@ export default class Q1place extends React.Component{
           }
       }     
 }
+
+
+
+
