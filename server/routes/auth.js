@@ -2,7 +2,6 @@ const router = require("express").Router();
 const StartUp = require("../models/StartUp");
 const Investor = require("../models/Investor");
 const bcrypt = require("bcrypt");
-const { collection } = require("../models/StartUp");
 
 router.post("/signup/investor", (req, res, next) => {
   const {email, username, password, firstName, lastName} = req.body;
