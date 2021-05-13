@@ -44,14 +44,9 @@ router.post("/signup/investor", (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.post("/signup/startup", (req, res, next) => {
+router.post("/startups", (req, res, next) => {
   const { companyName, email, username, password } = req.body;
-  StartUp.create({
-    companyName,
-    email,
-    username,
-    password,
-  });
+  
   if (password.length < 8) {
     return res
       .status(400)
@@ -75,6 +70,7 @@ router.post("/signup/startup", (req, res, next) => {
 
       StartUp.create({ email, username, password: hash, companyName })
         .then((startup) => {
+          console.log(startup)
           res.status(200).json(startup);
         })
         .catch((err) => next(err));

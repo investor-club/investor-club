@@ -5,8 +5,9 @@ const Investor = require("../models/Investor");
 // all startups
 router.get("/startups", (req, res, next) => {
   StartUp.find()
-    .then((startUp) => {
-      res.json(startUp);
+    .then((startup) => {
+      console.log(startup)
+      res.json(startup);
     })
     .catch((err) => {
       next(err);

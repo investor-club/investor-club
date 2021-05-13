@@ -38,10 +38,11 @@ export default class RouteContainer extends React.Component {
           )}
         />
         <Route
-          exact
-          path="/login"
-          render={(props) => <Login setUser={this.setUser} {...props} />}
           exact path="/login"
+          render={(props) => <Login setUser={this.setUser} {...props} />}
+        />
+        <Route 
+          exact path="/startups"
           render={props => <StartUpList {...props} />}
         />
         
