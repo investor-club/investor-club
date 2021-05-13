@@ -19,7 +19,7 @@ const signUpInvestor = (email, username, password, firstName, lastName) => {
 
 const signUpStartUp = (companyName, email, username, password) => {
   return axios
-    .post("/api/auth/signup/startup", {
+    .post("/api/auth/startups", {
       companyName,
       email,
       username,
