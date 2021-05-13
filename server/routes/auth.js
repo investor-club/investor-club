@@ -25,7 +25,7 @@ router.post("/signup/investor", (req, res, next) => {
         const hash = bcrypt.hashSync(password, salt);
         console.log(hash);
 
-      Investor.create({email, username, password, firstName, lastName})
+      Investor.create({email, username, password: hash, firstName, lastName})
               .then(investor => {
                 res.status(200).json(investor);
               })
@@ -34,7 +34,6 @@ router.post("/signup/investor", (req, res, next) => {
     })
     .catch(err=> next(err));
 });
-
 
 router.post("/signup/startup", (req, res, next) => {
   const {
@@ -68,7 +67,7 @@ router.post("/signup/startup", (req, res, next) => {
         const hash = bcrypt.hashSync(password, salt);
         console.log(hash);
 
-      StartUp.create({email, username, password, firstName, lastName})
+      StartUp.create({email, username, password: hash, companyName})
               .then(startup => {
                 res.status(200).json(startup);
               })
@@ -76,8 +75,6 @@ router.post("/signup/startup", (req, res, next) => {
       }    
     });
 });
-
-
 
 //login
 router.post('/login', (req, res) => {
@@ -90,18 +87,16 @@ router.post('/login', (req, res) => {
         .then(startupFromDB => {
             if (investorFromDB === null && startupFromDB === null) {
                 // if username does not exist as investor or startup
-                res.json({ message: 'Invalid login or password 1 '});
+                res.json({ message: "Login doesn't exist"});
                 return;
                  // username exists as an investor
             } else if (investorFromDB !== null) {
-              //console.log('THIS WORKS: ', investorFromDB.password, password);
-              console.log(bcrypt.compareSync(password, investorFromDB.password));
-                if (bcrypt.compareSync(password, investorFromDB.password)) { //THIS PART DOESN'T WORK!!
-                    console.log("HOLA")
+             // console.log('THIS WORKS: ', investorFromDB.password, password);
+                if (bcrypt.compareSync(password, investorFromDB.password)) {
                     req.session.user = investorFromDB;
                     res.status(200).json({investorFromDB });
                   } else {
-                    res.status(400).json({message: 'Invalid login or password 2'});
+                    res.status(400).json({message: 'Invalid credentials'});
                   } 
             } else {
                 // username exists as an startup
@@ -109,13 +104,12 @@ router.post('/login', (req, res) => {
                   req.session.user = startupFromDB;
                     res.status(200).json({ startup: startupFromDB });
                   } else {
-                    res.status(400).json({ message: 'Invalid login or password 3' });
+                    res.status(400).json({ message: 'Invalid credentials' });
                   } 
             }            
         })
     })
 })
-
 
 //loggedin?
 router.get('/loggedin', (req, res) => {
