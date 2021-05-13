@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { login } from "../services/auth";
 
-export default class SignIn extends Component {
+export default class Login extends Component {
   state = {
     username: "",
     password: "",
