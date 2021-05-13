@@ -5,6 +5,8 @@ import { Route } from "react-router-dom";
 import Login from "./Login";
 import SignUpInvestor from "./SignUpInvestor";
 import SignUpStartUp from "./SignUpStartUp";
+import StartUpList from "./StartUpList";
+
 
 export default class RouteContainer extends React.Component {
   state = {
@@ -39,7 +41,10 @@ export default class RouteContainer extends React.Component {
           exact
           path="/login"
           render={(props) => <Login setUser={this.setUser} {...props} />}
+          exact path="/login"
+          render={props => <StartUpList {...props} />}
         />
+        
       </div>
     );
   }
