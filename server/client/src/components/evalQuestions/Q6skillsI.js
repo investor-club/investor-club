@@ -1,10 +1,11 @@
 import React from 'react';
 
 export default class Q6skillsI extends React.Component{
-
     render(){
-        return(
-            <div>
+        if(this.props.flag) {
+            return (
+                <div>
+                 <label htmlFor="foundation">Which skills do you have in your team (professional experience of at least 1 year, a Master or Bachelor degree or something similar)?</label><br/>
                 <input type="radio" id="finance" name="skillsI" value="finance"/>
                 <label for="finance">Finance</label><br/>
 
@@ -17,7 +18,12 @@ export default class Q6skillsI extends React.Component{
                 <input type="radio" id="it" name="skillsI" value="it"/>
                 <label for="it">IT/Tech</label>
             </div>
-            
-        )
-    }
+                )
+        } else {
+            return (
+            <>
+            </>
+             )
+          }
+      }     
 }
