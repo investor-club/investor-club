@@ -28,14 +28,12 @@ export default class StartUpEvaluation extends React.Component {
             index: (this.state.index + 1),
             currentQuestion: display
         })
-
     }
 
     render() {
-
         return(
             <div>
-                <h2>Hello from StartUpEvaluation</h2>
+                <h2>Tell us about your startup!</h2>
                 <form >
                     {/* <label htmlFor={questions[this.state.currentQuestion].criterion}>{questions[this.state.currentQuestion].questionText}</label> */}
                     <Q1place
@@ -69,7 +67,6 @@ export default class StartUpEvaluation extends React.Component {
                         flag={this.state.currentQuestion[9]}
                     />
                     
-                   
                     <button type="submit" onClick={this.handleSubmit}>Next</button>
                 </form>
 

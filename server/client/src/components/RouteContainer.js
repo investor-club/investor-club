@@ -9,17 +9,25 @@ import SignUpStartUp from "./SignUpStartUp";
 export default class RouteContainer extends React.Component {
   state = {
     user: this.props.user,
+    displayStartupEval: ''
   };
 
   setUser = (user) => {
     this.setState({ user });
   };
 
+  setDisplayStartupEval = (displayStartupEval) => {
+      this.setState({ 
+          displayStartupEval: displayStartupEval})
+  }
+
   render() {
     return (
       <div>
         <h1>Hello from RouteContainer</h1>
-        <StartUpEvaluation /> 
+        <StartUpEvaluation 
+            
+        /> 
         <SignUpChoice />
         <Route
           exact
