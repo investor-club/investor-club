@@ -96,7 +96,7 @@ router.post("/login", (req, res) => {
           req.session.user = investorFromDB;
           req.session.type = "investor";
           //req.session.user.type = "investor";
-          console.log("LOGGEIN IN AS INVESTOR ", req.session.user)
+          console.log("LOGGEIN IN AS INVESTOR ", req.session)
           res.status(200).json({ investorFromDB });
         } else {
           res.status(400).json({ message: "Invalid credentials" });
@@ -118,7 +118,7 @@ router.post("/login", (req, res) => {
 
 //loggedin?
 router.get("/loggedin", (req, res) => {
-  //console.log("this is the loggedin check: ", req.session);
+  console.log("this is the loggedin check: ", req.session);
   res.json(req.session);
 });
 

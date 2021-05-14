@@ -3,6 +3,7 @@ import { login } from "../services/auth";
 
 export default class Login extends Component {
   state = {
+    type: "",
     username: "",
     password: "",
     message: "",
@@ -28,6 +29,7 @@ export default class Login extends Component {
       } else {
         console.log(user, this.props.type);
         this.props.setUser(user);
+        this.props.updateState(user, this.props.type) //?????
         if (this.props.type === "investor") {
           this.props.history.push("/investordashboard");
         }

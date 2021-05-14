@@ -13,9 +13,7 @@ import StartUpDashboard from "./StartUpDashboard";
 
 export default class RouteContainer extends React.Component {
   state = {
-    user: this.props.user,
     displayStartupEval: true,
-    type: this.props.type,
   };
 
   setUser = (user) => {
@@ -29,7 +27,7 @@ export default class RouteContainer extends React.Component {
   };
 
   render() {
-
+   // console.log("AM I YOUR TYPE ?", this.props.type) //PROBLEMATIC
      /* if not logged in then gneric home page */
     let result;
     if (!this.state.type) {
@@ -89,7 +87,7 @@ export default class RouteContainer extends React.Component {
         <Route
           exact
           path="/login"
-          render={(props) => <Login setUser={this.setUser} {...props} type={this.props.type}/>}
+          render={(props) => <Login setUser={this.setUser} updateState={this.props.updateState} {...props} />}
         />
         
         {/* <Route 

@@ -9,29 +9,22 @@ import InvestorDashboard from "./components/InvestorDashboard";
 
 
 export default class App extends React.Component {
-  render() {
-    // let result;
-    // if (!this.state.type) {
-    //    result = <LandingPage />  // REMOVE ON SIGNUP!!
-    // // if logged in as startup: 
-    // } else if (this.state.type==="startup") {
-    //  result = <StartUpEvaluation
-    //     user = {this.state.user}
-    //     type = {this.state.type}
-    //     setDisplayStartupEval = {this.setDisplayStartupEval}
-    //     displayStartupEval={this.state.displayStartupEval}
-    //   /> 
-    // } else if (this.state.type==="investor") {
-    //   result = <InvestorDashboard user={this.state.user} />
-    //          }
 
+  state ={
+    user: this.props.user,
+    type: this.props.type
+  }
+
+  updateState = (user, type) => {
+    this.setState({user, type})
+  }
+
+  render() {
+    console.log("AM I YOUR TYPE ?", this.state.type)
     return (
       <div className="App">
-        {/* <div>
-            {result}
-        </div> */}
-        <NavBar user={this.props.user} type={this.props.type}/>
-        <RouteContainer user={this.props.user} type={this.props.type}/>
+        <NavBar user={this.state.user} updateState={this.updateState} type={this.state.type}/>
+        <RouteContainer user={this.state.user} updateState={this.updateState} type={this.state.type}/>
       </div>
     )
   }
