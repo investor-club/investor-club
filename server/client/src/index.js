@@ -9,11 +9,12 @@ import axios from "axios";
 axios
   .get("/api/auth/loggedin")
   .then((response) => {
-    const user = response.data;
-    console.log("user in index.js: ", user);
+    const session = response.data;
+    //const type = response.data.type;
+    console.log("user in index.js: ", response.data.type);
     ReactDOM.render(
       <BrowserRouter>
-        <App user={user} />
+        <App user={session.user} type={session.type}/>
       </BrowserRouter>,
       document.getElementById("root")
     );
@@ -26,3 +27,4 @@ axios
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+

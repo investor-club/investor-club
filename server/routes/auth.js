@@ -94,6 +94,9 @@ router.post("/login", (req, res) => {
         // console.log('THIS WORKS: ', investorFromDB.password, password);
         if (bcrypt.compareSync(password, investorFromDB.password)) {
           req.session.user = investorFromDB;
+          req.session.type = "investor";
+          //req.session.user.type = "investor";
+          console.log("LOGGEIN IN AS INVESTOR ", req.session.user)
           res.status(200).json({ investorFromDB });
         } else {
           res.status(400).json({ message: "Invalid credentials" });
@@ -102,6 +105,8 @@ router.post("/login", (req, res) => {
         // username exists as an startup
         if (bcrypt.compareSync(password, startupFromDB.password)) {
           req.session.user = startupFromDB;
+          req.session.type = "startup";
+          console.log("LOGGEIN IN AS STARTUP", req.session.user)
           res.status(200).json({ startup: startupFromDB });
         } else {
           res.status(400).json({ message: "Invalid credentials" });
@@ -113,8 +118,8 @@ router.post("/login", (req, res) => {
 
 //loggedin?
 router.get("/loggedin", (req, res) => {
-  console.log("this is the user from the session: ", req.session.user);
-  res.json(req.session.user);
+  //console.log("this is the loggedin check: ", req.session);
+  res.json(req.session);
 });
 
 //logout
