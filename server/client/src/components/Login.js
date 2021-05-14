@@ -28,7 +28,12 @@ export default class Login extends Component {
       } else {
         console.log(user);
         this.props.setUser(user);
-        this.props.history.push("/startups");
+        if (this.props.type === "investor") {
+          this.props.history.push("/investordashboard");
+        }
+        if (this.props.type === "startup") {
+          this.props.history.push("/startupdashboard");
+        }
       }
     });
   };

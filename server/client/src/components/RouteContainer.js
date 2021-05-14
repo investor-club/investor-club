@@ -9,7 +9,6 @@ import StartUpList from "./StartUpList";
 import InvestorDashboard from "./InvestorDashboard";
 import LandingPage from "./LandingPage";
 
-
 export default class RouteContainer extends React.Component {
   state = {
     user: this.props.user,
@@ -22,41 +21,45 @@ export default class RouteContainer extends React.Component {
   };
 
   setDisplayStartupEval = (displayStartupEval) => {
-      this.setState({ 
-          displayStartupEval: displayStartupEval})
-  }
+    this.setState({
+      displayStartupEval: displayStartupEval,
+    });
+  };
 
   render() {
-
-     /* if not logged in then gneric home page */
-     let result;
+    /* if not logged in then gneric home page */
+    let result;
     if (!this.state.type) {
-       result = <LandingPage />  // REMOVE ON SIGNUP!!
-    // if logged in as startup: 
-    } else if (this.state.type==="startup") {
-     result = <StartUpEvaluation
-        user = {this.state.user}
-        type = {this.state.type}
-        setDisplayStartupEval = {this.setDisplayStartupEval}
-        displayStartupEval={this.state.displayStartupEval}
-      /> 
-    } else if (this.state.type==="investor") {
-      result = <InvestorDashboard user={this.state.user} />
-             }
+      result = <LandingPage />; // REMOVE ON SIGNUP!!
+      // if logged in as startup:
+    } else if (this.state.type === "startup") {
+      result = (
+        <StartUpEvaluation
+          user={this.state.user}
+          type={this.state.type}
+          setDisplayStartupEval={this.setDisplayStartupEval}
+          displayStartupEval={this.state.displayStartupEval}
+        />
+      );
+    } else if (this.state.type === "investor") {
+      result = <InvestorDashboard user={this.state.user} />;
+    }
 
     return (
       <div>
         <h1>Hello from RouteContainer</h1>
 
         {/* the below is for the landng page logiv  */}
-         <div>
-            {result}
-         </div>
-
-
-        <SignUpChoice />
+        <div>{result}</div>
 
         {/* we need routes for almost all component */}
+
+        <Route
+          exact
+          path="/signupchoice"
+          render={(props) => <SignUpChoice setUser={this.setUser} {...props} />}
+        />
+
         <Route
           exact
           path="/signup/investor"
@@ -72,15 +75,16 @@ export default class RouteContainer extends React.Component {
           )}
         />
         <Route
-          exact path="/login"
+          exact
+          path="/login"
           render={(props) => <Login setUser={this.setUser} {...props} />}
         />
         {/* this will be the if / else logic  of te protected routes*/}
-        <Route 
-          exact path="/startups"
-          render={props => <StartUpList {...props} />}
+        <Route
+          exact
+          path="/startups"
+          render={(props) => <StartUpList {...props} />}
         />
-        
       </div>
     );
   }

@@ -32,6 +32,7 @@ export default class SignUpStartUp extends Component {
       } else {
         console.log(user);
         this.props.setUser(user);
+        this.props.history.push("/login");
       }
     });
   };
