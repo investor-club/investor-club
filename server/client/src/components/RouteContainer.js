@@ -11,7 +11,7 @@ import StartUpList from "./StartUpList";
 export default class RouteContainer extends React.Component {
   state = {
     user: this.props.user,
-    displayStartupEval: ''
+    displayStartupEval: true
   };
 
   setUser = (user) => {
@@ -21,6 +21,7 @@ export default class RouteContainer extends React.Component {
   setDisplayStartupEval = (displayStartupEval) => {
       this.setState({ 
           displayStartupEval: displayStartupEval})
+      
   }
 
   render() {
@@ -28,7 +29,8 @@ export default class RouteContainer extends React.Component {
       <div>
         <h1>Hello from RouteContainer</h1>
         <StartUpEvaluation 
-            
+            setDisplayStartupEval = {this.setDisplayStartupEval}
+            displayStartupEval={this.state.displayStartupEval}
         /> 
         <SignUpChoice />
         <Route
