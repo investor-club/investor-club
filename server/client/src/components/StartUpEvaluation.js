@@ -12,35 +12,58 @@ import Q10pitchDeck from './evalQuestions/Q10pitchDeck';
 
 export default class StartUpEvaluation extends React.Component {
     state = {
-        currentQuestion: [true, false, false],
-        index: 0
+        // currentQuestion: [true, false, false, false, false, false, false, false, false, false],
+        index: 0,
+        place: "",
+        industry: "",
+        stage: "",
+        
     }
+
+    //componentDidMount go to data I need and set it to the state variables.
 
     handleSubmit = e => {
         e.preventDefault();
-        if (this.state.index >8){
+        if (this.state.index >1){
             console.log("this is the end of the questionnaire");
             {this.props.setDisplayStartupEval(false)}           
         }
-        
-        
-        const display = this.state.currentQuestion.slice();
-        display[this.state.index] = false;
-        display[this.state.index+1] = true;
+        //need axios post to route in backend, findbyId and update.
+        // const display = this.state.currentQuestion.slice();
+        // display[this.state.index] = false;
+        // display[this.state.index+1] = true;
         this.setState({
-            index: (this.state.index + 1),
-            currentQuestion: display
+            index: (this.state.index + 1)
+            // currentQuestion: display
         })
     }
 
     render() {
         if(this.props.displayStartupEval) {
+            let displayedComponent;
+            switch (this.state.index) {
+                case 0:
+                    displayedComponent = <Q1place flag={true}/>
+                    break;
+                case 1:
+                    displayedComponent = <Q2industry flag={true}/>
+                    break;
+                case 2:
+                    displayedComponent = <Q3stage flag={true}/>
+                    break;
+                default:
+                    break;
+            }
             return (
                 <div>
                     <h2>Tell us about your startup!</h2>
-                    <form >
-                        {/* <label htmlFor={questions[this.state.currentQuestion].criterion}>{questions[this.state.currentQuestion].questionText}</label> */}
-                        <Q1place
+                    <div style={{
+                        backgrounColor: "grey"}}>
+                        {/* <div className=progressBar></div> */}
+                    </div>
+                    <form onSubmit={this.handleSubmit}>
+                        {displayedComponent}
+                        {/* <Q1place
                             flag={this.state.currentQuestion[0]}
                         />
                         <Q2industry
@@ -69,8 +92,7 @@ export default class StartUpEvaluation extends React.Component {
                         />
                         <Q10pitchDeck
                             flag={this.state.currentQuestion[9]}
-                        />
-                        
+                        />                         */}
                         <button type="submit" onClick={this.handleSubmit}>Next</button>
                     </form>
 

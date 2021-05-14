@@ -11,8 +11,8 @@ export default class Q1place extends React.Component{
                     id='place'
                     name='place'
                     placeholder='q1'
-                    // value=
-                    // onChange=
+                    //value= should change the parent state
+                    // onChange=call method from parent component and change state in the parent components
                 />
                 </div>
                 )
