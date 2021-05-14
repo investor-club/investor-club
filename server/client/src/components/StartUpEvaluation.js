@@ -18,9 +18,12 @@ export default class StartUpEvaluation extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        if (this.state.index >9){
-            console.log("this is the end of the questionnaire")
+        if (this.state.index >8){
+            console.log("this is the end of the questionnaire");
+            {this.props.setDisplayStartupEval(false)}           
         }
+        
+        
         const display = this.state.currentQuestion.slice();
         display[this.state.index] = false;
         display[this.state.index+1] = true;
@@ -28,52 +31,57 @@ export default class StartUpEvaluation extends React.Component {
             index: (this.state.index + 1),
             currentQuestion: display
         })
-
     }
 
     render() {
+        if(this.props.displayStartupEval) {
+            return (
+                <div>
+                    <h2>Tell us about your startup!</h2>
+                    <form >
+                        {/* <label htmlFor={questions[this.state.currentQuestion].criterion}>{questions[this.state.currentQuestion].questionText}</label> */}
+                        <Q1place
+                            flag={this.state.currentQuestion[0]}
+                        />
+                        <Q2industry
+                            flag={this.state.currentQuestion[1]}
+                        />
+                        <Q3stage
+                            flag={this.state.currentQuestion[2]}
+                        />
+                        <Q4foundation
+                            flag={this.state.currentQuestion[3]}
+                        />
+                        <Q5teamMember
+                            flag={this.state.currentQuestion[4]}
+                        />
+                        <Q6skillsI
+                            flag={this.state.currentQuestion[5]}
+                        />
+                        <Q7skillsII
+                            flag={this.state.currentQuestion[6]}
+                        />
+                        <Q8skillsIII
+                            flag={this.state.currentQuestion[7]}
+                        />
+                        <Q9experience
+                            flag={this.state.currentQuestion[8]}
+                        />
+                        <Q10pitchDeck
+                            flag={this.state.currentQuestion[9]}
+                        />
+                        
+                        <button type="submit" onClick={this.handleSubmit}>Next</button>
+                    </form>
 
-        return(
-            <div>
-                <h2>Hello from StartUpEvaluation</h2>
-                <form >
-                    {/* <label htmlFor={questions[this.state.currentQuestion].criterion}>{questions[this.state.currentQuestion].questionText}</label> */}
-                    <Q1place
-                        flag={this.state.currentQuestion[0]}
-                    />
-                    <Q2industry
-                        flag={this.state.currentQuestion[1]}
-                    />
-                    <Q3stage
-                        flag={this.state.currentQuestion[2]}
-                    />
-                    <Q4foundation
-                        flag={this.state.currentQuestion[3]}
-                    />
-                    <Q5teamMember
-                        flag={this.state.currentQuestion[4]}
-                    />
-                    <Q6skillsI
-                        flag={this.state.currentQuestion[5]}
-                    />
-                    <Q7skillsII
-                        flag={this.state.currentQuestion[6]}
-                    />
-                    <Q8skillsIII
-                        flag={this.state.currentQuestion[7]}
-                    />
-                    <Q9experience
-                        flag={this.state.currentQuestion[8]}
-                    />
-                    <Q10pitchDeck
-                        flag={this.state.currentQuestion[9]}
-                    />
-                    
-                   
-                    <button type="submit" onClick={this.handleSubmit}>Next</button>
-                </form>
-
-            </div>
-        )
-    }
+                </div>
+                )
+        } else {
+            return (
+            <>
+            </>
+             )
+          }
+      }     
 }
+       
