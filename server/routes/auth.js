@@ -106,7 +106,7 @@ router.post("/login", (req, res) => {
         if (bcrypt.compareSync(password, startupFromDB.password)) {
           req.session.user = startupFromDB;
           req.session.type = "startup";
-          console.log("LOGGEIN IN AS STARTUP", req.session.user)
+          console.log("LOGGED IN IN AS STARTUP", req.session.user)
           res.status(200).json({ startup: startupFromDB });
         } else {
           res.status(400).json({ message: "Invalid credentials" });

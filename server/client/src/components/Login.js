@@ -26,7 +26,7 @@ export default class Login extends Component {
           password: "",
         });
       } else {
-        console.log(user);
+        console.log(user, this.props.type);
         this.props.setUser(user);
         if (this.props.type === "investor") {
           this.props.history.push("/investordashboard");
