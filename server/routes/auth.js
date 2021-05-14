@@ -4,6 +4,7 @@ const Investor = require("../models/Investor");
 const bcrypt = require("bcrypt");
 
 router.post("/signup/investor", (req, res, next) => {
+  console.log(req.body);
   const { email, username, password, firstName, lastName } = req.body;
 
   if (password.length < 8) {
@@ -36,6 +37,7 @@ router.post("/signup/investor", (req, res, next) => {
           lastName,
         })
           .then((investor) => {
+            console.log("I'm new: ", investor)
             res.status(200).json(investor);
           })
           .catch((err) => next(err));

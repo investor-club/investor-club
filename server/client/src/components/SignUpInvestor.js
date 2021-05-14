@@ -21,7 +21,7 @@ export default class SignUpInvestor extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { firstName, lastName, username, email, password } = this.state;
-    signUpInvestor(firstName, lastName, username, email, password).then(
+    signUpInvestor(email, username, password, firstName, lastName).then(
       (user) => {
         if (user.message) {
           this.setState({

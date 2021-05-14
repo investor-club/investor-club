@@ -20,7 +20,7 @@ export default class SignUpStartUp extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { companyName, username, email, password } = this.state;
-    signUpStartUp(companyName, username, email, password).then((user) => {
+    signUpStartUp(companyName, email, username, password).then((user) => {
       if (user.message) {
         this.setState({
           message: user.message,
