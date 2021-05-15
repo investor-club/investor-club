@@ -97,17 +97,34 @@ export default class StartUpEvaluation extends React.Component {
         }
 
         const {place, industry, stage} = this.state;
-        
-           
-
-        //need axios post to route in backend, findbyId and update.
-        // const display = this.state.currentQuestion.slice();
-        // display[this.state.index] = false;
-        // display[this.state.index+1] = true;
-        this.setState({
-            index: (this.state.index + 1)
-            // currentQuestion: display
+        axios.post('/api/eval/updateEval', {
+            place,
+            industry,
+            stage
         })
+            .then(response => {
+                console.log("response data", response.data);
+                this.setState({
+                    index: (this.state.index + 1)
+                })
+            .catch((err) => {
+                return err.response.data;
+                });
+            })
+
+        //with using middleware, but it didn't work
+        // updateEval(place, industry, stage)
+        //     .then(data => {
+        //         console.log("data is updated");
+        //         //if not empty      
+        //         this.setState({
+                    // index: (this.state.index + 1)
+                    // currentQuestion: display
+        //         }) 
+        //     })
+         
+        //need axios post to route in backend, findbyId and update
+        
     }
 
     render() {
@@ -177,7 +194,7 @@ export default class StartUpEvaluation extends React.Component {
                         <Q10pitchDeck
                             flag={this.state.currentQuestion[9]}
                         />                         */}
-                        <button type="submit" onClick={this.handleSubmit}>Next</button>
+                        <button type="submit" >Next</button>
                     </form>
 
                 </div>
