@@ -70,7 +70,14 @@ router.post("/startups", (req, res, next) => {
       const hash = bcrypt.hashSync(password, salt);
       console.log(hash);
 
-      StartUp.create({ email, username, password: hash, companyName })
+      StartUp.create({ 
+        email, 
+        username, 
+        password: hash, 
+        companyName,
+        place: "",
+        industry: "", 
+        stage: ""})
         .then((startup) => {
           console.log(startup)
           res.status(200).json(startup);

@@ -8,8 +8,8 @@ import SignUpStartUp from "./SignUpStartUp";
 import StartUpList from "./StartUpList";
 import InvestorDashboard from "./InvestorDashboard";
 import LandingPage from "./LandingPage";
+import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
-//import ProtectedRoute from './components/ProtectedRoute';
 
 export default class RouteContainer extends React.Component {
   state = {
@@ -104,8 +104,10 @@ export default class RouteContainer extends React.Component {
           exact path="/startups"
           render={props => <StartUpList {...props} />}
         />
-
-  
+        <Route
+            exact path="/startup/profile"
+            render={props => <StartUpProfile user={this.state.user} setUser={this.setUser} {...props} />}
+        />
         
       </div>
     );
