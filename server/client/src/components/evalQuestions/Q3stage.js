@@ -1,10 +1,14 @@
 import React from 'react';
 
 export default class Q3stage extends React.Component{
+    handleChange = (event) => {
+        this.props.setStage(event.target.value);
+    };
+
     render(){
         if(this.props.flag) {
             return (
-                <div>
+                <div onChange={this.handleChange}>
                 <label htmlFor="stage">In what stage is your idea?</label><br/>
                     <input type="radio" id="stageI" name="stage" value="stageI"/>
                     <label for="stageI">Prototype/MVP (Pre-Seed)</label><br/>

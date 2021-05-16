@@ -14,6 +14,7 @@ const startUpSchema = new Schema({
   },
   password: String,
   dateRegistered: String,
+  place: String,
   industry: String,
   stage: String,
   foundation: Boolean,
@@ -28,7 +29,6 @@ const startUpSchema = new Schema({
     }
   ],
   experience: Boolean,
-  location: String,
   pitchDeck: [String]
   
 });

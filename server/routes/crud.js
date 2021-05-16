@@ -109,4 +109,13 @@ router.delete("/investors/:id", (req, res, next) => {
     });
 });
 
+//update statupEval
+router.put("/startup/evaluation", (req, res, next) => {
+  const {place, industry, stage} = req.body;
+  console.log("req.session.user", req.sesssion.user)
+  // StartUp.findByIdAndUpdate(
+  //   req.session.user
+  // )
+})
+
 module.exports = router;

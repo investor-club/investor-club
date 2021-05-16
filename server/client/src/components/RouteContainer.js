@@ -8,8 +8,8 @@ import SignUpStartUp from "./SignUpStartUp";
 import StartUpList from "./StartUpList";
 import InvestorDashboard from "./InvestorDashboard";
 import LandingPage from "./LandingPage";
+import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
-//import ProtectedRoute from './components/ProtectedRoute';
 
 export default class RouteContainer extends React.Component {
   state = {
@@ -27,7 +27,6 @@ export default class RouteContainer extends React.Component {
   };
 
   render() {
-   // console.log("AM I YOUR TYPE ?", this.props.type) //PROBLEMATIC
      /* if not logged in then gneric home page */
     let result;
     if (!this.state.type) {
@@ -39,7 +38,8 @@ export default class RouteContainer extends React.Component {
         type = {this.state.type}
         setDisplayStartupEval = {this.setDisplayStartupEval}
         displayStartupEval={this.state.displayStartupEval}
-      /> 
+      />
+     
     } else if (this.state.type==="investor") {
       result = 
       <Route 
@@ -47,7 +47,7 @@ export default class RouteContainer extends React.Component {
         render={props => <InvestorDashboard {...props} 
       />}
     />
-             }
+    }
 
     return (
       <div>
@@ -55,6 +55,7 @@ export default class RouteContainer extends React.Component {
         <div>
             {result}
          </div>
+     
         {/* we need routes for almost all component */}
 
         {/* navbar */}
@@ -104,8 +105,10 @@ export default class RouteContainer extends React.Component {
           exact path="/startups"
           render={props => <StartUpList {...props} />}
         />
-
-  
+        <Route
+            exact path="/startup/profile"
+            render={props => <StartUpProfile user={this.state.user} setUser={this.setUser} {...props} />}
+        />
         
       </div>
     );
