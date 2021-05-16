@@ -97,7 +97,7 @@ export default class StartUpEvaluation extends React.Component {
         }
 
         const {place, industry, stage} = this.state;
-        axios.post('/api/eval/updateEval', {
+        axios.put('/api/eval/updateEval', {
             place,
             industry,
             stage
@@ -112,7 +112,7 @@ export default class StartUpEvaluation extends React.Component {
                 });
             })
 
-        //with using middleware, but it didn't work
+        //with using services, but it didn't work
         // updateEval(place, industry, stage)
         //     .then(data => {
         //         console.log("data is updated");

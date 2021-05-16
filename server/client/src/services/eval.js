@@ -3,7 +3,7 @@ import axios from 'axios';
 const updateEval = (place, industry, stage) => {
     console.log("updateEval before axios return");
     return axios
-        .post('/api/eval/updateEval', { 
+        .put('/api/eval/updateEval', { 
             place, 
             industry, 
             stage,
