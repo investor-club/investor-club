@@ -35,6 +35,7 @@ export default class SignUpInvestor extends Component {
         } else {
           console.log(user);
           this.props.setUser(user);
+          this.props.history.push("/login");
         }
       }
     );

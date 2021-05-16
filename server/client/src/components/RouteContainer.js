@@ -8,13 +8,12 @@ import SignUpStartUp from "./SignUpStartUp";
 import StartUpList from "./StartUpList";
 import InvestorDashboard from "./InvestorDashboard";
 import LandingPage from "./LandingPage";
-import StartUpProfile from "./StartUpProfile"
+import StartUpProfile from "./StartUpProfile";
+import StartUpDashboard from "./StartUpDashboard";
 
 export default class RouteContainer extends React.Component {
   state = {
-    user: this.props.user,
     displayStartupEval: true,
-    type: this.props.type,
   };
 
   setUser = (user) => {
@@ -22,20 +21,18 @@ export default class RouteContainer extends React.Component {
   };
 
   setDisplayStartupEval = (displayStartupEval) => {
-      this.setState({ 
-          displayStartupEval: displayStartupEval})
-  }
+    this.setState({
+      displayStartupEval: displayStartupEval,
+    });
+  };
 
   render() {
-
-    
-
      /* if not logged in then gneric home page */
-     let result;
+    let result;
     if (!this.state.type) {
        result = <LandingPage />  // REMOVE ON SIGNUP!!
     // if logged in as startup: 
-    } else if (this.state.type==="startup") {
+    } else if (this.state.type==="startup") {   //ONLY ON FIRST!!!
      result = <StartUpEvaluation
         user = {this.state.user}
         type = {this.state.type}
@@ -44,22 +41,37 @@ export default class RouteContainer extends React.Component {
       />
      
     } else if (this.state.type==="investor") {
-      result = <InvestorDashboard user={this.state.user} />
-             }
+      result = 
+      <Route 
+        exact path="/investordashboard"
+        render={props => <InvestorDashboard {...props} 
+      />}
+    />
+    }
 
     return (
       <div>
-        <h1>Hello from RouteContainer</h1>
-
         {/* the below is for the landng page logiv  */}
-         <div>
+        <div>
             {result}
          </div>
-
-       
-        <SignUpChoice />
-
+     
         {/* we need routes for almost all component */}
+
+        {/* navbar */}
+        {/* <ProtectedRoute 
+          // path=''
+          // user={this.state.user}
+          // component={Projects}
+          // redirectPath='/login'
+        /> */}
+        <Route
+          exact
+          path="/signupchoice"
+          render={(props) => (
+            <SignUpChoice setUser={this.setUser} {...props} />
+          )}
+        />
         <Route
           exact
           path="/signup/investor"
@@ -70,15 +82,25 @@ export default class RouteContainer extends React.Component {
         <Route
           exact
           path="/signup/startup"
-          render={(props) => (
-            <SignUpStartUp setUser={this.setUser} {...props} />
+          render={(props) => (<SignUpStartUp setUser={this.setUser} {...props} />
           )}
         />
         <Route
-          exact path="/login"
-          render={(props) => <Login setUser={this.setUser} {...props} />}
+          exact
+          path="/login"
+          render={(props) => <Login setUser={this.setUser} updateState={this.props.updateState} {...props} />}
         />
-        {/* this will be the if / else logic  of te protected routes*/}
+        
+        {/* <Route 
+          exact path="/investordashboard"
+          render={props => <InvestorDashboard {...props} />}
+        /> */}
+
+        <Route 
+          exact path="/startupdashboard"
+          render={props => <StartUpDashboard {...props} />}
+        />
+
         <Route 
           exact path="/startups"
           render={props => <StartUpList {...props} />}

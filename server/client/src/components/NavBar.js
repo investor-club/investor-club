@@ -1,18 +1,44 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import { logout } from "../services/auth";
 
+const handleLogout = (props) => {
+  logout().then(() => {
+    props.setUser(null);
+  });
+};
 
-export default class Navbar extends React.Component {
-  render () { 
-    return (
-      <h1>Hello from NavBar</h1>
-      
-    // logic for links:
-    
-    // <ul>
-    //   <li>
-    //     <Link to="/">Home</Link>
-    //   </li>
-    // </ul>
-  )}
+export default function Navbar(props) {
+  console.log(props.user);
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        {/* If we have a logged in user -> show projects and logout otherwise show login and signup */}
+        {props.user ? (
+          <>
+            <li>
+              <Link to="/startups">Startups</Link>
+            </li>
+            <li>
+              <Link to="/" onClick={() => handleLogout(props)}>
+                Logout
+              </Link>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <Link to="/signupchoice">Signup</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          </>
+        )}
+      </ul>
+    </div>
+  );
 }

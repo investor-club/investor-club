@@ -3,6 +3,7 @@ import { login } from "../services/auth";
 
 export default class Login extends Component {
   state = {
+    type: "",
     username: "",
     password: "",
     message: "",
@@ -26,9 +27,15 @@ export default class Login extends Component {
           password: "",
         });
       } else {
-        console.log(user);
+        console.log(user, this.props.type);
         this.props.setUser(user);
-        this.props.history.push("/startups");
+        this.props.updateState(user, this.props.type) //?????
+        if (this.props.type === "investor") {
+          this.props.history.push("/investordashboard");
+        }
+        if (this.props.type === "startup") {
+          this.props.history.push("/startupdashboard");
+        }
       }
     });
   };
