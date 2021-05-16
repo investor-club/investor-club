@@ -30,12 +30,12 @@ export default class Login extends Component {
         console.log(user, this.props.type);
         this.props.setUser(user);
         this.props.updateState(user, this.props.type) //?????
-        if (this.props.type === "investor") {
-          this.props.history.push("/investordashboard");
-        }
-        if (this.props.type === "startup") {
-          this.props.history.push("/startupdashboard");
-        }
+        // if (this.props.type === "investor") {
+        this.props.history.push("/investordashboard");
+        // }
+        // if (this.props.type === "startup") {
+        //   this.props.history.push("/startupdashboard");
+        // }
       }
     });
   };

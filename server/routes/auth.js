@@ -97,7 +97,7 @@ router.post("/login", (req, res) => {
           req.session.type = "investor";
           //req.session.user.type = "investor";
           console.log("LOGGEIN IN AS INVESTOR ", req.session)
-          res.status(200).json({ investorFromDB });
+          res.status(200).json({ investorFromDB, type:"investor" });
         } else {
           res.status(400).json({ message: "Invalid credentials" });
         }
@@ -107,7 +107,7 @@ router.post("/login", (req, res) => {
           req.session.user = startupFromDB;
           req.session.type = "startup";
           console.log("LOGGED IN IN AS STARTUP", req.session.user)
-          res.status(200).json({ startup: startupFromDB });
+          res.status(200).json({ startup: startupFromDB, type:"startup" });
         } else {
           res.status(400).json({ message: "Invalid credentials" });
         }

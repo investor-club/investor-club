@@ -27,34 +27,34 @@ export default class RouteContainer extends React.Component {
   };
 
   render() {
-   // console.log("AM I YOUR TYPE ?", this.props.type) //PROBLEMATIC
+   console.log("I AM TYPE IN ROUTECONTAINER", this.props.type) //PROBLEMATIC
      /* if not logged in then gneric home page */
-    let result;
-    if (!this.state.type) {
-       result = <LandingPage />  // REMOVE ON SIGNUP!!
-    // if logged in as startup: 
-    } else if (this.state.type==="startup") {   //ONLY ON FIRST!!!
-     result = <StartUpEvaluation
-        user = {this.state.user}
-        type = {this.state.type}
-        setDisplayStartupEval = {this.setDisplayStartupEval}
-        displayStartupEval={this.state.displayStartupEval}
-      /> 
-    } else if (this.state.type==="investor") {
-      result = 
-      <Route 
-        exact path="/investordashboard"
-        render={props => <InvestorDashboard {...props} 
-      />}
-    />
-             }
+    // let result;
+    // if (!this.state.type) {
+    //    result = <LandingPage />  // REMOVE ON SIGNUP!!
+    // // if logged in as startup: 
+    // } else if (this.state.type==="startup") {   //ONLY ON FIRST!!!
+    //  result = <StartUpEvaluation
+    //     user = {this.state.user}
+    //     type = {this.state.type}
+    //     setDisplayStartupEval = {this.setDisplayStartupEval}
+    //     displayStartupEval={this.state.displayStartupEval}
+    //   /> 
+    // } else if (this.state.type==="investor") {
+    //   result = 
+    //   <Route 
+    //     exact path="/investordashboard"
+    //     render={props => <InvestorDashboard {...props} type={this.props}
+    //   />}
+    // />
+             
 
     return (
       <div>
         {/* the below is for the landng page logiv  */}
-        <div>
+        {/* <div>
             {result}
-         </div>
+         </div> */}
         {/* we need routes for almost all component */}
 
         {/* navbar */}
@@ -90,14 +90,14 @@ export default class RouteContainer extends React.Component {
           render={(props) => <Login setUser={this.setUser} updateState={this.props.updateState} {...props} />}
         />
         
-        {/* <Route 
+        <Route 
           exact path="/investordashboard"
-          render={props => <InvestorDashboard {...props} />}
-        /> */}
+          render={props => <InvestorDashboard {...props} type={this.props.type}/>}
+        />
 
         <Route 
           exact path="/startupdashboard"
-          render={props => <StartUpDashboard {...props} />}
+          render={props => <StartUpDashboard {...props} type={this.props.type}/>}
         />
 
         <Route 

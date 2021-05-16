@@ -10,7 +10,7 @@ axios
   .get("/api/auth/loggedin")
   .then((response) => {
     const session = response.data;
-    console.log("AM I YOUR INDEX TYPE ?", session.type);
+   // console.log("AM I YOUR INDEX TYPE ?", session.type); THIS ONE WORKS
     ReactDOM.render(
       <BrowserRouter>
         <App user={session.user} type={session.type}/>
