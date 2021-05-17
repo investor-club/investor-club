@@ -3,7 +3,7 @@ import Q1place from './evalQuestions/Q1place';
 import Q2industry from './evalQuestions/Q2industry';
 import Q3stage from './evalQuestions/Q3stage';
 import Q4foundation from './evalQuestions/Q4foundation';
-import Q5teamMember from './evalQuestions/Q5teamMember';
+import Q5teamMembers from './evalQuestions/Q5teamMembers';
 import Q6skillsI from './evalQuestions/Q6skillsI';
 import Q7skillsII from './evalQuestions/Q7skillsII';
 import Q8skillsIII from './evalQuestions/Q8skillsIII';
@@ -14,21 +14,18 @@ import {updateEval} from '../services/eval';
 
 export default class StartUpEvaluation extends React.Component {
     state = {
-        // currentQuestion: [true, false, false, false, false, false, false, false, false, false],
         index: 0,
         place: '',
         industry: '',
         stage: '',
         foundation: '',
-        teamMember: '',
+        teamMembers: '',
         skillsI: '',
         skillsII: '',
         skillsIII: '',
         experience: '',
         pitchDeck: ''  
     }
-    //method set initial state
-    //do axios request.
 
     componentDidMount(){
         axios.get(`/api/startup/${this.props.user._id}`)
@@ -37,18 +34,17 @@ export default class StartUpEvaluation extends React.Component {
                 this.setState({
                     place: response.data.place,
                     industry: response.data.industry,
-                    stage: response.data.stage
-                    // foundation: '',
-                    // teamMember: '',
-                    // skillsI: '',
-                    // skillsII: '',
-                    // skillsIII: '',
-                    // experience: '',
-                    // pitchDeck: ''  
+                    stage: response.data.stage,
+                    foundation: response.data.foundation,
+                    teamMembers: response.data.teamMembers,
+                    skillsI: response.data.skillsI,
+                    skillsII: response.data.skillsII,
+                    skillsIII: response.data.skillsIII,
+                    experience: response.data.experience,
+                    pitchDeck: response.data.pitchDeck  
                 })
             })
-            .catch(err => console.log(err))
-            
+            .catch(err => console.log(err))       
     }
 
     //componentDidMount go to data I need and set it to the state variables.
@@ -76,9 +72,9 @@ export default class StartUpEvaluation extends React.Component {
         })
     }
 
-    setTeamMember = teamMember => {
+    setTeamMembers = teamMembers => {
         this.setState({
-            teamMember: teamMember
+            teamMembers: teamMembers
         })
     }
 
@@ -118,13 +114,30 @@ export default class StartUpEvaluation extends React.Component {
             console.log("this is the end of the questionnaire");
             {this.props.setDisplayStartupEval(false)}           
         }
-
-        const {place, industry, stage} = this.state;
+        const {
+            place, 
+            industry, 
+            stage,
+            foundation,
+            teamMembers,
+            skillsI,
+            skillsII,
+            skillsIII,
+            experience,
+            pitchDeck
+            } = this.state;
         axios.post(`/api/startup/${this.props.user._id}`, 
         {
             place,
             industry,
-            stage
+            stage,
+            foundation,
+            teamMembers,
+            skillsI,
+            skillsII,
+            skillsIII,
+            experience,
+            pitchDeck
         })
             .then(() => {
                 // console.log("response data", response.data);
@@ -181,10 +194,10 @@ export default class StartUpEvaluation extends React.Component {
                     displayedComponent = <Q3stage flag={true} stage={this.state.stage} setStage={this.setStage}/>
                     break;
                 case 3:
-                    displayedComponent = <Q4foundation flag={true} stage={this.state.foundation} setStage={this.setFoundation}/>
+                    displayedComponent = <Q4foundation flag={true} foundation={this.state.foundation} setFoundation={this.setFoundation}/>
                     break;
                 case 4:
-                    displayedComponent = <Q5teamMember flag={true} teamMember={this.state.teamMember} setTeamMember={this.setTeamMember}/>
+                    displayedComponent = <Q5teamMembers flag={true} teamMembers={this.state.teamMembers} setTeamMembers={this.setTeamMembers}/>
                     break;
                 case 5:
                     displayedComponent = <Q6skillsI flag={true} skillsI={this.state.skillsI} setSkillsI={this.setSkillsI}/>

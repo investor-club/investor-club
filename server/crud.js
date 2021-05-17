@@ -127,11 +127,32 @@ router.get("/startup/:id", (req, res, next) => {
 
 //update statupEval
 router.post("/startup/:id", (req, res, next) => {
-  const {place, industry, stage} = req.body;
+  const {place, 
+    industry, 
+    stage,
+    foundation,
+    teamMember,
+    skillsI,
+    skillsII,
+    skillsIII,
+    experience,
+    pitchDeck
+  } = req.body;
   console.log("called post in backend", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
-    {place, industry, stage},
+    {
+      place, 
+      industry, 
+      stage,
+      foundation,
+      teamMember,
+      skillsI,
+      skillsII,
+      skillsIII,
+      experience,
+      pitchDeck
+    },
     { new: true}
     )
       .then(startup => {
