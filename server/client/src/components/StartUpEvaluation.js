@@ -95,7 +95,6 @@ export default class StartUpEvaluation extends React.Component {
             console.log("this is the end of the questionnaire");
             {this.props.setDisplayStartupEval(false)}           
         }
-<<<<<<< HEAD
 
         const {place, industry, stage} = this.state;
         axios.put('/api/startup/${this.state.startup._id}', 
@@ -115,29 +114,6 @@ export default class StartUpEvaluation extends React.Component {
             })
 
         //with using services, but it didn't work
-=======
-            this.setState({
-                index: (this.state.index + 1)
-            })
-
-        // const {place, industry, stage} = this.state;
-        // axios.post('/api/eval/updateEval', {
-        //     place,
-        //     industry,
-        //     stage
-        // })
-        //     .then(response => {
-        //         console.log("response data", response.data);
-        //         this.setState({
-        //             index: (this.state.index + 1)
-        //         })
-        //     .catch((err) => {
-        //         return err.response.data;
-        //         });
-        //     })
-
-        //with using middleware, but it didn't work
->>>>>>> 488f1ed1d681338264739c06ad577b04010d0d6e
         // updateEval(place, industry, stage)
         //     .then(data => {
         //         console.log("data is updated");

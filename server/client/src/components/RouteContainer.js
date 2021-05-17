@@ -18,6 +18,7 @@ export default class RouteContainer extends React.Component {
     type: this.props.type
   };
 
+  
 
   setUser = (user) => {
     this.setState({ user });
