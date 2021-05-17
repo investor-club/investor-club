@@ -11,7 +11,7 @@ export default class Q2industry extends React.Component{
             return (
                 <div>
                 <label htmlFor="industry">In which industry are you operating?</label><br/>
-                <select id="industry" name="industry" onChange={this.handleSelect}>
+                <select id="industry" name="industry" onChange={this.handleSelect} value={this.props.industry}>
                     <option value="food">Food</option>
                     <option value="healthcare">Healthcare</option>
                     <option value="financials">Financials</option>

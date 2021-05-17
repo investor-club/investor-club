@@ -14,7 +14,7 @@ export default class Q1place extends React.Component{
                     type='text'
                     id='place'
                     name='place'
-                    placeholder='q1'
+                    
                     value= {this.props.place}
                     onChange={this.handleChange}
                     // onChange=call method from parent component and change state in the parent components
