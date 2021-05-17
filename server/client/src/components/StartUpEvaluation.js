@@ -110,7 +110,7 @@ export default class StartUpEvaluation extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        if (this.state.index >8){
+        if (this.state.index >7){
             console.log("this is the end of the questionnaire");
             {this.props.setDisplayStartupEval(false)}           
         }
