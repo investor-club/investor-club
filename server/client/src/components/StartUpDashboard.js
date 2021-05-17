@@ -8,7 +8,7 @@ export default class StartUpDashboard extends Component {
 
         return (
             <div>
-            <StartUpEvaluation/>
+            <StartUpEvaluation {...this.state} {...this.props} setDisplayStartupEval={this.setDisplayStartupEval}/>
             <article>Profile</article>
             <article>Who invested?</article>
             <article>Evaluation</article>

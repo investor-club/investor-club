@@ -83,7 +83,7 @@ export default class RouteContainer extends React.Component {
 
         <Route 
           exact path="/startupdashboard"
-          render={props => <StartUpDashboard {...props} user= {this.state.user} type={this.type}/>}
+          render={props => <StartUpDashboard {...this.state} {...this.props} setDisplayStartupEval={this.setDisplayStartupEval} {...props} user= {this.state.user} type={this.type}/>}
         />
 
         <Route 
