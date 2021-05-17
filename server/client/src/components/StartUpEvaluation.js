@@ -223,21 +223,24 @@ export default class StartUpEvaluation extends React.Component {
                     break;
             }
             return (
-                <div class='bodyPadding'>
-                    <div>
-                        <a href="" onClick={this.showPrevious}>Back</a>
-                        <div className='progressBarBg'></div>
-                        {/* <div className='progressBar' style={{width: `${progressWidth}%}`}}></div> */}
-                    </div>
+                <div>
+                    <div class='purpleBackground'></div>
+                    <div class='bodyPadding'>
+                        <div>
+                            <a href="" onClick={this.showPrevious}>Back</a>
+                            <div className='progressBarBg'></div>
+                            {/* <div className='progressBar' style={{width: `${progressWidth}%}`}}></div> */}
+                        </div>
 
-                    <div class='questionContainer'> 
-                        {/* <h2>Tell us about your startup!</h2> */}
-                    
-                        <form onSubmit={this.handleSubmit}>
-                            {displayedComponent}
+                        <div class='questionContainer'> 
+                            {/* <h2>Tell us about your startup!</h2> */}
                         
-                            <button type="submit" >Next</button>
-                        </form>   
+                            <form onSubmit={this.handleSubmit}>
+                                {displayedComponent}
+                            
+                                <button type="submit" >Next</button>
+                            </form>   
+                        </div>
                     </div>
                 </div>
                 )

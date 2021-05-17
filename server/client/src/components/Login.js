@@ -43,30 +43,33 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <div class='bodyPadding'>
-        <h2>Login</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username: </label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            id="username"
-          />
-          <br/>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            id="password"
-          />
-          <br/>
-          <button type="submit">Log in</button>
-          {this.state.message && <h3>{this.state.message}</h3>}
-        </form>
+      <div>
+        <div class='purpleBackground'></div>
+        <div class='bodyPadding'>
+          <h2>Login</h2>
+          <form onSubmit={this.handleSubmit}>
+            <label htmlFor="username">Username: </label>
+            <input
+              type="text"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+              id="username"
+            />
+            <br/>
+            <label htmlFor="password">Password: </label>
+            <input
+              type="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+              id="password"
+            />
+            <br/>
+            <button type="submit">Log in</button>
+            {this.state.message && <h3>{this.state.message}</h3>}
+          </form>
+        </div>
       </div>
     );
   }
