@@ -109,10 +109,25 @@ router.delete("/investors/:id", (req, res, next) => {
     });
 });
 
+//get startup data from database
+router.get("/startup/:id", (req, res, next) => {
+  StartUp.findById(req.params.id)
+    .then((startup) => {
+      console.log("get startup comp mount", startup);
+      if (!startup) {
+        res.status(404).json(startup);
+      } else {
+        res.status(200).json(startup);
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 //update statupEval
 router.post("/startup/:id", (req, res, next) => {
   const {place, industry, stage} = req.body;
-
   console.log("called post in backend", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
@@ -128,6 +143,8 @@ router.post("/startup/:id", (req, res, next) => {
       });
       
       })
+
+
 
 
 module.exports = router;

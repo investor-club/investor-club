@@ -29,7 +29,28 @@ export default class StartUpEvaluation extends React.Component {
     }
     //method set initial state
     //do axios request.
-    
+
+    componentDidMount(){
+        axios.get(`/api/startup/${this.props.user._id}`)
+            .then(response => {
+                console.log("component did mount response data",response.data);
+                this.setState({
+                    place: response.data.place,
+                    industry: response.data.industry,
+                    stage: response.data.stage
+                    // foundation: '',
+                    // teamMember: '',
+                    // skillsI: '',
+                    // skillsII: '',
+                    // skillsIII: '',
+                    // experience: '',
+                    // pitchDeck: ''  
+                })
+            })
+            .catch(err => console.log(err))
+            
+    }
+
     //componentDidMount go to data I need and set it to the state variables.
     setPlace = place => {
         this.setState({
