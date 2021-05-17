@@ -28,21 +28,19 @@ export default class StartUpList extends Component {
 
     handleSearch = e => {
       // const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-      const name = e.target.name;
-      // // filtering:
-      // this.setState({
-      // [name]: e.target.value
-      // });
+      // const name = e.target.name;
+      let regex = new RegExp(this.state.search, "gi")
+           // If the search bar isn't empty assign the original list to currentList
+      if (e.target.value === "") { this.getData() };   //CLER FORM???
+      
       this.setState((state) => ({
-        startups: [...state.startups.filter(startup=>{
+        search: e.target.value,
+        startups: [...state.startups].filter(startup=>{
           return `${startup.companyName}${startup.place}${startup.industry}${startup.statement}`
-          .toLowerCase().includes(e.target.value.toLowerCase())
-        })],
+          .toLowerCase().match(regex);
+        }),
       }))
-
-
     }
-
   
     handleSort = (e) => {
       //alphabetically
@@ -52,7 +50,7 @@ export default class StartUpList extends Component {
       }) )
       }
       if (e.target.value === "z-a") {
-        this.setState((state) => ({
+        this.setState( state => ({
           startups: [...state.startups.sort((a,b) => b.companyName.localeCompare(a.companyName) )]
       }) )
       }
@@ -72,18 +70,24 @@ export default class StartUpList extends Component {
 
     handleFilter = e => {
       const name = e.target.name;
+      console.log("stage: ", e.target.value);
       // // filtering:
-      this.setState({
-      [name]: e.target.value
-    }
+      this.setState( state => ({
+      [name]: e.target.value,
+      startups: [...state.startups].filter(startup => {
+        return startup.stage.includes(e.target.value)
+      }),
+    }))
+  }
 
 
     render() {
         // const filteredUsers = this.state.startups.filter(startup=>{
-        //   return `${startup.companyName}${startup.place}${startup.industry}${startup.statement}`.toLowerCase().includes(this.state.search.toLowerCase())
+        //   return `${startup.companyName}${startup.place}${startup.industry}${startup.statement}`
+        //   .toLowerCase().includes(this.state.search.toLowerCase())
         // })
 
-        const displayedList = filteredUsers.map( startup => {
+        const displayedList = this.state.startups.map( startup => {
           return (<tr className="one-startup">
             <img src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png" width="100px"></img>
             <td>
@@ -97,11 +101,8 @@ export default class StartUpList extends Component {
             </tr>
           )
         })
-
         return (
-
-          <div className="startup-list-container">
-           
+          <div className="startup-list-container">       
             <input 
             id="searchbar"
             type="text" 
@@ -124,11 +125,12 @@ export default class StartUpList extends Component {
              <span> Stage </span>
               
              <select name="filterStage" id="filterStage" onChange={this.handleFilter} >
+               <option value="">Choose option</option>
                <option value="idea">Idea Stage</option>
-               <option value="Prototype/MVP (Pre-Seed)">Prototype/MVP (Pre-Seed)</option>
-               <option value="Proof of Concept (Pre-Seed)">Proof of Concept (Pre-Seed)</option>
-               <option value="First Paying Customers (Seed)">First Paying Customers (Seed)</option>
-               <option value="beyond the mentioned">beyond the mentioned</option>
+               <option value="prototype">Prototype/MVP (Pre-Seed)</option>
+               <option value="concept">Proof of Concept (Pre-Seed)</option>
+               <option value="paying customers">First Paying Customers (Seed)</option>
+               <option value="beyond">beyond the mentioned</option>
              </select>
             
             </div>
@@ -142,9 +144,8 @@ export default class StartUpList extends Component {
               </tbody>
             </table>
 
-
           </div>
         )
     }
 }
-// 
+

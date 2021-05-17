@@ -56,7 +56,7 @@ const bcrypt = require("bcrypt");
 // 👇 Start handling routes here
 // Contrary to the views version, all routes are controled from the routes/index.js
 
-const crud = require("./crud");
+const crud = require("./routes/crud");
 app.use("/api", crud);
 
 const auth = require("./routes/auth");
