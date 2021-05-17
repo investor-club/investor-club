@@ -185,6 +185,33 @@ body {
   font-weight: normal;
 }
 
+.startup-list-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* .startup-list-container table{
+  display: flex;
+  justify-content: center;
+} */
+
+.startup-list-container td{
+  border-bottom: 2px dotted #5200FF;
+  font-size: 18px;
+
+}
+.startup-list-container h2{
+  font-size: 18px;
+}
+
+
+.startup-list-container img{
+  width: 30px;
+  /* clip-path: circle(30px at center); */
+  clip-path: circle(40%);
+}
+
 /* #navbar a:visited{
   color: black;
 } */

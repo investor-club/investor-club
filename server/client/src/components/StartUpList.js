@@ -113,27 +113,27 @@ export default class StartUpList extends Component {
             />
                   
             <div className="filters">
-            <span> Sort </span>
-              
-             <select name="sort" id="sort" onChange={this.handleSort} >
-               <option value="highest">Highest rating first</option>
-               <option value="lowest">Lowest rating first</option>
-               <option value="a-z">a-z</option>
-               <option value="z-a">z-a</option>
-             </select>
+              <span> Sort </span>
+                
+              <select name="sort" id="sort" onChange={this.handleSort} >
+                <option value="highest">Highest rating first</option>
+                <option value="lowest">Lowest rating first</option>
+                <option value="a-z">a-z</option>
+                <option value="z-a">z-a</option>
+              </select>
 
-             <span> Stage </span>
-              
-             <select name="filterStage" id="filterStage" onChange={this.handleFilter} >
-               <option value="">Choose option</option>
-               <option value="idea">Idea Stage</option>
-               <option value="prototype">Prototype/MVP (Pre-Seed)</option>
-               <option value="concept">Proof of Concept (Pre-Seed)</option>
-               <option value="paying customers">First Paying Customers (Seed)</option>
-               <option value="beyond">beyond the mentioned</option>
-             </select>
-            
+              <span> Stage </span>
+                
+              <select name="filterStage" id="filterStage" onChange={this.handleFilter} >
+                <option value="">Choose option</option>
+                <option value="idea">Idea Stage</option>
+                <option value="prototype">Prototype/MVP (Pre-Seed)</option>
+                <option value="concept">Proof of Concept (Pre-Seed)</option>
+                <option value="paying customers">First Paying Customers (Seed)</option>
+                <option value="beyond">beyond the mentioned</option>
+              </select>
             </div>
+
 
             <table>
               <tbody>
@@ -143,6 +143,7 @@ export default class StartUpList extends Component {
               {displayedList}
               </tbody>
             </table>
+
 
           </div>
         )
