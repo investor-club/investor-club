@@ -2,7 +2,7 @@ import axios from "axios";
 
 const signUpInvestor = (email, username, password, firstName, lastName) => {
   return axios
-    .post("/api/auth/signup/investor", {
+    .post("/api/auth/investors", {
       email,
       username,
       password,
@@ -37,7 +37,7 @@ const login = (username, password) => {
   return axios
     .post("/api/auth/login", { username, password })
     .then((response) => {
-      console.log("RESPONSE DATA: ",response.data)
+      console.log("RESPONSE DATA: ", response.data);
       return response.data;
     })
     .catch((err) => {

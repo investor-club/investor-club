@@ -8,28 +8,41 @@ export default function Navbar(props) {
 
   const handleLogout = () => {
     logout().then(() => {
-      console.log("LOGGING OUT??")
+      console.log("LOGGING OUT??");
       props.setAppState(null, null);
     });
   };
 
- 
   let dashboard;
-  if (props.type ==="investor") { dashboard = "/investordashboard"}
-  if (props.type ==="startup") { dashboard = "/startupdashboard"}
-  
+  if (props.type === "investor") {
+    dashboard = "/investordashboard";
+  }
+  if (props.type === "startup") {
+    dashboard = "/startupdashboard";
+  }
+
+  // let profile;
+  // if (props.user.type === "investor") {
+  //   profile = "/investor/profile";
+  // }
+  // if (props.user.type === "startup") {
+  //   profile = "/startup/profile";
+  // }
+
   return (
-    <div id='navbar'>
+    <div id="navbar">
       <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
-        {/* If we have a logged in user -> show projects and logout otherwise show login and signup */}
         {props.user ? (
           <>
             <li>
               <Link to={dashboard}>Dashboard</Link>
             </li>
+            {/* <li>
+              <Link to={profile}>Profile</Link>
+            </li> */}
             <li>
               <Link to="/" onClick={() => handleLogout()}>
                 Logout

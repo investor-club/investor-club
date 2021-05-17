@@ -8,39 +8,34 @@ import StartUpList from "./StartUpList";
 import InvestorDashboard from "./InvestorDashboard";
 import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
+import InvestorProfile from "./InvestorProfile";
 import axios from "axios";
 
 export default class RouteContainer extends React.Component {
   state = {
     user: this.props.user,
     displayStartupEval: true,
-    type: this.props.type
+    type: this.props.type,
   };
 
+  // setUser = (user) => {
+  //   this.setState({ user });
+  // };
+  // setType = (type) => {
+  //   this.setState({ type });
+  // };
 
-  setUser = (user) => {
-    this.setState({ user });
-  };
-  setType = (type) => {
-    this.setState({ type });
-  };
-  
   setDisplayStartupEval = (displayStartupEval) => {
     this.setState({
       displayStartupEval: displayStartupEval,
     });
   };
 
-  
-
   render() {
-  
-     console.log("I AM TYPE IN ROUTECONTAINER", this.type) 
-     
+    console.log("I AM TYPE IN ROUTECONTAINER", this.type);
 
     return (
       <div>
-    
         {/* navbar */}
         {/* <ProtectedRoute 
           // path=''
@@ -52,9 +47,7 @@ export default class RouteContainer extends React.Component {
         <Route
           exact
           path="/signupchoice"
-          render={(props) => (
-            <SignUpChoice setUser={this.setUser} {...props} />
-          )}
+          render={(props) => <SignUpChoice setUser={this.setUser} {...props} />}
         />
 
         <Route
@@ -67,39 +60,77 @@ export default class RouteContainer extends React.Component {
         <Route
           exact
           path="/signup/startup"
-          render={(props) => (<SignUpStartUp setUser={this.setUser} {...props} />
+          render={(props) => (
+            <SignUpStartUp setUser={this.setUser} {...props} />
           )}
         />
         <Route
           exact
           path="/login"
-          render={(props) => <Login setUser={this.setUser} setType={this.setType} setAppState={this.props.setAppState} {...props} />}
-        />
-        
-        <Route 
-          exact path="/investordashboard"
-          render={props => <InvestorDashboard {...props} user= {this.state.user} type={this.type}/>}
-        />
-
-        <Route 
-          exact path="/startupdashboard"
-          render={props => <StartUpDashboard {...props} user= {this.state.user} type={this.type}/>}
-        />
-
-        <Route 
-          exact path="/startups"
-          render={props => <StartUpList {...props} />}
-        />
-        <Route
-            exact path="/startup/profile/:id"
-            render={props => <StartUpProfile user={this.state.user} setUser={this.setUser} {...props} />}
+          render={(props) => (
+            <Login
+              // setUser={this.setUser}
+              // setType={this.setType}
+              setAppState={this.props.setAppState}
+              {...props}
+            />
+          )}
         />
 
         <Route
-            exact path="/investor/profile/:id"
-            render={props => <StartUpProfile user={this.state.user} setUser={this.setUser} {...props} />}
+          exact
+          path="/investordashboard"
+          render={(props) => (
+            <InvestorDashboard
+              {...props}
+              user={this.state.user}
+              type={this.state.type}
+              setAppState={this.props.setAppState}
+            />
+          )}
         />
-        
+
+        <Route
+          exact
+          path="/startupdashboard"
+          render={(props) => (
+            <StartUpDashboard
+              {...props}
+              user={this.state.user}
+              type={this.state.type}
+              setAppState={this.props.setAppState}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/startups"
+          render={(props) => <StartUpList {...props} />}
+        />
+        <Route
+          exact
+          path="/startup/profile/:id"
+          render={(props) => (
+            <StartUpProfile
+              user={this.state.user}
+              setUser={this.setUser}
+              {...props}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/investorprofile/:id"
+          render={(props) => (
+            <InvestorProfile
+              user={this.state.user}
+              setUser={this.setUser}
+              {...props}
+            />
+          )}
+        />
       </div>
     );
   }
