@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import LandingPage from 'react';
 
 export default class StartUpDashboard extends Component {
+
     render() {
 
-        
         return (
             <div>
-                <article>Investment Portfolio</article>
-                <article>Investor Portfolio</article>
-                <article>Startups</article>
-                <article>Investors</article>
-            </div>
+            <article>Profile</article>
+            <article>Who invested?</article>
+            <article>Evaluation</article>
+        </div>
         )
     }
 }

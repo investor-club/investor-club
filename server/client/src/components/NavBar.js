@@ -1,21 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../services/auth";
-
-
+import "../App.css";
 
 export default function Navbar(props) {
-  console.log("User in navbar: ", props.user);
+  console.log("User in navbar: ", props);
 
-  const handleLogout = (props) => {
+  const handleLogout = () => {
     logout().then(() => {
-      props.updateState(null);
+      console.log("LOGGING OUT??")
+      props.updateState({user: null, type: null});
     });
   };
 
+  // componentDidMount () {
+
+  // }
   
   return (
-    <div>
+    <div id='navbar'>
       <ul>
         <li>
           <Link to="/">Home</Link>
@@ -27,7 +30,7 @@ export default function Navbar(props) {
               <Link to="/startups">Startups</Link>
             </li>
             <li>
-              <Link to="/" onClick={() => handleLogout(props)}>
+              <Link to="/" onClick={() => handleLogout()}>
                 Logout
               </Link>
             </li>

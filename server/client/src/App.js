@@ -1,13 +1,8 @@
 import React from "react";
 import "./App.css";
-import LandingPage from "./components/LandingPage";
 import NavBar from "./components/NavBar";
 import RouteContainer from "./components/RouteContainer";
-import StartUpEvaluation from "./components/StartUpEvaluation";
-import StartUpDashboard from "./components/StartUpDashboard";
-import InvestorDashboard from "./components/InvestorDashboard";
 import axios from "axios";
-
 
 export default class App extends React.Component {
 
@@ -37,8 +32,8 @@ export default class App extends React.Component {
     console.log("I AM TYPE IN APP", this.props.type)
     return (
       <div className="App">
-        <NavBar user={this.props.user} updateState={this.updateState} type={this.state.type}/>
-        <RouteContainer user={this.props.user} updateState={this.updateState} type={this.props.type}/>
+        <NavBar user={this.state.user} updateState={this.updateState} type={this.state.type}/>
+        <RouteContainer user={this.state.user} updateState={this.updateState} type={this.state.type}/>
       </div>
     )
   }

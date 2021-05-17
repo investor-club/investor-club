@@ -97,7 +97,8 @@ export default class StartUpEvaluation extends React.Component {
         }
 
         const {place, industry, stage} = this.state;
-        axios.put('/api/eval/updateEval', {
+        axios.put('/api/startup/${this.state.startup._id}', 
+        {
             place,
             industry,
             stage
@@ -107,9 +108,9 @@ export default class StartUpEvaluation extends React.Component {
                 this.setState({
                     index: (this.state.index + 1)
                 })
-            .catch((err) => {
-                return err.response.data;
-                });
+            // .catch((err) => {
+            //     return err;
+            //     });
             })
 
         //with using services, but it didn't work
