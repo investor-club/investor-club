@@ -10,8 +10,6 @@ import Q8skillsIII from './evalQuestions/Q8skillsIII';
 import Q9experience from './evalQuestions/Q9experience';
 import Q10pitchDeck from './evalQuestions/Q10pitchDeck';
 import axios from 'axios';
-import {updateEval} from '../services/eval';
-
 export default class StartUpEvaluation extends React.Component {
     state = {
         index: 0,

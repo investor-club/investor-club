@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default class Q1place extends React.Component{
-
     handleChange = (event) => {
         this.props.setPlace(event.target.value);
     };
@@ -14,10 +13,8 @@ export default class Q1place extends React.Component{
                     type='text'
                     id='place'
                     name='place'
-                    
                     value= {this.props.place}
                     onChange={this.handleChange}
-                    // onChange=call method from parent component and change state in the parent components
                 />
                 </div>
                 )

@@ -1,6 +1,10 @@
 import React from 'react';
 
 export default class Q5teamMembers extends React.Component{
+    handleChange = (event) => {
+        this.props.setTeamMembers(event.target.value);
+    };
+    
     render(){
         if(this.props.flag) {
             return (

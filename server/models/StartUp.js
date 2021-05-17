@@ -19,16 +19,16 @@ const startUpSchema = new Schema({
   stage: String,
   foundation: Boolean,
   teamMembers: String,
-  skillsAvailable: [String],
-  skillsComplete: Boolean,
-  skillsNeeded: [String],
+  skillsI: [String],
+  skillsII: String,
+  skillsIII: [String],
   inPortfolio: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Investor'
     }
   ],
-  experience: Boolean,
+  experience: String,
   pitchDeck: [String]
   
 });

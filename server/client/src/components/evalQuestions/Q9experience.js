@@ -1,17 +1,21 @@
 import React from 'react';
 
 export default class Q9experience extends React.Component{
+    handleChange = (event) => {
+        this.props.setExperience(event.target.value);
+    };
+
     render(){
         if(this.props.flag) {
             return (
-                <div>
-                    <label htmlFor="experience" value={this.props.stage}>Did you found a startup before?</label><br/>
+                <div >
+                    <label htmlFor="experience" >Did you found a startup before?</label><br/>
                     <input 
                     type='text'
                     id='experience'
                     name='experience'
-                    // value=
-                    // onChange=
+                    value= {this.props.experience}
+                    onChange={this.handleChange}
                     />
                  </div>
                 )
