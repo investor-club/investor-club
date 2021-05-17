@@ -4,6 +4,8 @@ const { Schema, model } = require("mongoose");
 const startUpSchema = new Schema({
 
   companyName: String,
+  statement: String,
+  description: String,
   email: {
     type: String,
     unique: true,
@@ -29,8 +31,9 @@ const startUpSchema = new Schema({
     }
   ],
   experience: Boolean,
-  pitchDeck: [String]
-  
+  pitchDeck: [String],
+  rating: Number,
+  website: String,
 });
 
 const StartUp = model("StartUp", startUpSchema);

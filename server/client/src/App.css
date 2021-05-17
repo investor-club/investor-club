@@ -49,14 +49,26 @@
   text-decoration: none;
 }
 
+startup-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+ 
+}
 #searchbar {
-  width: 500px,
+  width: 70vw;
+  height: 30px;
+
 }
 
-.one-startup {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+.one-startup > td {
+  padding-left: 20px;
 }
+
+.filters {
+  display: flex;
+ justify-content: left;
+}
+
+
 
