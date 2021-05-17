@@ -14,7 +14,7 @@ import axios from "axios";
 export default class RouteContainer extends React.Component {
   state = {
     user: this.props.user,
-    displayStartupEval: true,
+    // displayStartupEval: true,
     type: this.props.type
   };
 
@@ -25,11 +25,11 @@ export default class RouteContainer extends React.Component {
     this.setState({ type });
   };
   
-  setDisplayStartupEval = (displayStartupEval) => {
-    this.setState({
-      displayStartupEval: displayStartupEval,
-    });
-  };
+//   setDisplayStartupEval = (displayStartupEval) => {
+//     this.setState({
+//       displayStartupEval: displayStartupEval,
+//     });
+//   };
 
   
 

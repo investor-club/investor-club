@@ -5,7 +5,7 @@ export default class Q7skillsII extends React.Component{
         if(this.props.flag) {
             return (
                 <div>
-                    <label htmlFor="foundation">Do you have all the necessary skills in your team to develop the idea?</label><br/>
+                    <label htmlFor="skillsII" value={this.props.stage}>Do you have all the necessary skills in your team to develop the idea?</label><br/>
                     <input type="radio" id="yes" name="skillsII" value="yes"/>
                     <label for="yes">Yes</label><br/>
 

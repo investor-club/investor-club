@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default class Q5teamMember extends React.Component{
+export default class Q5teamMembers extends React.Component{
     render(){
         if(this.props.flag) {
             return (
-                <div>
-                    <label htmlFor="foundation">How many core team members do you have?</label><br/>
+                <div onChange={this.handleChange} value={this.props.teamMembers} checked={this.props.teamMembers}>
+                    <label htmlFor="teamMembers">How many core team members do you have?</label><br/>
                     <input type="radio" id="1" name="teamMembers" value="1"/>
                     <label for="1">1</label><br/>
 

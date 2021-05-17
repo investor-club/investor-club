@@ -5,7 +5,7 @@ export default class Q9experience extends React.Component{
         if(this.props.flag) {
             return (
                 <div>
-                    <label htmlFor="foundation">Did you found a startup before?</label><br/>
+                    <label htmlFor="experience" value={this.props.stage}>Did you found a startup before?</label><br/>
                     <input 
                     type='text'
                     id='experience'

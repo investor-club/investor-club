@@ -18,7 +18,7 @@ const startUpSchema = new Schema({
   industry: String,
   stage: String,
   foundation: Boolean,
-  teamMembers: Number,
+  teamMembers: String,
   skillsAvailable: [String],
   skillsComplete: Boolean,
   skillsNeeded: [String],
