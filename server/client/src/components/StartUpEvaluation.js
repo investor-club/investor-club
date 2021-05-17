@@ -91,26 +91,29 @@ export default class StartUpEvaluation extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        if (this.state.index >1){
+        if (this.state.index >8){
             console.log("this is the end of the questionnaire");
             {this.props.setDisplayStartupEval(false)}           
         }
-
-        const {place, industry, stage} = this.state;
-        axios.post('/api/eval/updateEval', {
-            place,
-            industry,
-            stage
-        })
-            .then(response => {
-                console.log("response data", response.data);
-                this.setState({
-                    index: (this.state.index + 1)
-                })
-            .catch((err) => {
-                return err.response.data;
-                });
+            this.setState({
+                index: (this.state.index + 1)
             })
+
+        // const {place, industry, stage} = this.state;
+        // axios.post('/api/eval/updateEval', {
+        //     place,
+        //     industry,
+        //     stage
+        // })
+        //     .then(response => {
+        //         console.log("response data", response.data);
+        //         this.setState({
+        //             index: (this.state.index + 1)
+        //         })
+        //     .catch((err) => {
+        //         return err.response.data;
+        //         });
+        //     })
 
         //with using middleware, but it didn't work
         // updateEval(place, industry, stage)
@@ -127,6 +130,13 @@ export default class StartUpEvaluation extends React.Component {
         
     }
 
+    showPrevious = e => {
+        this.setState({
+            index: (this.state.index - 1)
+        })
+
+    }
+
     render() {
         if(this.props.displayStartupEval) {
             let displayedComponent;
@@ -140,15 +150,15 @@ export default class StartUpEvaluation extends React.Component {
                 case 2:
                     displayedComponent = <Q3stage flag={true} stage={this.state.stage} setStage={this.setStage}/>
                     break;
-                // case 3:
-                //     displayedComponent = <Q4foundation flag={true} stage={this.state.foundation} setStage={this.setFoundation}/>
-                //     break;
-                // case 4:
-                //     displayedComponent = <Q5teamMember flag={true} teamMember={this.state.teamMember} setTeamMember={this.setteamMember}/>
-                //     break;
-                // case 5:
-                //     displayedComponent = <Q6skillsI flag={true} skillsI={this.state.skillsI} setSkillsI={this.setskillsI}/>
-                //     break;   
+                case 3:
+                    displayedComponent = <Q4foundation flag={true} stage={this.state.foundation} setStage={this.setFoundation}/>
+                    break;
+                case 4:
+                    displayedComponent = <Q5teamMember flag={true} teamMember={this.state.teamMember} setTeamMember={this.setteamMember}/>
+                    break;
+                case 5:
+                    displayedComponent = <Q6skillsI flag={true} skillsI={this.state.skillsI} setSkillsI={this.setskillsI}/>
+                    break;   
                 // case 6:
                 //     displayedComponent = <Q6skillsII flag={true} skillsII={this.state.skillsII} setSkillsII={this.setskillsII}/>
                 //     break;                    
@@ -162,38 +172,9 @@ export default class StartUpEvaluation extends React.Component {
                         backgrounColor: "grey"}}>
                         {/* <div className=progressBar></div> */}
                     </div>
+                    <a href="" onClick={this.showPrevious}>Back</a>
                     <form onSubmit={this.handleSubmit}>
                         {displayedComponent}
-                        {/* <Q1place
-                            flag={this.state.currentQuestion[0]}
-                        />
-                        <Q2industry
-                            flag={this.state.currentQuestion[1]}
-                        />
-                        <Q3stage
-                            flag={this.state.currentQuestion[2]}
-                        />
-                        <Q4foundation
-                            flag={this.state.currentQuestion[3]}
-                        />
-                        <Q5teamMember
-                            flag={this.state.currentQuestion[4]}
-                        />
-                        <Q6skillsI
-                            flag={this.state.currentQuestion[5]}
-                        />
-                        <Q7skillsII
-                            flag={this.state.currentQuestion[6]}
-                        />
-                        <Q8skillsIII
-                            flag={this.state.currentQuestion[7]}
-                        />
-                        <Q9experience
-                            flag={this.state.currentQuestion[8]}
-                        />
-                        <Q10pitchDeck
-                            flag={this.state.currentQuestion[9]}
-                        />                         */}
                         <button type="submit" >Next</button>
                     </form>
 
