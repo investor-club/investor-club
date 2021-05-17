@@ -10,17 +10,17 @@ export default class Q3stage extends React.Component{
             return (
                 <div onChange={this.handleChange} value={this.props.stage} checked={this.props.stage}>
                 <label htmlFor="stage">In what stage is your idea?</label><br/>
-                    <input type="radio" id="stageI" name="stage" value="stageI"/>
-                    <label for="stageI">Prototype/MVP (Pre-Seed)</label><br/>
+                    <input type="radio" id="Prototype" name="stage" value="prototype"/>
+                    <label for="prototype">Prototype/MVP (Pre-Seed)</label><br/>
 
-                    <input type="radio" id="stageII" name="stage" value="stageII"/>
-                    <label for="stageII">Proof of Concept (Pre-Seed)</label><br/>
+                    <input type="radio" id="Concept" name="stage" value="concept"/>
+                    <label for="concept">Proof of Concept (Pre-Seed)</label><br/>
 
-                    <input type="radio" id="stageIII" name="stage" value="stageIII"/>
-                    <label for="stageIII">First Paying Customers (Seed)</label><br/>
+                    <input type="radio" id="Customers" name="stage" value="customers"/>
+                    <label for="paying customers">First Paying Customers (Seed)</label><br/>
 
-                    <input type="radio" id="stageIV" name="stage" value="stageIV"/>
-                    <label for="stageIV">beyond the mentioned ones</label>
+                    <input type="radio" id="beyond" name="stage" value="beyond"/>
+                    <label for="beyond">beyond the mentioned ones</label>
                 </div>
                 )
         } else {

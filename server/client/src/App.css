@@ -37,9 +37,38 @@
   }
 }
 
-#navbar > li {
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+}
+
+.navbar > li {
   list-style: none;
   text-decoration: none;
-  display: flex;
-  justify-content: right;
 }
+
+startup-list-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+ 
+}
+#searchbar {
+  width: 70vw;
+  height: 30px;
+
+}
+
+.one-startup > td {
+  padding-left: 20px;
+}
+
+.filters {
+  display: flex;
+ justify-content: left;
+}
+
+
+

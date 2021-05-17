@@ -8,6 +8,7 @@ import StartUpList from "./StartUpList";
 import InvestorDashboard from "./InvestorDashboard";
 import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
+import LandingPage from "./LandingPage";
 import axios from "axios";
 
 export default class RouteContainer extends React.Component {
@@ -16,7 +17,6 @@ export default class RouteContainer extends React.Component {
     // displayStartupEval: true,
     type: this.props.type
   };
-
 
   setUser = (user) => {
     this.setState({ user });
@@ -36,19 +36,10 @@ export default class RouteContainer extends React.Component {
   render() {
   
      console.log("I AM TYPE IN ROUTECONTAINER", this.type) 
-     
 
     return (
       <div>
-    
-        {/* navbar */}
-        {/* <ProtectedRoute 
-          // path=''
-          // user={this.state.user}
-          // component={Projects}
-          // redirectPath='/login'
-        /> */}
-
+      
         <Route
           exact
           path="/signupchoice"
@@ -98,6 +89,10 @@ export default class RouteContainer extends React.Component {
         <Route
             exact path="/investor/profile/:id"
             render={props => <StartUpProfile user={this.state.user} setUser={this.setUser} {...props} />}
+        />
+        <Route
+            exact path="/startuplist"
+            render={props => <StartUpList user={this.state.user} {...props} />}
         />
         
       </div>

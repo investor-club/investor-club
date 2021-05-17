@@ -19,8 +19,8 @@ export default function Navbar(props) {
   if (props.type ==="startup") { dashboard = "/startupdashboard"}
   
   return (
-    <div id='navbar'>
-      <ul>
+    <div>
+      <ul className='navbar'>
         <li>
           <Link to="/">Home</Link>
         </li>

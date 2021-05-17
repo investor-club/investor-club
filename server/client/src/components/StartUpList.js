@@ -1,60 +1,151 @@
 import React, { Component } from 'react'
-import {Switch, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import axios from 'axios';
 //import list of startups from???
 
 export default class StartUpList extends Component {
 
     state = {
-        startups: []
+      search: "",
+      startups: []
     }
 
     getData = () => {
         axios
           .get('/api/startups')
           .then(response => {
-            console.log("HELLOOOO THIS IS RESPONSE: ", response.data)
+            console.log("STARTUP LIST: ", response.data)
             this.setState({
               startups: response.data
             });
-            console.log("WORKING: ", this.state.startups) 
           })
           .catch(err => console.log(err));
       }
     
     componentDidMount() {
-        this.getData();
-        console.log("HELLOOOO THIS IS STATE: ", this.state.startups)
+      this.getData();
+    }
+
+    handleSearch = e => {
+      // const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+      // const name = e.target.name;
+      let regex = new RegExp(this.state.search, "gi")
+           // If the search bar isn't empty assign the original list to currentList
+      if (e.target.value === "") { this.getData() };   //CLER FORM???
+      
+      this.setState((state) => ({
+        search: e.target.value,
+        startups: [...state.startups].filter(startup=>{
+          return `${startup.companyName}${startup.place}${startup.industry}${startup.statement}`
+          .toLowerCase().match(regex);
+        }),
+      }))
+    }
+  
+    handleSort = (e) => {
+      //alphabetically
+      if (e.target.value === "a-z") {
+        this.setState((state) => ({
+          startups: [...state.startups.sort((a,b) => a.companyName.localeCompare(b.companyName) )]
+      }) )
       }
+      if (e.target.value === "z-a") {
+        this.setState( state => ({
+          startups: [...state.startups.sort((a,b) => b.companyName.localeCompare(a.companyName) )]
+      }) )
+      }
+      //sort by rating (highest)
+      if (e.target.value === "highest") {
+        this.setState((state) => ({
+          startups: [...state.startups.sort((a,b) => b.rating - a.rating)]
+        }) )
+      }
+      //sort by rating (lowest)
+      if (e.target.value === "lowest") {
+        this.setState((state) => ({
+          startups: [...state.startups.sort((a,b) => a.rating - b.rating)]
+        }) )
+      }
+    }
 
-    // handleInputChange = e => {
-    //     const target = e.target;
-    //     // const value = target.type === 'checkbox' ? target.checked : target.value;
-    //     // const name = target.name;
-    //     // // filtering:
-    //     // this.setState({
-    //     //   [name]: value
-    //     // });
-    //   }
+    handleFilter = e => {
+      const name = e.target.name;
+      console.log("stage: ", e.target.value);
+      // // filtering:
+      this.setState( state => ({
+      [name]: e.target.value,
+      startups: [...state.startups].filter(startup => {
+        return startup.stage.includes(e.target.value)
+      }),
+    }))
+  }
 
-    // const displayedMapped = this.state.displayed.map(startup => {})  
 
     render() {
-        // const filteredUsers = startups.filter(a=>{})
-        // const displayedList = filteredList.map( item => {
-        //     return (
-        //         <div className="startupResult">
-        //             <h1>{item.companyName}</h1>
-        //             <h2>{item.industry}, {item.location} & other stuff</h2>
-        //         </div>
-        //     )
+        // const filteredUsers = this.state.startups.filter(startup=>{
+        //   return `${startup.companyName}${startup.place}${startup.industry}${startup.statement}`
+        //   .toLowerCase().includes(this.state.search.toLowerCase())
         // })
 
+        const displayedList = this.state.startups.map( startup => {
+          return (<tr className="one-startup">
+            <img src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png" width="100px"></img>
+            <td>
+              <h2>{startup.companyName}</h2>
+            </td>
+            <td>{startup.industry}</td>
+            <td>{startup.email}</td>
+            <td>{startup.place}</td>
+            <td>{startup.stage}</td>
+            <td>Rating</td>
+            </tr>
+          )
+        })
         return (
-            <div>
-               
+          <div className="startup-list-container">       
+            <input 
+            id="searchbar"
+            type="text" 
+            name="search" 
+            value={this.state.search} 
+            placeholder="keyword ..." 
+            onChange={this.handleSearch} 
+            />
+                  
+            <div className="filters">
+            <span> Sort </span>
+              
+             <select name="sort" id="sort" onChange={this.handleSort} >
+               <option value="highest">Highest rating first</option>
+               <option value="lowest">Lowest rating first</option>
+               <option value="a-z">a-z</option>
+               <option value="z-a">z-a</option>
+             </select>
+
+             <span> Stage </span>
+              
+             <select name="filterStage" id="filterStage" onChange={this.handleFilter} >
+               <option value="">Choose option</option>
+               <option value="idea">Idea Stage</option>
+               <option value="prototype">Prototype/MVP (Pre-Seed)</option>
+               <option value="concept">Proof of Concept (Pre-Seed)</option>
+               <option value="paying customers">First Paying Customers (Seed)</option>
+               <option value="beyond">beyond the mentioned</option>
+             </select>
+            
             </div>
+
+            <table>
+              <tbody>
+              {/* <tr>
+                
+              </tr> */}
+              {displayedList}
+              </tbody>
+            </table>
+
+          </div>
         )
     }
 }
-// 
+

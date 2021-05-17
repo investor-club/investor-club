@@ -1,13 +1,13 @@
 const router = require("express").Router();
-const StartUp = require("./models/StartUp");
-const Investor = require("./models/Investor");
+const StartUp = require("../models/StartUp");
+const Investor = require("../models/Investor");
 
 // all startups
 router.get("/startups", (req, res, next) => {
   StartUp.find()
-    .then((startup) => {
-      console.log(startup)
-      res.json(startup);
+    .then((response) => {
+      console.log("STARTUP LIST: ", response)
+      res.json(response);
     })
     .catch((err) => {
       next(err);
