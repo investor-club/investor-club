@@ -30,7 +30,8 @@ export default class RouteContainer extends React.Component {
   };
 
   render() {
-  
+
+   
      console.log("I AM TYPE IN ROUTECONTAINER", this.props.type) 
      
      let result;
@@ -38,7 +39,9 @@ export default class RouteContainer extends React.Component {
      result = <LandingPage />  // REMOVE ON SIGNUP!!
      // if logged in as startup: 
      } else if (this.state.type==="startup") {   //ONLY ON FIRST!!!
-        result =  <StartUpDashboard />   
+        result =  <StartUpEvaluation {...this.state} {...this.props} setDisplayStartupEval={this.setDisplayStartupEval}/>
+  
+        //  <StartUpDashboard />   
         //   <Route 
         //   exact path="/startupdashboard"
         //   render={ props => <StartupDashboard {...props} type={this.props} />}
