@@ -1,19 +1,215 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+*{
+  font-family: 'IBM+Plex+Sans', 'Karla', 'Arial';
+  margin: 0;
+  padding: 0;
+}
+#navbarContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* padding: 0px 50px 0px 30px; */
+  height: 120px;
 }
 
-.App-logo {
+#clubLogo{
+  text-decoration: none;
+  font-size: 28px ;
+  font-weight: 800;
+  padding: 50px 50px 30px 50px;
+}
+
+#navbarContainer a{
+  text-decoration: none;
+  color: black;
+}
+
+#navLine{
+  width: 100%;
+  display: block;
+  border: 2px solid black;
+
+
+}
+#navbar{
+  display: flex;
+  justify-content: flex-end ; 
+  padding: 50px 50px 30px 0px; 
+}
+
+#navbar a{
+  font-size: 24px;
+  padding: 10px 0px 10px 20px;
+}
+
+#navbar a:hover{
+  text-decoration: underline !important;
+}
+
+.purple-attention{
+  color: #5200FF !important;
+}
+
+#line{
+  width: 100%;
+  height: 5px;
+  background-color: black;
+}
+
+body {
+  padding: 0px 0px 0px 0px;
+}
+
+.bodyPadding{
+  padding: 0px 50px 0px 50px;
+}
+
+.purpleBackground{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  background-color:#FCFAFE ;
+  margin: 60px 0 0 0;
+}
+
+#signupChoice{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 150px 50px 0px 50px;
+}
+
+#signupChoice > div {
+  width: 530px;
+  height: 470px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 2px 4px 4px #E6E6E6;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#signupChoice img {
+  height: 233px;
+  margin-bottom: 30px;
+}
+
+#signupChoice a{
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+#signupChoice a:hover{
+  text-decoration: underline !important;
+}
+
+.progressBar{
+  background-color: #5200FF;
+  /* width: 75%; */
+  height: 10px;
+  border-radius: 50px;
+}
+
+.progressBarBg{
+  background-color: lightgray;
+  width: 100%;
+  height: 10px;
+  border-radius: 50px;
+}
+
+.questionContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0 0;
+}
+
+.questionContainer form div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0 0;
+}
+
+.questionContainer form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0 0;
+}
+
+.questionContainer button , input, a{
+  width: 200px;
+  font-size: 24px;
+}
+
+.questionContainer a{
+  text-decoration: none;
+  color: 7E7E7E; 
+}
+
+.questionContainer a:visited{
+  text-decoration: none;
+  color: 7E7E7E; 
+}
+
+.questionContainer button{
+  height: 50px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+
+.questionContainer input{
+  height: 30px;
+  color: 38333D;
+}
+
+
+.questionContainer form label{
+  font-family: 'IBM Plex Sans Condensed';
+  font-size: 48px;
+  font-weight: normal;
+}
+
+/* #navbar a:visited{
+  color: black;
+} */
+
+
+
+
+
+
+
+
+/* .App {
+  text-align: center;
+} */
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,9 +218,9 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.App-link {
+/* .App-link {
   color: #61dafb;
 }
 
@@ -35,7 +231,7 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 .navbar {
   display: flex;
@@ -45,6 +241,7 @@
 }
 
 .navbar > li {
+/* #navbar > li {
   list-style: none;
   text-decoration: none;
 }
@@ -72,3 +269,5 @@ startup-list-container {
 
 
 
+  justify-content: right;
+} */

@@ -20,33 +20,28 @@ export default function Navbar(props) {
   
   return (
     <div>
-      <ul className='navbar'>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        {/* If we have a logged in user -> show projects and logout otherwise show login and signup */}
-        {props.user ? (
-          <>
-            <li>
-              <Link to={dashboard}>Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/" onClick={() => handleLogout()}>
-                Logout
-              </Link>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link to="/signupchoice">Signup</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          </>
-        )}
-      </ul>
+      <div id='navbarContainer'>
+        <div id='clubLogo'>  
+          <Link to="/">Investment Club</Link> 
+        </div>  
+          {/* If we have a logged in user -> show projects and logout otherwise show login and signup */}
+        <div id='navbar'> 
+            {props.user ? (
+              <>          
+                <Link to={dashboard}>Dashboard</Link>
+                <Link to="/" onClick={() => handleLogout()}>Logout</Link>  
+              </>
+            ) : (
+              <>       
+                <Link to="/login">Login</Link>  
+                <Link className='purple-attention' to="/signupchoice">Signup</Link>       
+              </>
+            )}
+        </div>
+      </div>
+      <hr id='navLine'/>
+      {/* <div id='line'></div> */}
     </div>
+    
   );
 }

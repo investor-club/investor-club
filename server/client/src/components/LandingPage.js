@@ -4,7 +4,10 @@ export default class LandingPage extends Component {
     render() {
         return (
             <div>
-                <h1>Hello I'm landing page</h1>
+                <div class='purpleBackground'></div>
+                <div class='bodyPadding'>
+                    <h1>Hello I'm landing page</h1>
+                </div>
             </div>
         )
     }
