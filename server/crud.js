@@ -109,13 +109,42 @@ router.delete("/investors/:id", (req, res, next) => {
     });
 });
 
+//get startup data from database
+router.get("/startup/:id", (req, res, next) => {
+  StartUp.findById(req.params.id)
+    .then((startup) => {
+      console.log("get startup comp mount", startup);
+      if (!startup) {
+        res.status(404).json(startup);
+      } else {
+        res.status(200).json(startup);
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 //update statupEval
-router.put("/startup/evaluation", (req, res, next) => {
+router.post("/startup/:id", (req, res, next) => {
   const {place, industry, stage} = req.body;
-  console.log("req.session.user", req.sesssion.user)
-  // StartUp.findByIdAndUpdate(
-  //   req.session.user
-  // )
-})
+  console.log("called post in backend", req.body)
+  StartUp.findByIdAndUpdate(
+    req.params.id,
+    {place, industry, stage},
+    { new: true}
+    )
+      .then(startup => {
+        console.log("startup",startup);
+        res.status(200).json(startup);
+      })
+      .catch(err => {
+        console.log("err", error)
+      });
+      
+      })
+
+
+
 
 module.exports = router;

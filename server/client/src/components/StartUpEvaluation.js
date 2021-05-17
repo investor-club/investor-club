@@ -27,6 +27,29 @@ export default class StartUpEvaluation extends React.Component {
         experience: '',
         pitchDeck: ''  
     }
+    //method set initial state
+    //do axios request.
+
+    componentDidMount(){
+        axios.get(`/api/startup/${this.props.user._id}`)
+            .then(response => {
+                console.log("component did mount response data",response.data);
+                this.setState({
+                    place: response.data.place,
+                    industry: response.data.industry,
+                    stage: response.data.stage
+                    // foundation: '',
+                    // teamMember: '',
+                    // skillsI: '',
+                    // skillsII: '',
+                    // skillsIII: '',
+                    // experience: '',
+                    // pitchDeck: ''  
+                })
+            })
+            .catch(err => console.log(err))
+            
+    }
 
     //componentDidMount go to data I need and set it to the state variables.
     setPlace = place => {
@@ -97,21 +120,29 @@ export default class StartUpEvaluation extends React.Component {
         }
 
         const {place, industry, stage} = this.state;
-        axios.put('/api/startup/${this.state.startup._id}', 
+        axios.post(`/api/startup/${this.props.user._id}`, 
         {
             place,
             industry,
             stage
         })
-            .then(response => {
-                console.log("response data", response.data);
+            .then(() => {
+                // console.log("response data", response.data);
                 this.setState({
                     index: (this.state.index + 1)
                 })
-            // .catch((err) => {
-            //     return err;
-            //     });
+                console.log('props',this.props.user);
             })
+            .catch((err) => {
+                console.log(err);
+                if (err.response.status === 404) {
+                    this.setState({
+                      err: 'Not found 🤷‍♀️🤷‍♂️'
+                    })
+                  }
+            });
+            
+            
 
         //with using services, but it didn't work
         // updateEval(place, industry, stage)
@@ -119,8 +150,8 @@ export default class StartUpEvaluation extends React.Component {
         //         console.log("data is updated");
         //         //if not empty      
         //         this.setState({
-                    // index: (this.state.index + 1)
-                    // currentQuestion: display
+        //             index: (this.state.index + 1)
+        //             currentQuestion: display
         //         }) 
         //     })
          
@@ -129,6 +160,7 @@ export default class StartUpEvaluation extends React.Component {
     }
 
     showPrevious = e => {
+        e.preventDefault();
         this.setState({
             index: (this.state.index - 1)
         })
@@ -152,14 +184,23 @@ export default class StartUpEvaluation extends React.Component {
                     displayedComponent = <Q4foundation flag={true} stage={this.state.foundation} setStage={this.setFoundation}/>
                     break;
                 case 4:
-                    displayedComponent = <Q5teamMember flag={true} teamMember={this.state.teamMember} setTeamMember={this.setteamMember}/>
+                    displayedComponent = <Q5teamMember flag={true} teamMember={this.state.teamMember} setTeamMember={this.setTeamMember}/>
                     break;
                 case 5:
-                    displayedComponent = <Q6skillsI flag={true} skillsI={this.state.skillsI} setSkillsI={this.setskillsI}/>
+                    displayedComponent = <Q6skillsI flag={true} skillsI={this.state.skillsI} setSkillsI={this.setSkillsI}/>
                     break;   
-                // case 6:
-                //     displayedComponent = <Q6skillsII flag={true} skillsII={this.state.skillsII} setSkillsII={this.setskillsII}/>
-                //     break;                    
+                case 6:
+                    displayedComponent = <Q7skillsII flag={true} skillsII={this.state.skillsII} setSkillsII={this.setSkillsII}/>
+                    break;
+                case 7:
+                    displayedComponent = <Q8skillsIII flag={true} skillsII={this.state.skillsIII} setSkillsIII={this.setSkillsIII}/>
+                    break; 
+                case 8:
+                    displayedComponent = <Q9experience flag={true} skillsII={this.state.experience} setExperience={this.setExperience}/>
+                    break;
+                case 9:
+                    displayedComponent = <Q10pitchDeck flag={true} skillsII={this.state.pitchDeck} setPitchDeck={this.setPitchDeck}/>
+                    break;                          
                 default:
                     break;
             }
