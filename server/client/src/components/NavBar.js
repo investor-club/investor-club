@@ -21,13 +21,13 @@ export default function Navbar(props) {
     dashboard = "/startupdashboard";
   }
 
-  // let profile;
-  // if (props.user.type === "investor") {
-  //   profile = "/investor/profile";
-  // }
-  // if (props.user.type === "startup") {
-  //   profile = "/startup/profile";
-  // }
+  let profile;
+  if (props.type === "investor") {
+    profile = "/investor/profile/";
+  }
+  if (props.type === "startup") {
+    profile = "/startup/profile";
+  }
 
   return (
     <div id="navbar">
@@ -40,9 +40,9 @@ export default function Navbar(props) {
             <li>
               <Link to={dashboard}>Dashboard</Link>
             </li>
-            {/* <li>
+            <li>
               <Link to={profile}>Profile</Link>
-            </li> */}
+            </li>
             <li>
               <Link to="/" onClick={() => handleLogout()}>
                 Logout

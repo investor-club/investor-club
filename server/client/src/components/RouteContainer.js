@@ -110,7 +110,7 @@ export default class RouteContainer extends React.Component {
         />
         <Route
           exact
-          path="/startup/profile/:id"
+          path="/startup/profile"
           render={(props) => (
             <StartUpProfile
               user={this.state.user}
@@ -122,7 +122,7 @@ export default class RouteContainer extends React.Component {
 
         <Route
           exact
-          path="/investorprofile/:id"
+          path="/investor/profile"
           render={(props) => (
             <InvestorProfile
               user={this.state.user}

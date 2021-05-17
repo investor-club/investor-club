@@ -18,9 +18,9 @@ export default class InvestorProfile extends Component {
 
   getData = () => {
     axios
-      .get(`/api/investors/${this.props.match.params.id}`)
+      .get(`/api/investors/${this.props.user._id}`)
       .then((response) => {
-        console.log(response);
+        console.log("investor profile: ", response);
         this.setState({
           username: response.data.username,
           email: response.data.email,
@@ -44,6 +44,7 @@ export default class InvestorProfile extends Component {
 
   componentDidMount() {
     this.getData();
+    console.log("hello from did mount");
   }
 
   toggleEditForm = () => {
@@ -63,7 +64,7 @@ export default class InvestorProfile extends Component {
     event.preventDefault();
     console.log("update");
     axios
-      .put(`/api/investors/${this.state.project._id}`, {
+      .put(`/api/investors/${this.props.user._id}`, {
         username: this.state.username,
         email: this.state.email,
         password: this.state.password,
@@ -93,7 +94,7 @@ export default class InvestorProfile extends Component {
 
   render() {
     if (this.state.error) return <h3>{this.state.error}</h3>;
-    if (!this.state.project) return <></>;
+    // if (!this.state.) return <></>;
     return (
       <div>
         <h1>Hello {this.state.username}</h1>
