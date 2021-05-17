@@ -39,7 +39,7 @@ export default class SignUpStartUp extends Component {
 
   render() {
     return (
-      <div>
+      <div class='bodyPadding'>
         <h2>Signup</h2>
 
         <form onSubmit={this.handleSubmit}>
@@ -51,6 +51,7 @@ export default class SignUpStartUp extends Component {
             onChange={this.handleChange}
             id="companyName"
           />
+          <br/>
 
           <label htmlFor="username">Username: </label>
           <input
@@ -60,6 +61,7 @@ export default class SignUpStartUp extends Component {
             onChange={this.handleChange}
             id="username"
           />
+          <br/>
 
           <label htmlFor="email">Email: </label>
           <input
@@ -69,6 +71,7 @@ export default class SignUpStartUp extends Component {
             onChange={this.handleChange}
             id="email"
           />
+          <br/>
 
           <label htmlFor="password">Password: </label>
           <input
@@ -78,6 +81,7 @@ export default class SignUpStartUp extends Component {
             onChange={this.handleChange}
             id="password"
           />
+          <br/>
 
           <button type="submit">Sign Up</button>
           {this.state.message && <h3>{this.state.message}</h3>}

@@ -18,7 +18,7 @@
 #clubLogo{
   text-decoration: none;
   font-size: 28px ;
-  font-weight: bolder;
+  font-weight: 800;
   padding: 50px 50px 30px 50px;
 }
 
@@ -42,7 +42,11 @@
 
 #navbar a{
   font-size: 24px;
-  padding: 10px 20px 10px 0px;
+  padding: 10px 0px 10px 20px;
+}
+
+#navbar a:hover{
+  text-decoration: underline !important;
 }
 
 .purple-attention{
@@ -59,7 +63,125 @@ body {
   padding: 0px 0px 0px 0px;
 }
 
+.bodyPadding{
+  padding: 0px 50px 0px 50px;
+}
 
+.purpleBackground{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+  background-color:#FCFAFE ;
+  margin: 60px 0 0 0;
+}
+
+#signupChoice{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 150px 50px 0px 50px;
+}
+
+#signupChoice > div {
+  width: 530px;
+  height: 470px;
+  border: 1px solid #E6E6E6;
+  box-shadow: 2px 4px 4px #E6E6E6;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#signupChoice img {
+  height: 233px;
+  margin-bottom: 30px;
+}
+
+#signupChoice a{
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+
+#signupChoice a:hover{
+  text-decoration: underline !important;
+}
+
+.progressBar{
+  background-color: #5200FF;
+  /* width: 75%; */
+  height: 10px;
+  border-radius: 50px;
+}
+
+.progressBarBg{
+  background-color: lightgray;
+  width: 100%;
+  height: 10px;
+  border-radius: 50px;
+}
+
+.questionContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0 0;
+}
+
+.questionContainer form div{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0 0;
+}
+
+.questionContainer form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 0 0;
+}
+
+.questionContainer button , input, a{
+  width: 200px;
+  font-size: 24px;
+}
+
+.questionContainer a{
+  text-decoration: none;
+  color: 7E7E7E; 
+}
+
+.questionContainer a:visited{
+  text-decoration: none;
+  color: 7E7E7E; 
+}
+
+.questionContainer button{
+  height: 50px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+
+.questionContainer input{
+  height: 30px;
+  color: 38333D;
+}
+
+
+.questionContainer form label{
+  font-family: 'IBM Plex Sans Condensed';
+  font-size: 48px;
+  font-weight: normal;
+}
 
 /* #navbar a:visited{
   color: black;

@@ -43,7 +43,7 @@ export default class Login extends Component {
   };
   render() {
     return (
-      <div>
+      <div class='bodyPadding'>
         <h2>Login</h2>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="username">Username: </label>
@@ -54,6 +54,7 @@ export default class Login extends Component {
             onChange={this.handleChange}
             id="username"
           />
+          <br/>
           <label htmlFor="password">Password: </label>
           <input
             type="password"
@@ -62,6 +63,7 @@ export default class Login extends Component {
             onChange={this.handleChange}
             id="password"
           />
+          <br/>
           <button type="submit">Log in</button>
           {this.state.message && <h3>{this.state.message}</h3>}
         </form>

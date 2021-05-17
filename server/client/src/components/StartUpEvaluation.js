@@ -12,7 +12,7 @@ import Q10pitchDeck from './evalQuestions/Q10pitchDeck';
 import axios from 'axios';
 export default class StartUpEvaluation extends React.Component {
     state = {
-        index: 0,
+        index: 1,
         place: '',
         industry: '',
         stage: '',
@@ -106,6 +106,10 @@ export default class StartUpEvaluation extends React.Component {
         })
     }
 
+    // progressWidth = () => {
+    //     return this.state.index * 10;
+    // }
+
     handleSubmit = e => {
         e.preventDefault();
         if (this.state.index >7){
@@ -179,55 +183,62 @@ export default class StartUpEvaluation extends React.Component {
     }
 
     render() {
+        
         if(this.props.displayStartupEval) {
+            // let progressWidth = this.state.index *10;
+            // console.log("progressWidth",progressWidth)
             let displayedComponent;
             switch (this.state.index) {
-                case 0:
+                case 1:
                     displayedComponent = <Q1place place={this.state.place} setPlace={this.setPlace}/>
                     break;
-                case 1:
+                case 2:
                     displayedComponent = <Q2industry flag={true} industry={this.state.industry} setIndustry={this.setIndustry}/>
                     break;
-                case 2:
+                case 3:
                     displayedComponent = <Q3stage flag={true} stage={this.state.stage} setStage={this.setStage}/>
                     break;
-                case 3:
+                case 4:
                     displayedComponent = <Q4foundation flag={true} foundation={this.state.foundation} setFoundation={this.setFoundation}/>
                     break;
-                case 4:
+                case 5:
                     displayedComponent = <Q5teamMembers flag={true} teamMembers={this.state.teamMembers} setTeamMembers={this.setTeamMembers}/>
                     break;
-                case 5:
+                case 6:
                     displayedComponent = <Q6skillsI flag={true} skillsI={this.state.skillsI} setSkillsI={this.setSkillsI}/>
                     break;   
-                case 6:
+                case 7:
                     displayedComponent = <Q7skillsII flag={true} skillsII={this.state.skillsII} setSkillsII={this.setSkillsII}/>
                     break;
-                case 7:
+                case 8:
                     displayedComponent = <Q8skillsIII flag={true} skillsII={this.state.skillsIII} setSkillsIII={this.setSkillsIII}/>
                     break; 
-                case 8:
+                case 9:
                     displayedComponent = <Q9experience flag={true} skillsII={this.state.experience} setExperience={this.setExperience}/>
                     break;
-                case 9:
+                case 10:
                     displayedComponent = <Q10pitchDeck flag={true} skillsII={this.state.pitchDeck} setPitchDeck={this.setPitchDeck}/>
                     break;                          
                 default:
                     break;
             }
             return (
-                <div>
-                    <h2>Tell us about your startup!</h2>
-                    <div style={{
-                        backgrounColor: "grey"}}>
-                        {/* <div className=progressBar></div> */}
+                <div class='bodyPadding'>
+                    <div>
+                        <a href="" onClick={this.showPrevious}>Back</a>
+                        <div className='progressBarBg'></div>
+                        {/* <div className='progressBar' style={{width: `${progressWidth}%}`}}></div> */}
                     </div>
-                    <a href="" onClick={this.showPrevious}>Back</a>
-                    <form onSubmit={this.handleSubmit}>
-                        {displayedComponent}
-                        <button type="submit" >Next</button>
-                    </form>
 
+                    <div class='questionContainer'> 
+                        {/* <h2>Tell us about your startup!</h2> */}
+                    
+                        <form onSubmit={this.handleSubmit}>
+                            {displayedComponent}
+                        
+                            <button type="submit" >Next</button>
+                        </form>   
+                    </div>
                 </div>
                 )
         } else {
