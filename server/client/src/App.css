@@ -37,9 +37,26 @@
   }
 }
 
-#navbar > li {
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+}
+
+.navbar > li {
   list-style: none;
   text-decoration: none;
-  display: flex;
-  justify-content: right;
 }
+
+#searchbar {
+  width: 500px,
+}
+
+.one-startup {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+

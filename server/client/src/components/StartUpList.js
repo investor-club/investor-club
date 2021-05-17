@@ -1,58 +1,68 @@
 import React, { Component } from 'react'
-import {Switch, Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import axios from 'axios';
 //import list of startups from???
 
 export default class StartUpList extends Component {
 
     state = {
-        startups: []
+      search: "",
+      startups: []
     }
 
     getData = () => {
         axios
           .get('/api/startups')
           .then(response => {
-            console.log("HELLOOOO THIS IS RESPONSE: ", response.data)
+            console.log("STARTUP LIST: ", response.data)
             this.setState({
               startups: response.data
             });
-            console.log("WORKING: ", this.state.startups) 
           })
           .catch(err => console.log(err));
       }
     
     componentDidMount() {
         this.getData();
-        console.log("HELLOOOO THIS IS STATE: ", this.state.startups)
       }
 
-    // handleInputChange = e => {
-    //     const target = e.target;
-    //     // const value = target.type === 'checkbox' ? target.checked : target.value;
-    //     // const name = target.name;
-    //     // // filtering:
-    //     // this.setState({
-    //     //   [name]: value
-    //     // });
-    //   }
-
-    // const displayedMapped = this.state.displayed.map(startup => {})  
+    handleInputChange = e => {
+        // const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        const name = e.target.name;
+        // // filtering:
+        this.setState({
+        [name]: e.target.value
+        });
+      }
 
     render() {
-        // const filteredUsers = startups.filter(a=>{})
-        // const displayedList = filteredList.map( item => {
-        //     return (
-        //         <div className="startupResult">
-        //             <h1>{item.companyName}</h1>
-        //             <h2>{item.industry}, {item.location} & other stuff</h2>
-        //         </div>
-        //     )
-        // })
+        const filteredUsers = this.state.startups.filter(startup=>{
+          return `${startup.companyName}${startup.bio}`.toLowerCase().includes(this.state.search.toLowerCase())
+        })
+
+        const displayedList = filteredUsers.map( startup => {
+          return (<div className="one-startup">
+            <img src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png" width="100px"></img>
+            <h2>{startup.companyName}</h2>
+            <p>{startup.industry}</p>
+            <p>{startup.email}</p>
+            <p>{startup.location}</p>
+            <p>{startup.stage}</p>
+            </div>
+          )
+        })
 
         return (
-            <div>
-               
+            <div className="startup-list">
+               <input 
+                type="text" 
+                name="search" 
+                value={this.state.search} 
+                placeholder="search..." 
+                onChange={this.handleInputChange} 
+                id="searchbar"
+                />
+              {displayedList}
             </div>
         )
     }

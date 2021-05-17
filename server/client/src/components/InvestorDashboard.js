@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from "react-router-dom";
 import axios from "axios";
 
 
@@ -22,30 +23,14 @@ export default class InvestorDashboard extends Component {
 
 render() {
     //investor or startup
-    let toRender;
-    console.log(this.props.type)
-    if (this.props.type === "investor") {
-        toRender = (<div>
-            <h1>I'M AN INVESTOR</h1>
-            <article>Investment Portfolio</article>
-            <article>Investor Profile</article>
-            <article>Startups</article>
-            <article>Investors</article>
-        </div>)
-    } else if (this.props.type === "startup") {
-        toRender=(
-            <div>
-                <article>Profile</article>
-                <article>Who invested?</article>
-                <article>Evaluation</article>
-            </div>
-            )
-        }
+
 
     return (
         <div>
-            <h1>YO!!!</h1>
-            {toRender}
+            <h1>
+            <Link to="/startuplist">ALL STARTUPS</Link>
+            </h1>
+         
         </div>
     )
 }
