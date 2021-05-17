@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const StartUp = require("../models/StartUp");
-const Investor = require("../models/Investor");
+const StartUp = require("./models/StartUp");
+const Investor = require("./models/Investor");
 
 // all startups
 router.get("/startups", (req, res, next) => {

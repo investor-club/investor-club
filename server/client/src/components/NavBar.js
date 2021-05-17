@@ -9,13 +9,14 @@ export default function Navbar(props) {
   const handleLogout = () => {
     logout().then(() => {
       console.log("LOGGING OUT??")
-      props.updateState({user: null, type: null});
+      props.setAppState(null, null);
     });
   };
 
-  // componentDidMount () {
-
-  // }
+ 
+  let dashboard;
+  if (props.type ==="investor") { dashboard = "/investordashboard"}
+  if (props.type ==="startup") { dashboard = "/startupdashboard"}
   
   return (
     <div id='navbar'>
@@ -27,7 +28,7 @@ export default function Navbar(props) {
         {props.user ? (
           <>
             <li>
-              <Link to="/startups">Startups</Link>
+              <Link to={dashboard}>Dashboard</Link>
             </li>
             <li>
               <Link to="/" onClick={() => handleLogout()}>

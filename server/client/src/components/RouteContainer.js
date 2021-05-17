@@ -1,5 +1,4 @@
 import React from "react";
-import StartUpEvaluation from "./StartUpEvaluation";
 import SignUpChoice from "./SignUpChoice";
 import { Route } from "react-router-dom";
 import Login from "./Login";
@@ -7,9 +6,9 @@ import SignUpInvestor from "./SignUpInvestor";
 import SignUpStartUp from "./SignUpStartUp";
 import StartUpList from "./StartUpList";
 import InvestorDashboard from "./InvestorDashboard";
-import LandingPage from "./LandingPage";
 import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
+import axios from "axios";
 
 export default class RouteContainer extends React.Component {
   state = {
@@ -18,46 +17,29 @@ export default class RouteContainer extends React.Component {
     type: this.props.type
   };
 
-  
 
   setUser = (user) => {
     this.setState({ user });
   };
-
+  setType = (type) => {
+    this.setState({ type });
+  };
+  
   setDisplayStartupEval = (displayStartupEval) => {
     this.setState({
       displayStartupEval: displayStartupEval,
     });
   };
 
+  
+
   render() {
   
-     console.log("I AM TYPE IN ROUTECONTAINER", this.props.type) 
+     console.log("I AM TYPE IN ROUTECONTAINER", this.type) 
      
-     let result;
-     if (!this.state.user) {
-     result = <LandingPage />  // REMOVE ON SIGNUP!!
-     // if logged in as startup: 
-     } else if (this.state.type==="startup") {   //ONLY ON FIRST!!!
-        result =  <StartUpDashboard />   
-        //   <Route 
-        //   exact path="/startupdashboard"
-        //   render={ props => <StartupDashboard {...props} type={this.props} />}
-        // />    
-     } else if (this.state.type ==="investor") {
-       result = <InvestorDashboard />
-        // <Route 
-        //     exact path="/investordashboard"
-        //     render={props => <InvestorDashboard {...props} type={this.props} />}
-        // />    
-     }
 
     return (
       <div>
-      
-        <div>
-            {result}
-         </div>
     
         {/* navbar */}
         {/* <ProtectedRoute 
@@ -91,17 +73,17 @@ export default class RouteContainer extends React.Component {
         <Route
           exact
           path="/login"
-          render={(props) => <Login setUser={this.setUser} updateState={this.props.updateState} {...props} />}
+          render={(props) => <Login setUser={this.setUser} setType={this.setType} setAppState={this.props.setAppState} {...props} />}
         />
         
         <Route 
-          exact path="/investordashboard/:id"
-          render={props => <InvestorDashboard {...props} type={this.props.type}/>}
+          exact path="/investordashboard"
+          render={props => <InvestorDashboard {...props} user= {this.state.user} type={this.type}/>}
         />
 
         <Route 
-          exact path="/startupdashboard/:id"
-          render={props => <StartUpDashboard {...props} type={this.props.type}/>}
+          exact path="/startupdashboard"
+          render={props => <StartUpDashboard {...props} user= {this.state.user} type={this.type}/>}
         />
 
         <Route 

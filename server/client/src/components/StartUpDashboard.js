@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LandingPage from 'react';
+import StartUpEvaluation from "./StartUpEvaluation";
 
 export default class StartUpDashboard extends Component {
 
@@ -7,6 +8,7 @@ export default class StartUpDashboard extends Component {
 
         return (
             <div>
+            <StartUpEvaluation />
             <article>Profile</article>
             <article>Who invested?</article>
             <article>Evaluation</article>
