@@ -20,7 +20,7 @@ export default function Navbar(props) {
   
   return (
     <div>
-      <div id='navbarContainer'>
+      <div id='navbarContainer' class='bodyPadding'>
         <div id='clubLogo'>  
           <Link to="/">Investment Club</Link> 
         </div>  

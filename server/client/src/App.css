@@ -19,7 +19,7 @@
   text-decoration: none;
   font-size: 28px ;
   font-weight: 800;
-  padding: 50px 50px 30px 50px;
+  padding: 50px 0px 30px 0px;
 }
 
 #navbarContainer a{
@@ -36,8 +36,10 @@
 }
 #navbar{
   display: flex;
+  width: 30px;
+  /* align-items: flex-end; */
   justify-content: flex-end ; 
-  padding: 50px 50px 30px 0px; 
+  padding: 50px 0px 30px 20px; 
 }
 
 #navbar a{
@@ -233,14 +235,14 @@ body {
   }
 } */
 
-.navbar {
+/* .navbar {
   display: flex;
   flex-direction: row;
   justify-content: right;
   align-items: center;
-}
+} */
 
-.navbar > li {
+/* .navbar > li { */
 /* #navbar > li {
   list-style: none;
   text-decoration: none;
