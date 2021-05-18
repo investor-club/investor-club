@@ -6,7 +6,6 @@ export default class Q3stage extends React.Component{
     };
 
     render(){
-        if(this.props.flag) {
             return (
                 <div onChange={this.handleChange} value={this.props.stage} checked={this.props.stage}>
                 <label htmlFor="stage">In what stage is your idea?</label><br/>
@@ -23,12 +22,6 @@ export default class Q3stage extends React.Component{
                     <label for="beyond">beyond the mentioned ones</label>
                 </div>
                 )
-        } else {
-            return (
-            <>
-            </>
-             )
-          }
       }     
 }
 

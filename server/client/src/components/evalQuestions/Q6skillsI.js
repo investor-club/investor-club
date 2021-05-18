@@ -6,7 +6,6 @@ export default class Q6skillsI extends React.Component{
     };
 
     render(){
-        if(this.props.flag) {
             return (
                 <div onChange={this.handleChange} value={this.props.skillsI} checked={this.props.skillsI}>
                  <label htmlFor="skillsI" value={this.props.skillsI}>Which skills do you have in your team (professional experience of at least 1 year, a Master or Bachelor degree or something similar)?</label><br/>
@@ -23,11 +22,5 @@ export default class Q6skillsI extends React.Component{
                 <label for="it">IT/Tech</label>
             </div>
                 )
-        } else {
-            return (
-            <>
-            </>
-             )
-          }
       }     
 }

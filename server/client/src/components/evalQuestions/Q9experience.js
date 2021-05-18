@@ -6,7 +6,6 @@ export default class Q9experience extends React.Component{
     };
 
     render(){
-        if(this.props.flag) {
             return (
                 <div >
                     <label htmlFor="experience" >Did you found a startup before?</label><br/>
@@ -19,12 +18,6 @@ export default class Q9experience extends React.Component{
                     />
                  </div>
                 )
-        } else {
-            return (
-            <>
-            </>
-             )
-          }
       }     
 }
 

@@ -6,7 +6,6 @@ export default class Q5teamMembers extends React.Component{
     };
     
     render(){
-        if(this.props.flag) {
             return (
                 <div onChange={this.handleChange} value={this.props.teamMembers} checked={this.props.teamMembers}>
                     <label htmlFor="teamMembers">How many core team members do you have?</label><br/>
@@ -26,11 +25,5 @@ export default class Q5teamMembers extends React.Component{
                     <label for="5orMore">5 or more</label><br/>
                 </div>
                 )
-        } else {
-            return (
-            <>
-            </>
-             )
-          }
       }     
 }

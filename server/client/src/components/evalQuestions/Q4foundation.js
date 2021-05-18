@@ -8,7 +8,6 @@ export default class Q4foundation extends React.Component{
     };
 
     render(){
-        if(this.props.flag) {
             return (
                 <div onChange={this.handleChange} value={this.props.foundation} checked={this.props.foundation}>
                 <label htmlFor="foundation">Is your company already founded? </label><br/>
@@ -19,12 +18,6 @@ export default class Q4foundation extends React.Component{
                     <label for="no">No</label><br/>
                 </div>
                 )
-        } else {
-            return (
-            <>
-            </>
-             )
-          }
       }     
 }
 

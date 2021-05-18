@@ -7,7 +7,6 @@ export default class Q2industry extends React.Component{
     };
 
     render(){
-        if(this.props.flag) {
             return (
                 <div>
                 <label htmlFor="industry">In which industry are you operating?</label><br/>
@@ -28,28 +27,10 @@ export default class Q2industry extends React.Component{
                     <option value="craft">Craft</option>
                     <option value="fashion">Fashion</option>
                     <option value="other">Other</option>
-
                 </select>
-
-                {/* <input 
-                    type='text'
-                id='industry'
-                name='industry'
-                placeholder='q2'
-                value= {this.props.industry}
-                onChange={this.handleChange}
-                    // value=
-                    // onChange=
-                /> */}
                 </div>
                 
                 )
-        } else {
-            return (
-            <>
-            </>
-             )
-          }
       }     
 }
 
