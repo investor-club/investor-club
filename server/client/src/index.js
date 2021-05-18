@@ -10,10 +10,10 @@ axios
   .get("/api/auth/loggedin")
   .then((response) => {
     const session = response.data;
-   // console.log("AM I YOUR INDEX TYPE ?", session.type); THIS ONE WORKS
+    // console.log("AM I YOUR INDEX TYPE ?", session.type); THIS ONE WORKS
     ReactDOM.render(
       <BrowserRouter>
-        <App user={session.user} type={session.type}/>
+        <App user={session.user} type={session.type} />
       </BrowserRouter>,
       document.getElementById("root")
     );
@@ -26,4 +26,3 @@ axios
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-

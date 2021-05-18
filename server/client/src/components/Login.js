@@ -20,24 +20,25 @@ export default class Login extends Component {
     event.preventDefault();
     const { username, password } = this.state;
     login(username, password).then((response) => {
-      console.log("LOGIN: ",response.type)
+      console.log("LOGIN: ", response);
       if (response.message) {
         this.setState({
           message: response.message,
           username: "",
           password: "",
-          type: ""
+          type: "",
         });
       } else {
         //console.log(user, this.props.type);
-        this.props.setUser(response.user);
-        this.props.setType(response.type);
-        this.props.setAppState({user: response.user, type: response.type})
-        if (response.type==="startup") { 
-          this.props.history.push("/startupdashboard");}
-        if (response.type==="investor"){
-          this.props.history.push("/investordashboard");}
-
+        // this.props.setUser(response.user);
+        // this.props.setType(response.type);
+        this.props.setAppState(response.user, response.type);
+        if (response.type === "startup") {
+          this.props.history.push("/startupdashboard");
+        }
+        if (response.type === "investor") {
+          this.props.history.push("/investordashboard");
+        }
       }
     });
   };
