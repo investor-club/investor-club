@@ -94,10 +94,24 @@ export default class InvestorProfile extends Component {
 
   render() {
     if (this.state.error) return <h3>{this.state.error}</h3>;
-    // if (!this.state.) return <></>;
     return (
       <div>
-        <h1>Hello {this.state.username}</h1>
+        <h1>username: {this.state.username}</h1>
+        <br />
+        <h1>email: {this.state.email}</h1>
+        <br />
+        <h1>password: {this.state.password}</h1>
+        <br />
+        <h1>firstName: {this.state.firstName}</h1>
+        <br />
+        <h1>lastName: {this.state.lastName}</h1>
+        <br />
+        <h1>industry: {this.state.industry}</h1>
+        <br />
+        <h1>bio: {this.state.bio}</h1>
+        <br />
+        <h1>location: {this.state.location}</h1>
+        <br />
         <button onClick={this.toggleEditForm}>Show Edit Form</button>
         {this.state.editForm && (
           <EditInvestor

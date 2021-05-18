@@ -14,8 +14,8 @@ export default function Navbar(props) {
   };
 
   const toggleLanding = () => {
-    props.toggleLanding()
-  }
+    props.toggleLanding();
+  };
 
   let dashboard;
   if (props.type === "investor") {
@@ -39,7 +39,6 @@ export default function Navbar(props) {
         <div id="clubLogo">
           <Link to="/">Investment Club</Link>
         </div>
-        {/* If we have a logged in user -> show projects and logout otherwise show login and signup */}
         <div id="navbar">
           {props.user ? (
             <>

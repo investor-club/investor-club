@@ -10,31 +10,30 @@ export default class App extends React.Component {
     user: this.props.user,
     type: this.props.type,
     landing: true,
-  }
+  };
   //for lifting state up to here
   setAppState = (user, type) => {
-    this.setState({user, type})
-  }
-  
+    this.setState({ user, type });
+  };
+
   // toggleLanding = () => {
   //   this.state.landing = false
   // }
 
-  componentDidMount () {
+  componentDidMount() {
     axios
-        .get("/api/auth/loggedin")
-        .then((response) => {
-            console.log("AXIOS RESPONSE ", response.data);
-            this.setState({user: response.data.user, type: response.data.type})
-        })
-        .catch((err) => {
-            console.log(err);
-        }); 
- } 
-  
+      .get("/api/auth/loggedin")
+      .then((response) => {
+        console.log("AXIOS RESPONSE ", response.data);
+        this.setState({ user: response.data.user, type: response.data.type });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   render() {
     console.log("I AM TYPE IN APP", this.state.type);
-
 
     return (
       <div className="App">
@@ -43,7 +42,7 @@ export default class App extends React.Component {
           user={this.state.user}
           type={this.state.type}
         />
-    
+
         <RouteContainer
           user={this.state.user}
           setAppState={this.setAppState}

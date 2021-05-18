@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export default class Q6skillsI extends React.Component{
 
@@ -8,7 +8,9 @@ export default class Q6skillsI extends React.Component{
         sales: false,
         it: false,
     }
-    handleChange = async (e) => {
+    handleChange = 
+    
+        async (e) => {
         
         const name = e.target.name;
         
