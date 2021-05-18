@@ -1,0 +1,42 @@
+.detail-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10%;
+}
+
+.secondary-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.score-details {
+  display: flex;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-info {
+  margin-top: 5rem;
+}
+
+.details-df {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 2rem;
+}
+
+.overview-detail {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+}
+
+.flex-helper {
+  display: flex;
+  justify-content: space-evenly;
+}
