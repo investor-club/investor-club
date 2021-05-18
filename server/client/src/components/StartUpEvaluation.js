@@ -18,9 +18,9 @@ export default class StartUpEvaluation extends React.Component {
     stage: "",
     foundation: "",
     teamMembers: "",
-    skillsI: "",
+    skillsI: [],
     skillsII: "",
-    skillsIII: "",
+    skillsIII: [],
     experience: "",
     pitchDeck: "",
   };
@@ -77,10 +77,11 @@ export default class StartUpEvaluation extends React.Component {
     });
   };
 
-  setSkillsI = (skillsI) => {
-    this.setState({
-      skillsI: skillsI,
-    });
+  setSkillsI = (skills) => {
+      console.log("SKILLS LIFTED:", skills)
+    this.setState( ({
+        skillsI: skills,
+      }));
   };
 
   setSkillsII = (skillsII) => {
@@ -227,7 +228,7 @@ export default class StartUpEvaluation extends React.Component {
         case 6:
           displayedComponent = (
             <Q6skillsI
-              skillsI={this.state.skillsI}
+              skillsI={this.state.skillsI} //array!!!
               setSkillsI={this.setSkillsI}
             />
           );

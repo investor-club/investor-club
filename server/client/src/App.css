@@ -178,6 +178,11 @@ body {
   color: 38333D;
 }
 
+.questionContainer form h3 {
+  font-family: 'IBM Plex Sans Condensed';
+  font-size: 48px;
+  font-weight: normal;
+}
 
 .questionContainer form label{
   font-family: 'IBM Plex Sans Condensed';
