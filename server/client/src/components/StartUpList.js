@@ -83,7 +83,7 @@ export default class StartUpList extends Component {
       axios
         .get(`/api/startups/${id}`)
         .then(startupFromDb => {
-          //console.log("FOUND STARTUP RESPONSE: ", startupFromDb)
+          console.log("FOUND STARTUP RESPONSE: ", startupFromDb.data.companyName)
           axios
             .put(`/api/investors/${this.props.user._id}`, {
               companyName: startupFromDb.data.companyName
@@ -92,6 +92,7 @@ export default class StartUpList extends Component {
               console.log("ADDED ", investorFromDB, "INVESTOR ", this.state.user);
                this.setState((state) =>  ({
                   user: {
+                    ...this.state.user,
                     inPortfolio: [...state.user.inPortfolio, investorFromDB.data.companyName],
                   }
               }))
