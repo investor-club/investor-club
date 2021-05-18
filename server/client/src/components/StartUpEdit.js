@@ -271,16 +271,20 @@ export default class StartUpEdit extends Component {
             <label htmlFor="it">IT/Tech</label>
           </div>
           <br />
-          <div>
-            <label htmlFor="experience">Did you found a startup before?</label>
+          <div
+            onChange={this.props.handleChange}
+            value={this.props.experience}
+            checked={this.props.experience}
+          >
+            <label htmlFor="experience">Is your company already founded?</label>
             <br />
-            <input
-              type="text"
-              id="experience"
-              name="experience"
-              value={this.props.experience}
-              onChange={this.handleChange}
-            />
+            <input type="radio" id="yes" name="experience" value="yes" />
+            <label htmlFor="yes">Yes</label>
+            <br />
+
+            <input type="radio" id="no" name="experience" value="no" />
+            <label htmlFor="no">No</label>
+            <br />
           </div>
           <button type="submit">Update Profile</button>
         </form>

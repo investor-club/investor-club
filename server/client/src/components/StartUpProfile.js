@@ -25,7 +25,7 @@ export default class StartUpProfile extends React.Component {
 
   getData = () => {
     axios
-      .get(`/api/startup/${this.props.user._id}`)
+      .get(`/api/startups/${this.props.user._id}`)
       .then((response) => {
         console.log("component did mount response data", response.data);
         this.setState({
@@ -71,7 +71,7 @@ export default class StartUpProfile extends React.Component {
     event.preventDefault();
     console.log("update");
     axios
-      .put(`/api/startup/${this.props.user._id}`, {
+      .put(`/api/startups/${this.props.user._id}`, {
         username: this.state.username,
         email: this.state.email,
         password: this.state.password,
@@ -116,8 +116,37 @@ export default class StartUpProfile extends React.Component {
   render() {
     if (this.state.error) return <h3>{this.state.error}</h3>;
     return (
-      <div key={this.props.user._id}>
-        <h1>Hello {this.state.username}</h1>
+      <div>
+        <h1>username: {this.state.username}</h1>
+        <br />
+        <h1>email: {this.state.email}</h1>
+        <br />
+        <h1>password: {this.state.password}</h1>
+        <br />
+        <h1>companyName: {this.state.companyName}</h1>
+        <br />
+        <h1>statement: {this.state.statement}</h1>
+        <br />
+        <h1>description: {this.state.description}</h1>
+        <br />
+        <h1>place {this.state.place}</h1>
+        <br />
+        <h1>industry: {this.state.industry}</h1>
+        <br />
+        <h1>stage: {this.state.stage}</h1>
+        <br />
+        <h1>foundation: {this.state.foundation}</h1>
+        <br />
+        <h1>teamMembers: {this.state.teamMembers}</h1>
+        <br />
+        <h1>skillsI: {this.state.skillsI}</h1>
+        <br />
+        <h1>skillsII: {this.state.skillsII}</h1>
+        <br />
+        <h1>skillsIII: {this.state.skillsIII}</h1>
+        <br />
+        <h1>experience: {this.state.experience}</h1>
+        <br />
         <button onClick={this.toggleEditForm}>Show Edit Form</button>
         {this.state.editForm && (
           <StartUpEdit
