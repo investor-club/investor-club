@@ -202,10 +202,7 @@ export default class StartUpEvaluation extends React.Component {
           break;
         case 3:
           displayedComponent = (
-            <Q3stage
-              stage={this.state.stage}
-              setStage={this.setStage}
-            />
+            <Q3stage stage={this.state.stage} setStage={this.setStage} />
           );
           break;
         case 4:

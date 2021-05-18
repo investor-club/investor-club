@@ -1,31 +1,132 @@
-import React from 'react';
+import React from "react";
+import axios from "axios";
+import StartUpEdit from "./StartUpEdit";
 
 export default class StartUpProfile extends React.Component {
+  state = {
+    error: null,
+    editForm: false,
+    username: "",
+    email: "",
+    password: "",
+    companyName: "",
+    statement: "",
+    description: "",
+    place: "",
+    industry: "",
+    stage: "",
+    foundation: "",
+    teamMembers: "",
+    skillsI: "",
+    skillsII: "",
+    skillsIII: "",
+    experience: "",
+  };
 
-    state = {
-        user: this.props.user
-    }
+  getData = () => {
+    axios
+      .get(`/api/startup/${this.props.user._id}`)
+      .then((response) => {
+        console.log("component did mount response data", response.data);
+        this.setState({
+          username: response.data.username,
+          email: response.data.email,
+          password: response.data.password,
+          companyName: response.data.companyName,
+          statement: response.data.statement,
+          description: response.data.description,
+          place: response.data.place,
+          industry: response.data.industry,
+          stage: response.data.stage,
+          foundation: response.data.foundation,
+          teamMembers: response.data.teamMembers,
+          skillsI: response.data.skillsI,
+          skillsII: response.data.skillsII,
+          skillsIII: response.data.skillsIII,
+          experience: response.data.experience,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
 
-    // getData = () => {
+  componentDidMount() {
+    this.getData();
+    console.log("hello from did mount");
+  }
 
-    // }
+  toggleEditForm = () => {
+    this.setState((prevState) => ({
+      editForm: !prevState.editForm,
+    }));
+  };
 
-    render(){
-        
-        return(
-            <div>
-                <div>
-                    <h1>Hello from Startup Profile</h1>
-                    <p>{this.state.user.companyName}</p>
-                    
-                    {/* place not visible because updated in database, but not in session. */}
-                    <p>{this.state.user.place}</p>
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
 
-                </div>
-                
-                
-                
-            </div>
-        )
-    }
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("update");
+    axios
+      .put(`/api/startup/${this.props.user._id}`, {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+        companyName: this.state.companyName,
+        statement: this.state.statement,
+        description: this.state.description,
+        place: this.state.place,
+        industry: this.state.industry,
+        stage: this.state.stage,
+        foundation: this.state.foundation,
+        teamMembers: this.state.teamMembers,
+        skillsI: this.state.skillsI,
+        skillsII: this.state.skillsII,
+        skillsIII: this.state.skillsIII,
+        experience: this.state.experience,
+      })
+      .then((response) => {
+        this.setState({
+          username: response.data.username,
+          email: response.data.email,
+          password: response.data.password,
+          companyName: response.data.companyName,
+          statement: response.data.statement,
+          description: response.data.description,
+          place: response.data.place,
+          industry: response.data.industry,
+          stage: response.data.stage,
+          foundation: response.data.foundation,
+          teamMembers: response.data.teamMembers,
+          skillsI: response.data.skillsI,
+          skillsII: response.data.skillsII,
+          skillsIII: response.data.skillsIII,
+          experience: response.data.experience,
+          editForm: false,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  render() {
+    if (this.state.error) return <h3>{this.state.error}</h3>;
+    return (
+      <div key={this.props.user._id}>
+        <h1>Hello {this.state.username}</h1>
+        <button onClick={this.toggleEditForm}>Show Edit Form</button>
+        {this.state.editForm && (
+          <StartUpEdit
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+            {...this.state}
+          />
+        )}
+      </div>
+    );
+  }
 }

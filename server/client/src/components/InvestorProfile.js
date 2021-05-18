@@ -94,7 +94,6 @@ export default class InvestorProfile extends Component {
 
   render() {
     if (this.state.error) return <h3>{this.state.error}</h3>;
-    // if (!this.state.) return <></>;
     return (
       <div>
         <h1>Hello {this.state.username}</h1>
