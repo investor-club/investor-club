@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom";
 import axios from 'axios';
-//import list of startups from???
 
 export default class StartUpList extends Component {
 
@@ -31,7 +30,7 @@ export default class StartUpList extends Component {
       // const name = e.target.name;
       let regex = new RegExp(this.state.search, "gi")
            // If the search bar isn't empty assign the original list to currentList
-      if (e.target.value === "") { this.getData() };   //CLER FORM???
+      if (e.target.value === "") { this.getData() };   //IS THERE A BETTER WAY???
       
       this.setState((state) => ({
         search: e.target.value,
@@ -79,7 +78,6 @@ export default class StartUpList extends Component {
       }),
     }))
   }
-
 
     render() {
         // const filteredUsers = this.state.startups.filter(startup=>{

@@ -9,7 +9,7 @@ export default class Q3stage extends React.Component{
         if(this.props.flag) {
             return (
                 <div onChange={this.handleChange} value={this.props.stage} checked={this.props.stage}>
-                <label htmlFor="stage">In what stage is your idea?</label><br/>
+                    <label htmlFor="stage">In what stage is your idea?</label><br/>
                     <input type="radio" id="Prototype" name="stage" value="prototype"/>
                     <label for="prototype">Prototype/MVP (Pre-Seed)</label><br/>
 

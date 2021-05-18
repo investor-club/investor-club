@@ -9,32 +9,36 @@ export default class App extends React.Component {
   state = {
     user: this.props.user,
     type: this.props.type,
-  };
-
-  setAppState = (user, type) => {
-    this.setState({ user });
-    this.setState({ type });
-  };
-
-  componentDidMount() {
-    axios
-      .get("/api/auth/loggedin")
-      .then((response) => {
-        console.log("AXIOS RESPONSE ", response.data);
-        this.setState({ user: response.data.user, type: response.data.type });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    landing: true,
   }
+  //for lifting state up to here
+  setAppState = (user, type) => {
+    this.setState({user, type})
+  }
+  
+  // toggleLanding = () => {
+  //   this.state.landing = false
+  // }
 
+  componentDidMount () {
+    axios
+        .get("/api/auth/loggedin")
+        .then((response) => {
+            console.log("AXIOS RESPONSE ", response.data);
+            this.setState({user: response.data.user, type: response.data.type})
+        })
+        .catch((err) => {
+            console.log(err);
+        }); 
+ } 
+  
   render() {
     console.log("I AM TYPE IN APP", this.state.type);
 
-    let landing;
-    if (!this.state.user) {
-      landing = <LandingPage />;
-    }
+    // let landing;
+    // if (!this.state.user) {
+    //   landing = <LandingPage />;
+    // }
 
     return (
       <div className="App">

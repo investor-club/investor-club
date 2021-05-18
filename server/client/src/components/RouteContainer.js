@@ -25,18 +25,21 @@ export default class RouteContainer extends React.Component {
   setType = (type) => {
     this.setState({ type });
   };
-
-  //   setDisplayStartupEval = (displayStartupEval) => {
-  //     this.setState({
-  //       displayStartupEval: displayStartupEval,
-  //     });
-  //   };
-
+  
+  // let landing;
+  // this.state.landing ? landing = (<LandingPage />) : landing = (<></>)
   render() {
-    console.log("I AM TYPE IN ROUTECONTAINER", this.type);
+  
+    console.log("I AM TYPE IN ROUTECONTAINER", this.type) 
 
     return (
       <div>
+
+         <Route
+            exact path="/"
+            render={props => <LandingPage user={this.state.user} {...props} />}
+        />
+
         <Route
           exact
           path="/signupchoice"
@@ -103,6 +106,7 @@ export default class RouteContainer extends React.Component {
           path="/startups"
           render={(props) => <StartUpList {...props} />}
         />
+        
         <Route
           exact
           path="/startup/profile"
@@ -126,11 +130,13 @@ export default class RouteContainer extends React.Component {
             />
           )}
         />
+
         <Route
           exact
           path="/startuplist"
           render={(props) => <StartUpList user={this.state.user} {...props} />}
         />
+
       </div>
     );
   }

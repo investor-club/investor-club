@@ -13,6 +13,10 @@ export default function Navbar(props) {
     });
   };
 
+  const toggleLanding = () => {
+    props.toggleLanding()
+  }
+
   let dashboard;
   if (props.type === "investor") {
     dashboard = "/investordashboard";
