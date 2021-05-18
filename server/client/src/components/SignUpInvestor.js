@@ -33,7 +33,7 @@ export default class SignUpInvestor extends Component {
             password: "",
           });
         } else {
-          console.log(user);
+          //console.log(user);
           this.props.setUser(user);
           this.props.history.push("/login");
         }

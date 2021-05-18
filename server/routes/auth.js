@@ -3,7 +3,7 @@ const StartUp = require("../models/StartUp");
 const Investor = require("../models/Investor");
 const bcrypt = require("bcrypt");
 
-router.post("/signup/investor", (req, res, next) => {
+router.post("/investors", (req, res, next) => {
   console.log(req.body);
   const { email, username, password, firstName, lastName } = req.body;
 
@@ -27,7 +27,6 @@ router.post("/signup/investor", (req, res, next) => {
         // create password
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
-        console.log(hash);
 
         Investor.create({
           email,
@@ -37,7 +36,7 @@ router.post("/signup/investor", (req, res, next) => {
           lastName,
         })
           .then((investor) => {
-            console.log("I'm new: ", investor)
+            console.log("I'M NEW: ", investor)
             res.status(200).json(investor);
           })
           .catch((err) => next(err));

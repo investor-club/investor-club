@@ -7,7 +7,7 @@ export default class StartUpList extends Component {
     state = {
       search: "",
       startups: [],
-      inPortfolio: this.props.inPortfolio,
+      user: this.props.user,
     }
 
     getData = () => {
@@ -81,12 +81,22 @@ export default class StartUpList extends Component {
 
     handleAdd = id => {
       axios
-      .get('/api/onestartup')
+        .get(`/api/startups/${id}`)
         .then(startupFromDb => {
-          console.log("FOUND STARTUP RESPONSE: ", response.data)
-          this.setState((state) =>  ({ 
-            inPortfolio: [...state.inPortfolio, startupFromDb.id]
-          })) 
+          //console.log("FOUND STARTUP RESPONSE: ", startupFromDb)
+          axios
+            .put(`/api/investors/${this.props.user._id}`, {
+              companyName: startupFromDb.data.companyName
+            })
+            .then(investorFromDB => {
+              console.log("ADDED ", investorFromDB, "INVESTOR ", this.state.user);
+               this.setState((state) =>  ({
+                  user: {
+                    inPortfolio: [...state.user.inPortfolio, investorFromDB.data.companyName],
+                  }
+              }))
+            })
+            .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
     }
@@ -97,8 +107,8 @@ export default class StartUpList extends Component {
         //   .toLowerCase().includes(this.state.search.toLowerCase())
         // })
         const displayedList = this.state.startups.map( startup => {
-          return (<tr className="one-startup" key={startup.id}>
-            <td><img src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png" width="100px"></img></td>
+          return (<tr className="one-startup" key={startup._id}>
+            <td><img src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png" width="150px"></img></td>
             <td> <h2>{startup.companyName}</h2> </td>
             <td>{startup.industry}</td>
             <td>{startup.email}</td>
@@ -107,7 +117,7 @@ export default class StartUpList extends Component {
             <td>Rating</td>
             {/* can only add if not in portfolio */}
             {/* {this.state.portfolio.includes(startup.id) ?  <td>Add to portfolio </td> :  <td>In portfolio </td>} */}
-            <td><button onClick={() => this.handleAdd(startup.id)}>Add to portfolio</button></td>
+            <td><button onClick={ () => this.handleAdd(startup._id) }>Add to portfolio</button></td>
             </tr>
           )
         })
@@ -143,7 +153,6 @@ export default class StartUpList extends Component {
                 <option value="beyond">beyond the mentioned</option>
               </select>
             </div>
-
 
             <table>
               <tbody>

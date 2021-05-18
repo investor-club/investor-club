@@ -90,8 +90,9 @@ router.put("/investors/:id", (req, res, next) => {
     { firstName, lastName, email, username, password },
     { new: true }
   )
-    .then((startup) => {
-      res.status(200).json(startup);
+    .then((investor) => {
+      console.log("INVESTOR UPDATED ", investor)
+      res.status(200).json(investor);
     })
     .catch((err) => {
       next(err);

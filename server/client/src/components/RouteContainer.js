@@ -132,12 +132,12 @@ export default class RouteContainer extends React.Component {
             />
           )}
         />
-        {/* i've put this one in the Invst Dashboard */}
-        {/* <Route
+        {/* I wanted to put this one in the Invst Dashboard but didn't work */}
+        <Route
           exact
           path="/startuplist"
           render={(props) => <StartUpList user={this.state.user} {...props} />}
-        /> */}
+        />
 
       </div>
     );

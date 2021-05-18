@@ -16,15 +16,11 @@ export default class App extends React.Component {
     this.setState({ user, type });
   };
 
-  // toggleLanding = () => {
-  //   this.state.landing = false
-  // }
-
   componentDidMount() {
     axios
       .get("/api/auth/loggedin")
       .then((response) => {
-        console.log("AXIOS RESPONSE ", response.data);
+        //console.log("AXIOS RESPONSE ", response.data);
         this.setState({ user: response.data.user, type: response.data.type });
       })
       .catch((err) => {
@@ -33,7 +29,7 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log("I AM TYPE IN APP", this.state.type);
+   // console.log("I AM TYPE IN APP", this.state.type);
 
     return (
       <div className="App">

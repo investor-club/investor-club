@@ -15,14 +15,14 @@ export default class InvestorDashboard extends Component {
 
     return (
       <div>
-        <h1>
+        <h1>     
           <Link to="/startuplist">ALL STARTUPS</Link>
-          <Route
+        </h1>
+        {/* <Route
           exact
           path="/startuplist"
           render={(props) => <StartUpList user={this.state.user} {...props} />}
-        />
-        </h1>
+        /> */}
       </div>
     );
   }
