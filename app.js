@@ -1,3 +1,4 @@
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/server";
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
 require("dotenv/config");
@@ -10,6 +11,10 @@ require("./db");
 const express = require("express");
 
 const app = express();
+
+// express builds folder containing the react app
+const path = require('path');
+app.use(express.static(path.join(__dirname, "/client/build")));
 
 // session configuration
 const session = require('express-session');
@@ -24,7 +29,7 @@ app.use(
     saveUninitialized: false,
     resave: true,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost/server"
+      mongoUrl: MONGO_URI
     })
   })
 )
@@ -61,6 +66,11 @@ app.use("/api", crud);
 
 const auth = require("./routes/auth");
 app.use("/api/auth", auth);
+
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);

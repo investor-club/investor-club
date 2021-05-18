@@ -3,7 +3,7 @@ const StartUp = require("../models/StartUp");
 const Investor = require("../models/Investor");
 const bcrypt = require("bcrypt");
 
-router.post("/signup/investor", (req, res, next) => {
+router.post("/investors", (req, res, next) => {
   console.log(req.body);
   const { email, username, password, firstName, lastName } = req.body;
 

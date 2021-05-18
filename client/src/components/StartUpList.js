@@ -83,7 +83,7 @@ export default class StartUpList extends Component {
       axios
       .get('/api/onestartup')
         .then(startupFromDb => {
-          console.log("FOUND STARTUP RESPONSE: ", response.data)
+          console.log("FOUND STARTUP RESPONSE: ", startupFromDb.data)
           this.setState((state) =>  ({ 
             inPortfolio: [...state.inPortfolio, startupFromDb.id]
           })) 
