@@ -6,7 +6,6 @@ export default class Q7skillsII extends React.Component{
     };
 
     render(){
-        if(this.props.flag) {
             return (
                 <div onChange={this.handleChange} value={this.props.skillsII} checked={this.props.skillsII}>
                     <label htmlFor="skillsII" value={this.props.stage}>Do you have all the necessary skills in your team to develop the idea?</label><br/>
@@ -17,12 +16,6 @@ export default class Q7skillsII extends React.Component{
                     <label for="no">No</label><br/>
                 </div>
                 )
-        } else {
-            return (
-            <>
-            </>
-             )
-          }
       }     
 }
 

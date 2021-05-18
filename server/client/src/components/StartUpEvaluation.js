@@ -195,7 +195,6 @@ export default class StartUpEvaluation extends React.Component {
         case 2:
           displayedComponent = (
             <Q2industry
-              flag={true}
               industry={this.state.industry}
               setIndustry={this.setIndustry}
             />
@@ -204,7 +203,6 @@ export default class StartUpEvaluation extends React.Component {
         case 3:
           displayedComponent = (
             <Q3stage
-              flag={true}
               stage={this.state.stage}
               setStage={this.setStage}
             />
@@ -213,7 +211,6 @@ export default class StartUpEvaluation extends React.Component {
         case 4:
           displayedComponent = (
             <Q4foundation
-              flag={true}
               foundation={this.state.foundation}
               setFoundation={this.setFoundation}
             />
@@ -222,7 +219,6 @@ export default class StartUpEvaluation extends React.Component {
         case 5:
           displayedComponent = (
             <Q5teamMembers
-              flag={true}
               teamMembers={this.state.teamMembers}
               setTeamMembers={this.setTeamMembers}
             />
@@ -231,7 +227,6 @@ export default class StartUpEvaluation extends React.Component {
         case 6:
           displayedComponent = (
             <Q6skillsI
-              flag={true}
               skillsI={this.state.skillsI}
               setSkillsI={this.setSkillsI}
             />
@@ -240,7 +235,6 @@ export default class StartUpEvaluation extends React.Component {
         case 7:
           displayedComponent = (
             <Q7skillsII
-              flag={true}
               skillsII={this.state.skillsII}
               setSkillsII={this.setSkillsII}
             />
@@ -249,7 +243,6 @@ export default class StartUpEvaluation extends React.Component {
         case 8:
           displayedComponent = (
             <Q8skillsIII
-              flag={true}
               skillsII={this.state.skillsIII}
               setSkillsIII={this.setSkillsIII}
             />
@@ -258,7 +251,6 @@ export default class StartUpEvaluation extends React.Component {
         case 9:
           displayedComponent = (
             <Q9experience
-              flag={true}
               skillsII={this.state.experience}
               setExperience={this.setExperience}
             />
@@ -267,7 +259,6 @@ export default class StartUpEvaluation extends React.Component {
         case 10:
           displayedComponent = (
             <Q10pitchDeck
-              flag={true}
               skillsII={this.state.pitchDeck}
               setPitchDeck={this.setPitchDeck}
             />

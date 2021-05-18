@@ -6,7 +6,6 @@ export default class Q8skillsIII extends React.Component{
     };
 
     render(){
-        if(this.props.flag) {
             return (
                 <div onChange={this.handleChange} value={this.props.skillsIII} checked={this.props.skillsIII}>
                 <label htmlFor="finance" value={this.props.stage}>If "No", which skills are you looking for?</label><br/>
@@ -23,12 +22,6 @@ export default class Q8skillsIII extends React.Component{
                     <label for="it">IT/Tech</label>
                 </div>
                 )
-        } else {
-            return (
-            <>
-            </>
-             )
-          }
       }     
 }
 
