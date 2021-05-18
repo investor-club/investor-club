@@ -184,10 +184,16 @@ body {
   font-weight: normal;
 }
 
-.questionContainer form label{
+.questionContainer > label:first-of-type{
   font-family: 'IBM Plex Sans Condensed';
   font-size: 48px;
   font-weight: normal;
+}
+
+.answerRadio label{
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
 }
 
 .startup-list-container{
@@ -201,7 +207,6 @@ body {
   height: 30px;
   margin-top: 20px;
   margin-bottom: 20px;
-
 }
 /* .startup-list-container table{
   display: flex;
@@ -218,7 +223,6 @@ body {
 .startup-list-container td{
   border-bottom: 2px dotted #5200FF;
   font-size: 20px;
-
 }
 .startup-list-container h2{
   font-size: 18px;

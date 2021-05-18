@@ -177,6 +177,7 @@ export default class StartUpEvaluation extends React.Component {
     this.setState({
       index: this.state.index - 1,
     });
+  
   };
 
   render() {
@@ -270,13 +271,13 @@ export default class StartUpEvaluation extends React.Component {
               <a href="" onClick={this.showPrevious}>
                 Back
               </a>
-              <div className="progressBarBg"></div>
-              <div className='progressBar' style={{width: `${progressWidth}%`}}></div>
+              <div className="progressBarBg">
+                <div className='progressBar' style={{width: `${progressWidth}%`}}></div>
+              </div>
+              
             </div>
 
             <div class="questionContainer">
-              {/* <h2>Tell us about your startup!</h2> */}
-
               <form onSubmit={this.handleSubmit}>
                 {displayedComponent}
 
