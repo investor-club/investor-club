@@ -181,7 +181,7 @@ export default class StartUpEvaluation extends React.Component {
 
   render() {
     if (this.props.displayStartupEval) {
-      // let progressWidth = this.state.index *10;
+      let progressWidth = this.state.index *10;
       // console.log("progressWidth",progressWidth)
       let displayedComponent;
       switch (this.state.index) {
@@ -271,7 +271,7 @@ export default class StartUpEvaluation extends React.Component {
                 Back
               </a>
               <div className="progressBarBg"></div>
-              {/* <div className='progressBar' style={{width: `${progressWidth}%}`}}></div> */}
+              <div className='progressBar' style={{width: `${progressWidth}%`}}></div>
             </div>
 
             <div class="questionContainer">
