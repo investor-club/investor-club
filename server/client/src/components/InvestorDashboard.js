@@ -1,24 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import StartUpList from "./StartUpList";
+import { Route } from "react-router-dom";
 
 export default class InvestorDashboard extends Component {
   state = {
+    user: this.props.user,
     type: this.props.type,
   };
-
-  // componentDidMount () {
-  //     axios
-  //         .get("/api/auth/loggedin")
-  //         .then((response) => {
-  //             const session = response.data;
-  //             console.log("AXIOS RESPONSE ", response.data);
-  //             this.setState({type: response.data.type})
-  //         })
-  //         .catch((err) => {
-  //             console.log(err);
-  //         });
-  // }
 
   render() {
     //investor or startup
@@ -27,6 +17,11 @@ export default class InvestorDashboard extends Component {
       <div>
         <h1>
           <Link to="/startuplist">ALL STARTUPS</Link>
+          <Route
+          exact
+          path="/startuplist"
+          render={(props) => <StartUpList user={this.state.user} {...props} />}
+        />
         </h1>
       </div>
     );

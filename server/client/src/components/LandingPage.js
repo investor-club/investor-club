@@ -11,7 +11,7 @@ export default class LandingPage extends Component {
             <div>
                 <div class='purpleBackground'></div>
                 <div class='bodyPadding'>
-                    <h1>Hello I'm landing page</h1>
+                    <h1>{landing}</h1>
                 </div>
             </div>
         )

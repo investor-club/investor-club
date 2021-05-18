@@ -132,8 +132,7 @@ export default class StartUpEvaluation extends React.Component {
       experience,
       pitchDeck,
     } = this.state;
-    axios
-      .post(`/api/startup/${this.props.user._id}`, {
+    axios.post(`/api/startup/${this.props.user._id}`, {
         place,
         industry,
         stage,
@@ -171,8 +170,6 @@ export default class StartUpEvaluation extends React.Component {
     //             currentQuestion: display
     //         })
     //     })
-
-    //need axios post to route in backend, findbyId and update
   };
 
   showPrevious = (e) => {

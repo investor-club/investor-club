@@ -26,8 +26,7 @@ export default class RouteContainer extends React.Component {
     this.setState({ type });
   };
   
-  // let landing;
-  // this.state.landing ? landing = (<LandingPage />) : landing = (<></>)
+  
   render() {
   
     console.log("I AM TYPE IN ROUTECONTAINER", this.type) 
@@ -124,18 +123,19 @@ export default class RouteContainer extends React.Component {
           path="/investor/profile"
           render={(props) => (
             <InvestorProfile
+              type={this.state.type}
               user={this.state.user}
               setUser={this.setUser}
               {...props}
             />
           )}
         />
-
-        <Route
+        {/* i've put this one in the Invst Dashboard */}
+        {/* <Route
           exact
           path="/startuplist"
           render={(props) => <StartUpList user={this.state.user} {...props} />}
-        />
+        /> */}
 
       </div>
     );

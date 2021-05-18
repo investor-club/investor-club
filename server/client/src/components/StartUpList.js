@@ -6,7 +6,8 @@ export default class StartUpList extends Component {
 
     state = {
       search: "",
-      startups: []
+      startups: [],
+      inPortfolio: this.props.inPortfolio,
     }
 
     getData = () => {
@@ -69,33 +70,44 @@ export default class StartUpList extends Component {
 
     handleFilter = e => {
       const name = e.target.name;
-      console.log("stage: ", e.target.value);
-      // // filtering:
+      //console.log("stage: ", e.target.value);
       this.setState( state => ({
-      [name]: e.target.value,
-      startups: [...state.startups].filter(startup => {
-        return startup.stage.includes(e.target.value)
-      }),
-    }))
-  }
+        [name]: e.target.value,
+        startups: [...state.startups].filter(startup => {
+          return startup.stage.includes(e.target.value)
+        }),
+      }))
+    }
+
+    handleAdd = id => {
+      axios
+      .get('/api/onestartup')
+        .then(startupFromDb => {
+          console.log("FOUND STARTUP RESPONSE: ", response.data)
+          this.setState((state) =>  ({ 
+            inPortfolio: [...state.inPortfolio, startupFromDb.id]
+          })) 
+        })
+        .catch(err => console.log(err));
+    }
 
     render() {
         // const filteredUsers = this.state.startups.filter(startup=>{
         //   return `${startup.companyName}${startup.place}${startup.industry}${startup.statement}`
         //   .toLowerCase().includes(this.state.search.toLowerCase())
         // })
-
         const displayedList = this.state.startups.map( startup => {
-          return (<tr className="one-startup">
-            <img src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png" width="100px"></img>
-            <td>
-              <h2>{startup.companyName}</h2>
-            </td>
+          return (<tr className="one-startup" key={startup.id}>
+            <td><img src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png" width="100px"></img></td>
+            <td> <h2>{startup.companyName}</h2> </td>
             <td>{startup.industry}</td>
             <td>{startup.email}</td>
             <td>{startup.place}</td>
             <td>{startup.stage}</td>
             <td>Rating</td>
+            {/* can only add if not in portfolio */}
+            {/* {this.state.portfolio.includes(startup.id) ?  <td>Add to portfolio </td> :  <td>In portfolio </td>} */}
+            <td><button onClick={() => this.handleAdd(startup.id)}>Add to portfolio</button></td>
             </tr>
           )
         })
