@@ -35,10 +35,6 @@ export default class App extends React.Component {
   render() {
     console.log("I AM TYPE IN APP", this.state.type);
 
-    // let landing;
-    // if (!this.state.user) {
-    //   landing = <LandingPage />;
-    // }
 
     return (
       <div className="App">
@@ -47,7 +43,7 @@ export default class App extends React.Component {
           user={this.state.user}
           type={this.state.type}
         />
-        {landing}
+    
         <RouteContainer
           user={this.state.user}
           setAppState={this.setAppState}
