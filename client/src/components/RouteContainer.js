@@ -140,12 +140,8 @@ export default class RouteContainer extends React.Component {
           exact
           path="/startuplist"
           render={(props) => <StartUpList user={this.state.user} {...props} />}
-<<<<<<< HEAD:server/client/src/components/RouteContainer.js
         />
 
-=======
-        /> */}
->>>>>>> ebc9a36e4f10bdc34da19f1ac4cbc972c8762703:client/src/components/RouteContainer.js
       </div>
     );
   }
