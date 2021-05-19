@@ -1,6 +1,10 @@
+const express = require('express');
 const router = require("express").Router();
 const StartUp = require("../models/StartUp");
 const Investor = require("../models/Investor");
+const uploader = require('../config/cloudinary.config')
+
+
 
 // all startups
 router.get("/startups", (req, res, next) => {
@@ -148,8 +152,10 @@ router.get("/startup/:id", (req, res, next) => {
 });
 
 //update statupEval
-router.post("/startup/:id", (req, res, next) => {
-  const {place, 
+router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
+  console.log("post startup id")
+  const {
+    place, 
     industry, 
     stage,
     foundation,
@@ -160,7 +166,11 @@ router.post("/startup/:id", (req, res, next) => {
     experience,
     pitchDeck
   } = req.body;
-  console.log("called post in backend", req.body)
+  // console.log("req file path", req.file.path)
+  console.log("after req.body", pitchDeck)
+  // res.json({ secure_url: req.file.path });
+
+  // console.log("called post in backend", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
     {
@@ -179,13 +189,17 @@ router.post("/startup/:id", (req, res, next) => {
     )
       .then(startup => {
         console.log("startup",startup);
-        res.status(200).json(startup);
+        res.status(200).json({startup: startup, secure_url: req.file.path});
       })
       .catch(err => {
-        console.log("err", error)
+        console.log("err", err)
       });
       
-      })
+})
+
+// res.json({ secure_url: req.file.path });
+
+// , secure_url: req.file.path 
 
 
 

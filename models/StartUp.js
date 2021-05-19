@@ -31,10 +31,10 @@ const startUpSchema = new Schema({
     }
   ],
   experience: Boolean,
-  pitchDeck: [String],
+  pitchDeck: String,
   rating: Number,
   website: String,
-  // imageUrl: { type: String, required: true },
+  // imageUrl: String,
 });
 
 const StartUp = model("StartUp", startUpSchema);
