@@ -128,8 +128,6 @@ export default class StartUpProfile extends React.Component {
         <br />
         <h1>email: {this.state.email}</h1>
         <br />
-        <h1>password: {this.state.password}</h1>
-        <br />
         <h1>companyName: {this.state.companyName}</h1>
         <br />
         <h1>statement: {this.state.statement}</h1>
@@ -159,6 +157,7 @@ export default class StartUpProfile extends React.Component {
           <StartUpEdit
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            user= {this.props.user}
             {...this.state}
           />
         )}

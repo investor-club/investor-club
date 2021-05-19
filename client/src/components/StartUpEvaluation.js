@@ -125,9 +125,7 @@ export default class StartUpEvaluation extends React.Component {
     e.preventDefault();
     if (this.state.index > 7) {
       console.log("this is the end of the questionnaire");
-      {
-        this.props.setDisplayStartupEval(false);
-      }
+      this.props.setDisplayStartupEval(false);
     }
     const {
       place,
@@ -141,6 +139,7 @@ export default class StartUpEvaluation extends React.Component {
       experience,
       pitchDeck,
     } = this.state;
+
     axios.post(`/api/startup/${this.props.user._id}`, {
         place,
         industry,
@@ -161,12 +160,7 @@ export default class StartUpEvaluation extends React.Component {
         console.log("props", this.props.user);
       })
       .catch( err => {
-        console.log(err);
-        // if (err.response.status === 404) {
-        //   this.setState({
-        //     err: "Not found 🤷‍♀️🤷‍♂️",
-        //   });
-        // }
+        console.log(err, "🤷‍♀️🤷‍♂️");
       });
 
     //with using services, but it didn't work
