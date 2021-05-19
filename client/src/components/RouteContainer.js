@@ -161,7 +161,6 @@ export default class RouteContainer extends React.Component {
             />
           )}
         />
-        {/* I wanted to put this one in the Invst Dashboard but didn't work */}
         <Route
           exact
           path="/startuplist"

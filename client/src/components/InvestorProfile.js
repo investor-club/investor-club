@@ -18,7 +18,7 @@ export default class InvestorProfile extends Component {
 
   getData = () => {
     axios
-      .get(`/api/investors/${this.props.user._id}`)
+      .get(`/api/investors/${this.props.user.id}`)
       .then((response) => {
         console.log("investor profile: ", response);
         this.setState({
