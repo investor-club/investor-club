@@ -33,7 +33,7 @@ export default class StartUpEvaluation extends React.Component {
   componentDidMount() {
     axios
       .get(`/api/startup/${this.props.user._id}`)
-      .then(response => {
+      .then((response) => {
         console.log("component did mount response data", response.data.skillsI);
         this.setState({
           username: response.data.username,
@@ -139,13 +139,9 @@ export default class StartUpEvaluation extends React.Component {
       experience,
       pitchDeck,
     } = this.state;
-<<<<<<< HEAD
 
-    axios.post(`/api/startup/${this.props.user._id}`, {
-=======
     axios
       .post(`/api/startup/${this.props.user._id}`, {
->>>>>>> alkin
         place,
         industry,
         stage,
@@ -164,7 +160,7 @@ export default class StartUpEvaluation extends React.Component {
         });
         console.log("props", this.props.user);
       })
-      .catch( err => {
+      .catch((err) => {
         console.log(err, "🤷‍♀️🤷‍♂️");
       });
 
