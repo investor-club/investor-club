@@ -11,6 +11,8 @@ import StartUpDashboard from "./StartUpDashboard";
 import LandingPage from "./LandingPage";
 import InvestorProfile from "./InvestorProfile";
 import StartUpDetails from "./StartupDetails";
+import Favourites from "./Favourites";
+import Portfolio from "./Portfolio";
 import axios from "axios";
 
 export default class RouteContainer extends React.Component {
@@ -82,6 +84,30 @@ export default class RouteContainer extends React.Component {
               user={this.state.user}
               type={this.state.type}
               setAppState={this.props.setAppState}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/portfolio"
+          render={(props) => (
+            <Portfolio
+              {...props}
+              user={this.state.user}
+              type={this.state.type}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/favourites"
+          render={(props) => (
+            <Favourites
+              {...props}
+              user={this.state.user}
+              type={this.state.type}
             />
           )}
         />
