@@ -52,6 +52,7 @@ export default function Navbar(props) {
         <div id="navbar">
           {props.type === "investor" ? (
             <>
+              <Link to="/startuplist">Startups</Link>
               <Link to={portfolio}>Portfolio</Link>
               <Link to={favourites}>Favourites</Link>
             </>
