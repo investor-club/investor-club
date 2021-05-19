@@ -184,16 +184,24 @@ body {
   font-weight: normal;
 }
 
-.questionContainer > label:first-of-type{
+.questionContainer form label:first-child{
   font-family: 'IBM Plex Sans Condensed';
   font-size: 48px;
   font-weight: normal;
 }
 
-.answerRadio label{
-  font-size: 18px;
+.answerRadio > label{
+  font-size: 18px  !important;
+  /* position: relative;
+  cursor: pointer; */
+  /* display: inline-block; */
+  
+}
+
+.answerRadio{
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
 }
 
 .startup-list-container{
