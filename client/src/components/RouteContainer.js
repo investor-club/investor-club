@@ -10,7 +10,13 @@ import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
 import LandingPage from "./LandingPage";
 import InvestorProfile from "./InvestorProfile";
+<<<<<<< HEAD
 import StartUpDetails from "./StartupDetails"; 
+=======
+import StartUpDetails from "./StartupDetails";
+import Favourites from "./Favourites";
+import Portfolio from "./Portfolio";
+>>>>>>> alkin
 import axios from "axios";
 
 export default class RouteContainer extends React.Component {
@@ -88,6 +94,30 @@ export default class RouteContainer extends React.Component {
 
         <Route
           exact
+          path="/portfolio"
+          render={(props) => (
+            <Portfolio
+              {...props}
+              user={this.state.user}
+              type={this.state.type}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/favourites"
+          render={(props) => (
+            <Favourites
+              {...props}
+              user={this.state.user}
+              type={this.state.type}
+            />
+          )}
+        />
+
+        <Route
+          exact
           path="/startupdashboard"
           render={(props) => (
             <StartUpDashboard
@@ -135,7 +165,6 @@ export default class RouteContainer extends React.Component {
             />
           )}
         />
-        {/* I wanted to put this one in the Invst Dashboard but didn't work */}
         <Route
           exact
           path="/startuplist"
