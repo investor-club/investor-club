@@ -3,8 +3,7 @@ import React, { Component } from "react";
 export default class EditProject extends Component {
   render() {
     return (
-      <div>
-        <h2>Edit Profile</h2>
+      <div className="edit-container">
         <form onSubmit={this.props.handleSubmit}>
           <label htmlFor="username">Username: </label>
           <input
@@ -14,7 +13,7 @@ export default class EditProject extends Component {
             value={this.props.username}
             onChange={this.props.handleChange}
           />
-          <br />
+
           <label htmlFor="email">Email: </label>
           <input
             type="email"
@@ -23,16 +22,7 @@ export default class EditProject extends Component {
             value={this.props.email}
             onChange={this.props.handleChange}
           />
-          <br />
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={this.props.password}
-            onChange={this.props.handleChange}
-          />
-          <br />
+
           <label htmlFor="firstName">First Name: </label>
           <input
             type="text"
@@ -41,7 +31,7 @@ export default class EditProject extends Component {
             value={this.props.firstName}
             onChange={this.props.handleChange}
           />
-          <br />
+
           <label htmlFor="lastName">Last Name: </label>
           <input
             type="text"
@@ -50,7 +40,7 @@ export default class EditProject extends Component {
             value={this.props.lastName}
             onChange={this.props.handleChange}
           />
-          <br />
+
           <label htmlFor="industry">Industry: </label>
           <input
             type="text"
@@ -59,16 +49,7 @@ export default class EditProject extends Component {
             value={this.props.industry}
             onChange={this.props.handleChange}
           />
-          <br />
-          <label htmlFor="bio">Bio: </label>
-          <input
-            type="text"
-            id="bio"
-            name="bio"
-            value={this.props.bio}
-            onChange={this.props.handleChange}
-          />
-          <br />
+
           <label htmlFor="location">Location: </label>
           <input
             type="text"
@@ -77,8 +58,19 @@ export default class EditProject extends Component {
             value={this.props.location}
             onChange={this.props.handleChange}
           />
-          <br />
-          <button type="submit">Update Profile</button>
+
+          <label htmlFor="bio">Bio: </label>
+          <textarea
+            rows="10"
+            cols="30"
+            type="text"
+            id="bio"
+            name="bio"
+            value={this.props.bio}
+            onChange={this.props.handleChange}
+          />
+
+          <button type="submit">Update</button>
         </form>
       </div>
     );
