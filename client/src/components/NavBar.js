@@ -25,6 +25,16 @@ export default function Navbar(props) {
     dashboard = "/startupdashboard";
   }
 
+  let favourites;
+  if (props.type === "investor") {
+    favourites = "/favourites";
+  }
+
+  let portfolio;
+  if (props.type === "investor") {
+    portfolio = "/portfolio";
+  }
+
   let profile;
   if (props.type === "investor") {
     profile = "/investor/profile/";
@@ -40,13 +50,21 @@ export default function Navbar(props) {
           <Link to="/">Investment Club</Link>
         </div>
         <div id="navbar">
+          {props.type === "investor" ? (
+            <>
+              <Link to={portfolio}>Portfolio</Link>
+              <Link to={favourites}>Favourites</Link>
+            </>
+          ) : (
+            <></>
+          )}
           {props.user ? (
             <>
               <Link to={dashboard}>Dashboard</Link>
+              <Link to={profile}>Profile</Link>
               <Link to="/" onClick={() => handleLogout()}>
                 Logout
               </Link>
-              <Link to={profile}>Profile</Link>
             </>
           ) : (
             <>

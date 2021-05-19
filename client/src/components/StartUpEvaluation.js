@@ -33,7 +33,7 @@ export default class StartUpEvaluation extends React.Component {
   componentDidMount() {
     axios
       .get(`/api/startup/${this.props.user._id}`)
-      .then(response => {
+      .then((response) => {
         console.log("component did mount response data", response.data.skillsI);
         this.setState({
           username: response.data.username,
@@ -87,10 +87,10 @@ export default class StartUpEvaluation extends React.Component {
   };
 
   setSkillsI = (skills) => {
-      console.log("SKILLS LIFTED:", skills)
-    this.setState( ({
-        skillsI: skills,
-      }));
+    console.log("SKILLS LIFTED:", skills);
+    this.setState({
+      skillsI: skills,
+    });
   };
 
   setSkillsII = (skillsII) => {
@@ -125,9 +125,7 @@ export default class StartUpEvaluation extends React.Component {
     e.preventDefault();
     if (this.state.index > 7) {
       console.log("this is the end of the questionnaire");
-      {
-        this.props.setDisplayStartupEval(false);
-      }
+      this.props.setDisplayStartupEval(false);
     }
     const {
       place,
@@ -141,7 +139,9 @@ export default class StartUpEvaluation extends React.Component {
       experience,
       pitchDeck,
     } = this.state;
-    axios.post(`/api/startup/${this.props.user._id}`, {
+
+    axios
+      .post(`/api/startup/${this.props.user._id}`, {
         place,
         industry,
         stage,
@@ -160,13 +160,8 @@ export default class StartUpEvaluation extends React.Component {
         });
         console.log("props", this.props.user);
       })
-      .catch( err => {
-        console.log(err);
-        // if (err.response.status === 404) {
-        //   this.setState({
-        //     err: "Not found 🤷‍♀️🤷‍♂️",
-        //   });
-        // }
+      .catch((err) => {
+        console.log(err, "🤷‍♀️🤷‍♂️");
       });
 
     //with using services, but it didn't work
@@ -186,12 +181,11 @@ export default class StartUpEvaluation extends React.Component {
     this.setState({
       index: this.state.index - 1,
     });
-  
   };
 
   render() {
     if (this.props.displayStartupEval) {
-      let progressWidth = this.state.index *10;
+      let progressWidth = this.state.index * 10;
       // console.log("progressWidth",progressWidth)
       let displayedComponent;
       switch (this.state.index) {
@@ -282,9 +276,11 @@ export default class StartUpEvaluation extends React.Component {
                 Back
               </a>
               <div className="progressBarBg">
-                <div className='progressBar' style={{width: `${progressWidth}%`}}></div>
+                <div
+                  className="progressBar"
+                  style={{ width: `${progressWidth}%` }}
+                ></div>
               </div>
-              
             </div>
 
             <div class="questionContainer">

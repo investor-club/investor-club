@@ -4,23 +4,25 @@ import StartUpEdit from "./StartUpEdit";
 
 export default class StartUpProfile extends React.Component {
   state = {
+    user: this.props.user,
     error: null,
     editForm: false,
-    username: "",
-    email: "",
-    password: "",
-    companyName: "",
-    statement: "",
-    description: "",
-    place: "",
-    industry: "",
-    stage: "",
-    foundation: "",
-    teamMembers: "",
-    skillsI: [],
-    skillsII: "",
-    skillsIII: [],
-    experience: "",
+    username: this.props.username,
+    email: this.props.email,
+    password: this.props.password,
+    companyName: this.props.companyName,
+    statement: this.props.statement,
+    description: this.props.description,
+    place: this.props.place,
+    industry: this.props.industry,
+    stage: this.props.stage,
+    foundation: this.props.foundation,
+    teamMembers: this.props.teamMembers,
+    skillsI: this.props.skillsI,
+    skillsII: this.props.skillsII,
+    skillsIII:this.props.skillsIII,
+    experience: this.props.experience,
+    
   };
 
   getData = () => {
@@ -51,14 +53,6 @@ export default class StartUpProfile extends React.Component {
 
   componentDidMount() {
     this.getData();
-    console.log("check array: ", this.state.skillsI);
-      for (let key in this.state) {
-          if (this.state.skillsI.includes(key)) {
-             this.setState({
-                 [key]: true
-             })
-          }
-    }
   }
 
   toggleEditForm = () => {
@@ -128,8 +122,6 @@ export default class StartUpProfile extends React.Component {
         <br />
         <h1>email: {this.state.email}</h1>
         <br />
-        <h1>password: {this.state.password}</h1>
-        <br />
         <h1>companyName: {this.state.companyName}</h1>
         <br />
         <h1>statement: {this.state.statement}</h1>
@@ -159,6 +151,7 @@ export default class StartUpProfile extends React.Component {
           <StartUpEdit
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            user= {this.props.user}
             {...this.state}
           />
         )}
