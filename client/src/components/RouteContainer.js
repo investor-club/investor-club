@@ -10,7 +10,7 @@ import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
 import LandingPage from "./LandingPage";
 import InvestorProfile from "./InvestorProfile";
-import StartUpDetails from "./StartupDetails";
+import StartUpDetails from "./StartupDetails"; 
 import axios from "axios";
 
 export default class RouteContainer extends React.Component {
@@ -141,6 +141,12 @@ export default class RouteContainer extends React.Component {
           path="/startuplist"
           render={(props) => <StartUpList user={this.state.user} {...props} />}
         />
+
+        <Route
+          exact
+          path="/startupdetails"
+          render={(props) => <StartUpDetails user={this.state.user} {...props} />}
+        />  
       </div>
     );
   }

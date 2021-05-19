@@ -14,9 +14,9 @@ export default class StartUpList extends Component {
         axios
           .get('/api/startups')
           .then(response => {
-            console.log("STARTUP LIST: ", response.data)
+           // console.log("STARTUP LIST: ", response.data)
             this.setState({
-              startups: response.data
+              startups: response.data,
             });
           })
           .catch(err => console.log(err));
@@ -82,18 +82,18 @@ export default class StartUpList extends Component {
     handleAdd = id => {
       axios
         .get(`/api/startups/${id}`)
-        .then(startupFromDb => {
-          console.log("FOUND STARTUP RESPONSE: ", startupFromDb.data.companyName)
+        .then(startupFromDB => {
+          console.log("FOUND STARTUP RESPONSE: ", startupFromDB.data.companyName)
           axios
-            .put(`/api/investors/${this.props.user._id}`, {
-              companyName: startupFromDb.data.companyName
+            .put(`/api/investors/portfolio/${this.props.user._id}`, {
+              startupToAdd: startupFromDB.data // WHAT TO PASS??
             })
             .then(investorFromDB => {
-              console.log("ADDED ", investorFromDB, "INVESTOR ", this.state.user);
+              console.log("INVESTOR FOUND ", investorFromDB, "USER: ", this.state.user);
                this.setState((state) =>  ({
                   user: {
-                    ...this.state.user,
-                    inPortfolio: [...state.user.inPortfolio, investorFromDB.data.companyName],
+                    ...state.user,
+                    inPortfolio: [...state.user.inPortfolio, startupFromDB.data.companyName],
                   }
               }))
             })
@@ -110,7 +110,7 @@ export default class StartUpList extends Component {
         const displayedList = this.state.startups.map( startup => {
           return (<tr className="one-startup" key={startup._id}>
             <td><img src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png" width="150px"></img></td>
-            <td> <h2>{startup.companyName}</h2> </td>
+            <td> <h2><Link to="/startupdetails">{startup.companyName}></Link></h2> </td>
             <td>{startup.industry}</td>
             <td>{startup.email}</td>
             <td>{startup.place}</td>

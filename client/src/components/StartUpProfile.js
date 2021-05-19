@@ -17,9 +17,9 @@ export default class StartUpProfile extends React.Component {
     stage: "",
     foundation: "",
     teamMembers: "",
-    skillsI: "",
+    skillsI: [],
     skillsII: "",
-    skillsIII: "",
+    skillsIII: [],
     experience: "",
   };
 
@@ -27,7 +27,7 @@ export default class StartUpProfile extends React.Component {
     axios
       .get(`/api/startups/${this.props.user._id}`)
       .then((response) => {
-        console.log("component did mount response data", response.data);
+        console.log("response data", response.data);
         this.setState({
           username: response.data.username,
           email: response.data.email,
@@ -51,7 +51,14 @@ export default class StartUpProfile extends React.Component {
 
   componentDidMount() {
     this.getData();
-    console.log("hello from did mount");
+    console.log("check array: ", this.state.skillsI);
+      for (let key in this.state) {
+          if (this.state.skillsI.includes(key)) {
+             this.setState({
+                 [key]: true
+             })
+          }
+    }
   }
 
   toggleEditForm = () => {

@@ -3,6 +3,7 @@ import React from "react";
 export default class Q6skillsI extends React.Component{
 
     state = {
+        skillsI: this.props.skillsI,
         finance: false,
         marketing: false,
         sales: false,
@@ -24,7 +25,17 @@ export default class Q6skillsI extends React.Component{
             console.log("CHILD: ", skills)
             this.props.setSkillsI(skills); //lift up   
     };
-
+    
+    componentDidMount () {
+        for (let key in this.state) {
+            if (this.state.skillsI.includes(key)) {
+               this.setState({
+                   [key]: true
+               })
+            }
+        }
+    }
+    
     render(){
                 return (
                     // <div onChange={this.handleChange} value={this.props.skillsI} >

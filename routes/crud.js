@@ -6,7 +6,7 @@ const Investor = require("../models/Investor");
 router.get("/startups", (req, res, next) => {
   StartUp.find()
     .then((response) => {
-      console.log("STARTUP LIST: ", response)
+      //console.log("STARTUP LIST: ", response)
       res.json(response);
     })
     .catch((err) => {
@@ -85,6 +85,7 @@ router.get("/investors/:id", (req, res, next) => {
 // update ivestor
 router.put("/investors/:id", (req, res, next) => {
   const { firstName, lastName, email, username, password } = req.body;
+  console.log("REQ BODY ",req.body);
   Investor.findByIdAndUpdate(
     req.params.id,
     { firstName, lastName, email, username, password },
@@ -92,6 +93,26 @@ router.put("/investors/:id", (req, res, next) => {
   )
     .then((investor) => {
       console.log("INVESTOR UPDATED ", investor)
+      res.status(200).json(investor);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+//update investor portfolio
+router.put("/investors/portfolio/:id", (req, res, next) => {
+  const { startupToAdd } = req.body;
+  console.log(typeof startupToAdd);//("REQ BODY ",req.body);
+  Investor
+    .findByIdAndUpdate( req.params.id, {
+      $push: 
+        {inPortfolio: startupToAdd}
+    }, 
+        { new: true }
+    )
+    .then((investor) => {
+      console.log("PORTFOLIO UPDATED ", investor)
       res.status(200).json(investor);
     })
     .catch((err) => {

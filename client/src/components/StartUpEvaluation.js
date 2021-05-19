@@ -13,6 +13,12 @@ import axios from "axios";
 export default class StartUpEvaluation extends React.Component {
   state = {
     index: 1,
+    error: null,
+    username: "",
+    email: "",
+    companyName: "",
+    statement: "",
+    description: "",
     place: "",
     industry: "",
     stage: "",
@@ -22,15 +28,19 @@ export default class StartUpEvaluation extends React.Component {
     skillsII: "",
     skillsIII: [],
     experience: "",
-    pitchDeck: "",
   };
 
   componentDidMount() {
     axios
       .get(`/api/startup/${this.props.user._id}`)
-      .then((response) => {
-        console.log("component did mount response data", response.data);
+      .then(response => {
+        console.log("component did mount response data", response.data.skillsI);
         this.setState({
+          username: response.data.username,
+          email: response.data.email,
+          companyName: response.data.companyName,
+          statement: response.data.statement,
+          description: response.data.description,
           place: response.data.place,
           industry: response.data.industry,
           stage: response.data.stage,
@@ -40,7 +50,6 @@ export default class StartUpEvaluation extends React.Component {
           skillsII: response.data.skillsII,
           skillsIII: response.data.skillsIII,
           experience: response.data.experience,
-          pitchDeck: response.data.pitchDeck,
         });
       })
       .catch((err) => console.log(err));
@@ -151,13 +160,13 @@ export default class StartUpEvaluation extends React.Component {
         });
         console.log("props", this.props.user);
       })
-      .catch((err) => {
+      .catch( err => {
         console.log(err);
-        if (err.response.status === 404) {
-          this.setState({
-            err: "Not found 🤷‍♀️🤷‍♂️",
-          });
-        }
+        // if (err.response.status === 404) {
+        //   this.setState({
+        //     err: "Not found 🤷‍♀️🤷‍♂️",
+        //   });
+        // }
       });
 
     //with using services, but it didn't work
@@ -239,7 +248,8 @@ export default class StartUpEvaluation extends React.Component {
         case 8:
           displayedComponent = (
             <Q8skillsIII
-              skillsII={this.state.skillsIII}
+              skillsII={this.state.skillsII}
+              skillsIII={this.state.skillsIII}
               setSkillsIII={this.setSkillsIII}
             />
           );

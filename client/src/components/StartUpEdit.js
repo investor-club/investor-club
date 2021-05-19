@@ -1,6 +1,64 @@
+import axios from "axios";
 import React, { Component } from "react";
 
 export default class StartUpEdit extends Component {
+  state = {
+    error: null,
+    editForm: false,
+    username: "",
+    email: "",
+    password: "",
+    companyName: "",
+    statement: "",
+    description: "",
+    place: "",
+    industry: "",
+    stage: "",
+    foundation: "",
+    teamMembers: "",
+    skillsI: [],
+    skillsII: "",
+    skillsIII: [],
+    experience: "",
+  };
+
+  getData = () => {
+    axios
+      .get(`/api/startups/${this.props.user._id}`)
+      .then((response) => {
+        console.log("response data", response.data);
+        this.setState({
+          username: response.data.username,
+          email: response.data.email,
+          password: response.data.password,
+          companyName: response.data.companyName,
+          statement: response.data.statement,
+          description: response.data.description,
+          place: response.data.place,
+          industry: response.data.industry,
+          stage: response.data.stage,
+          foundation: response.data.foundation,
+          teamMembers: response.data.teamMembers,
+          skillsI: response.data.skillsI,
+          skillsII: response.data.skillsII,
+          skillsIII: response.data.skillsIII,
+          experience: response.data.experience,
+        });
+      })
+      .catch((err) => console.log(err));
+  };
+
+  componentDidMount() {
+    this.getData();
+    console.log("check array: ", this.state.skillsI);
+      for (let key in this.state) {
+          if (this.state.skillsI.includes(key)) {
+             this.setState({
+                 [key]: true
+             })
+          }
+    }
+  }
   render() {
     return (
       <div>

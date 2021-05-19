@@ -1,9 +1,26 @@
 import React from "react";
 
 export default class Q8skillsIII extends React.Component {
+  state = {
+    skillsIII: this.props.skillsIII,
+    finance: false,
+    marketing: false,
+    sales: false,
+    it: false,
+}
   handleChange = (event) => {
     this.props.setSkillsIII(event.target.value);
   };
+
+  componentDidMount () {
+    for (let key in this.state) {
+        if (this.state.skillsIII.includes(key)) {
+           this.setState({
+               [key]: true
+           })
+        }
+    }
+  }
 
   render() {
     return (
