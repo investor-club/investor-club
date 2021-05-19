@@ -121,68 +121,89 @@ export default class StartUpProfile extends React.Component {
   render() {
     if (this.state.error) return <h3>{this.state.error}</h3>;
     return (
-      <div className="main-container">
-        <div className="left-side">
-          <h2>Hello {this.state.username}</h2>
-          <h3>{this.state.companyName}</h3>
-          <h4>{this.state.industry}</h4>
-          <textarea
-            name="bio"
-            id="bio"
-            cols="20"
-            rows="10"
-            value={this.state.description}
-          ></textarea>
-          <h4>{this.state.place}</h4>
-          <div className="social-links">
-            <a href="#">companywebsite.com</a>
-            <a href="#">PitchDeck</a>
+      <div className="startup-container">
+        <div className="main-container">
+          <div className="left-side">
+            <h2>Hello {this.state.username}</h2>
+            <h3>{this.state.companyName}</h3>
+            <h4>{this.state.industry}</h4>
+            <textarea
+              name="bio"
+              id="bio"
+              cols="20"
+              rows="10"
+              value={this.state.description}
+            ></textarea>
+            <h4>{this.state.place}</h4>
+            <div className="social-links">
+              <a href="#">companywebsite.com</a>
+              <a href="#">PitchDeck</a>
+            </div>
+          </div>
+          <div className="right-side">
+            <h3 className="score">
+              Startup Score <span>5/6</span>
+            </h3>
+            <hr />
+            <div className="top">
+              <div className="top-detail">
+                <h4>Team</h4>
+                <h4>{this.state.teamMembers}</h4>
+              </div>
+              <div className="top-detail">
+                <h4>Skills I</h4>
+                <h4>{this.state.skillsI}</h4>
+              </div>
+              <div className="top-detail">
+                <h4>Skills II</h4>
+                <h4>{this.state.skillsII}</h4>
+              </div>
+              <div className="top-detail">
+                <h4>Pitch Deck</h4>
+                <h4>{this.state.pitchDeck}</h4>
+              </div>
+            </div>
+            <h3 className="overview">Overview</h3>
+            <hr />
+            <div className="bottom">
+              <div className="bot-left">
+                <div className="bot-detail">
+                  <h4>
+                    Team <span>{this.state.teamMembers}</span>
+                  </h4>
+                  <h4>
+                    Skills in team <span>{this.state.skillsIII}</span>
+                  </h4>
+                  <h4>
+                    Experience <span>{this.state.skillsIII}</span>
+                  </h4>
+                </div>
+              </div>
+              <div className="bot-right">
+                <div className="bot-detail">
+                  <h4>
+                    All skills available <span>{this.state.skillsIII}</span>
+                  </h4>
+                  <h4>
+                    Skills missing <span>{this.state.experience}</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="right-side">
-          <h3 className="score">
-            Startup Score <span>5/6</span>
-          </h3>
-          <hr />
-          <div className="top">
-            <div className="top-detail">
-              <h4>Team</h4>
-              <h4>{this.state.teamMembers}</h4>
-            </div>
-            <div className="top-detail">
-              <h4>Skills I</h4>
-              <h4>{this.state.skillsI}</h4>
-            </div>
-            <div className="top-detail">
-              <h4>Skills II</h4>
-              <h4>{this.state.skillsII}</h4>
-            </div>
-            <div className="top-detail">
-              <h4>Pitch Deck</h4>
-              <h4>{this.state.pitchDeck}</h4>
-            </div>
-          </div>
-          <div className="bottom">
-            <div className="bot-left">
-              <h3>teamMembers: {this.state.teamMembers}</h3>
-              <h3>skillsIII: {this.state.skillsIII}</h3>
-              <h3>skillsIII: {this.state.skillsIII}</h3>
-            </div>
-            <div className="bot-right">
-              <h3>skillsIII: {this.state.skillsIII}</h3>
-              <h3>experience: {this.state.experience}</h3>
-            </div>
-          </div>
+
+        <div className="edit-form">
           <button onClick={this.toggleEditForm}>Show Edit Form</button>
+          {this.state.editForm && (
+            <StartUpEdit
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              user={this.props.user}
+              {...this.state}
+            />
+          )}
         </div>
-        {this.state.editForm && (
-          <StartUpEdit
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            user={this.props.user}
-            {...this.state}
-          />
-        )}
       </div>
     );
   }
