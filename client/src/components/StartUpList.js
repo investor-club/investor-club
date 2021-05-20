@@ -124,7 +124,7 @@ export default class StartUpList extends Component {
             {" "}
             <h2>
               <Link to="/startupdetails">{startup.companyName}></Link>
-            </h2>{" "}
+            </h2>
           </td>
           <td>{startup.industry}</td>
           <td>{startup.email}</td>
