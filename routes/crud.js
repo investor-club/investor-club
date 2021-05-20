@@ -188,7 +188,7 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
     )
       .then(startup => {
         console.log("startup",startup);
-        res.status(200).json({startup: startup});
+        res.status(200).json({startup: startup, secure_url: req.file.path});
       })
       .catch(err => {
         console.log("err", err)
