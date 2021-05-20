@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import StartUpEdit from "./StartUpEdit";
+import "./StartUpProfile.css";
 
 export default class StartUpProfile extends React.Component {
   state = {
@@ -20,9 +21,9 @@ export default class StartUpProfile extends React.Component {
     teamMembers: this.props.teamMembers,
     skillsI: this.props.skillsI,
     skillsII: this.props.skillsII,
-    skillsIII:this.props.skillsIII,
+    skillsIII: this.props.skillsIII,
     experience: this.props.experience,
-    
+    pitchDeck: this.props.pitchDeck,
   };
 
   getData = () => {
@@ -46,6 +47,7 @@ export default class StartUpProfile extends React.Component {
           skillsII: response.data.skillsII,
           skillsIII: response.data.skillsIII,
           experience: response.data.experience,
+          pitchDeck: response.data.pitchDeck,
         });
       })
       .catch((err) => console.log(err));
@@ -88,6 +90,7 @@ export default class StartUpProfile extends React.Component {
         skillsII: this.state.skillsII,
         skillsIII: this.state.skillsIII,
         experience: this.state.experience,
+        pitchDeck: this.state.pitchDeck,
       })
       .then((response) => {
         this.setState({
@@ -106,6 +109,7 @@ export default class StartUpProfile extends React.Component {
           skillsII: response.data.skillsII,
           skillsIII: response.data.skillsIII,
           experience: response.data.experience,
+          pitchDeck: response.data.pitchDeck,
           editForm: false,
         });
       })
@@ -117,44 +121,89 @@ export default class StartUpProfile extends React.Component {
   render() {
     if (this.state.error) return <h3>{this.state.error}</h3>;
     return (
-      <div>
-        <h1>username: {this.state.username}</h1>
-        <br />
-        <h1>email: {this.state.email}</h1>
-        <br />
-        <h1>companyName: {this.state.companyName}</h1>
-        <br />
-        <h1>statement: {this.state.statement}</h1>
-        <br />
-        <h1>description: {this.state.description}</h1>
-        <br />
-        <h1>place {this.state.place}</h1>
-        <br />
-        <h1>industry: {this.state.industry}</h1>
-        <br />
-        <h1>stage: {this.state.stage}</h1>
-        <br />
-        <h1>foundation: {this.state.foundation}</h1>
-        <br />
-        <h1>teamMembers: {this.state.teamMembers}</h1>
-        <br />
-        <h1>skillsI: {this.state.skillsI}</h1>
-        <br />
-        <h1>skillsII: {this.state.skillsII}</h1>
-        <br />
-        <h1>skillsIII: {this.state.skillsIII}</h1>
-        <br />
-        <h1>experience: {this.state.experience}</h1>
-        <br />
-        <button onClick={this.toggleEditForm}>Show Edit Form</button>
-        {this.state.editForm && (
-          <StartUpEdit
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            user= {this.props.user}
-            {...this.state}
-          />
-        )}
+      <div className="startup-container">
+        <div className="main-container">
+          <div className="left-side">
+            <h2>Hello {this.state.username}</h2>
+            <h3>{this.state.companyName}</h3>
+            <h4>{this.state.industry}</h4>
+            <textarea
+              name="bio"
+              id="bio"
+              cols="20"
+              rows="10"
+              value={this.state.description}
+            ></textarea>
+            <h4>{this.state.place}</h4>
+            <div className="social-links">
+              <a href="#">companywebsite.com</a>
+              <a href="#">PitchDeck</a>
+            </div>
+          </div>
+          <div className="right-side">
+            <h3 className="score">
+              Startup Score <span>5/6</span>
+            </h3>
+            <hr />
+            <div className="top">
+              <div className="top-detail">
+                <h4>Team</h4>
+                <h4>{this.state.teamMembers}</h4>
+              </div>
+              <div className="top-detail">
+                <h4>Skills I</h4>
+                <h4>{this.state.skillsI}</h4>
+              </div>
+              <div className="top-detail">
+                <h4>Skills II</h4>
+                <h4>{this.state.skillsII}</h4>
+              </div>
+              <div className="top-detail">
+                <h4>Pitch Deck</h4>
+                <h4>{this.state.pitchDeck}</h4>
+              </div>
+            </div>
+            <h3 className="overview">Overview</h3>
+            <hr />
+            <div className="bottom">
+              <div className="bot-left">
+                <div className="bot-detail">
+                  <h4>
+                    Team <span>{this.state.teamMembers}</span>
+                  </h4>
+                  <h4>
+                    Skills in team <span>{this.state.skillsIII}</span>
+                  </h4>
+                  <h4>
+                    Experience <span>{this.state.skillsIII}</span>
+                  </h4>
+                </div>
+              </div>
+              <div className="bot-right">
+                <div className="bot-detail">
+                  <h4>
+                    All skills available <span>{this.state.skillsIII}</span>
+                  </h4>
+                  <h4>
+                    Skills missing <span>{this.state.experience}</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="edit-form">
+          <button onClick={this.toggleEditForm}>Show Edit Form</button>
+          {this.state.editForm && (
+            <StartUpEdit
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              user={this.props.user}
+              {...this.state}
+            />
+          )}
+        </div>
       </div>
     );
   }
