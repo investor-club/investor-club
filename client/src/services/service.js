@@ -35,11 +35,11 @@ export default {
   },
  
   saveNewThing(newThing, id) {
-    // console.log('new thing is: ', newThing)
+    console.log('new thing is: ', newThing) //works
     return service
-      .post(`/investors/${id}`, newThing)
+      .post(`/investors/${id}`, newThing) //works
       .then(res => {
-        console.log("res.data", res.data)
+        console.log("res.data", res.data) //works
         return res.data
       })
       .catch(errorHandler);

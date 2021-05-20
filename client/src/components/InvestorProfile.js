@@ -93,22 +93,22 @@ export default class InvestorProfile extends Component {
     event.preventDefault();
     console.log("update");
 
-    service
-      .saveNewThing(this.state, this.props.user._id)
-      .then(res => {
-        console.log('added username: ', res.investor.username);
-        console.log("this state",this.state);
-        // assign state back to what we're getting.
-        this.setState({
-          username: res.investor.username,
-          firstName: res.investor.firstName,
-        });
-        console.log("this props",this.props);
-        console.log("this state",this.state);
-      })
-      .catch(err => {
-        console.log('Error while adding the thing: ', err);
-      });
+    // service
+    //   .saveNewThing(this.state, this.props.user._id)
+    //   .then(res => {
+    //     console.log('added username: ', res.investor.username);
+    //     console.log("this state",this.state);
+    //     // assign state back to what we're getting.
+    //     this.setState({ //does not work
+    //       username: res.investor.username,
+    //       firstName: res.investor.firstName,
+    //     });
+    //     console.log("this props",this.props);
+    //     console.log("this state",this.state);
+    //   })
+    //   .catch(err => {
+    //     console.log('Error while adding the thing: ', err);
+    //   });
   
     axios
       .put(`/api/investors/${this.props.user._id}`, {
@@ -122,7 +122,9 @@ export default class InvestorProfile extends Component {
         bio: this.state.bio,
         location: this.state.location,
       })
+      
       .then((response) => {
+        console.log("this state",this.state); //correct
         this.setState({
           imageUrl: this.state.imageUrl,
           username: response.data.username,
