@@ -21,6 +21,7 @@ export default class StartUpList extends Component {
       .catch((err) => console.log(err));
   };
 
+
   componentDidMount() {
     this.getData();
   }
@@ -86,9 +87,10 @@ export default class StartUpList extends Component {
                this.setState((state) =>  ({
                   user: {
                     ...state.user,
-                    inPortfolio: [...state.user.inPortfolio, startupFromDB.data.companyName],
+                    inPortfolio: [...state.user.inPortfolio, startupFromDB.data._id],
                   }
-              }))
+              }));
+              this.props.setPortfolio(startupFromDB)
             })
             .catch(err => console.log(err));
         })
