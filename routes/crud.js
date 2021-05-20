@@ -82,6 +82,22 @@ router.get("/investors/:id", (req, res, next) => {
     });
 });
 
+// specific investor
+router.get("/investors/portfolio/:id", (req, res, next) => {
+  Investor.findById(req.params.id)
+    .populate("inPortfolio")
+    .then((investor) => {
+      if (!investor) {
+        res.status(404).json(investor);
+      } else {
+        res.status(200).json(investor);
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 // update ivestor
 router.put("/investors/:id", (req, res, next) => {
   const {
