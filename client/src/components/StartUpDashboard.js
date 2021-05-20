@@ -5,6 +5,7 @@ import StartUpEvaluation from './StartUpEvaluation';
 export default class StartUpDashboard extends Component {
     state = {
         displayStartupEval: true,
+        user: this.props.user
       };
 
     setDisplayStartupEval = (displayStartupEval) => {
@@ -15,6 +16,8 @@ export default class StartUpDashboard extends Component {
 
     render() {
         console.log(this.props)
+
+        
         return (
             <div>
             <StartUpEvaluation {...this.state} {...this.props} setDisplayStartupEval={this.setDisplayStartupEval}/>

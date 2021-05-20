@@ -1,6 +1,10 @@
+const express = require('express');
 const router = require("express").Router();
 const StartUp = require("../models/StartUp");
 const Investor = require("../models/Investor");
+const uploader = require('../config/cloudinary.config')
+
+
 
 // all startups
 router.get("/startups", (req, res, next) => {
@@ -71,6 +75,7 @@ router.get("/investors", (req, res, next) => {
 router.get("/investors/:id", (req, res, next) => {
   Investor.findById(req.params.id)
     .then((investor) => {
+      console.log("IS THERE AN INVESTOR? ", investor)
       if (!investor) {
         res.status(404).json(investor);
       } else {
@@ -98,32 +103,57 @@ router.get("/investors/portfolio/:id", (req, res, next) => {
     });
 });
 
-// update ivestor
-router.put("/investors/:id", (req, res, next) => {
-  const {
-    firstName,
-    lastName,
-    email,
-    username,
-    password,
-    industry,
-    location,
-    bio,
-  } = req.body;
-  //console.log("REQ BODY UPDATE INVESTOR",req.body);
+// // update ivestor
+// router.put("/investors/:id", (req, res, next) => {
+//   const {
+//     firstName,
+//     lastName,
+//     email,
+//     username,
+//     password,
+//     industry,
+//     location,
+//     bio,
+//   } = req.body;
+//   //console.log("REQ BODY UPDATE INVESTOR",req.body);
+//   Investor.findByIdAndUpdate(
+//     req.params.id,
+//     { firstName, lastName, email, username, password, industry, location, bio },
+
+// update investor
+router.post("/investors/:id", (req, res, next) => {
+  const { firstName, lastName, email, username, password, imageUrl } = req.body;
+  console.log("REQ BODY UPDATE INVESTOR",req.body);
   Investor.findByIdAndUpdate(
     req.params.id,
-    { firstName, lastName, email, username, password, industry, location, bio },
+    { firstName, lastName, email, username, password, imageUrl },
     { new: true }
   )
     .then((investor) => {
       //console.log("INVESTOR UPDATED ", investor)
-      res.status(200).json(investor);
+      res.status(200).json({investor: investor});
     })
     .catch((err) => {
-      next(err);
+      console.log("error after investors post",err);
     });
 });
+
+// update investorImage
+router.post('/upload', uploader.single('imageUrl'), (req, res, next) => {
+  console.log('file is ,req.file.path: ', req.file.path)
+ 
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
+  // get the URL of the uploaded file and send it as a response.
+  // 'secure_url' can be any name, just make sure you remember to use the same when accessing it on the frontend
+ 
+  res.json({ secure_url: req.file.path });
+});
+ 
+
+//update investorimage
 
 //update investor portfolio
 router.put("/investors/portfolio/:id", (req, res, next) => {
@@ -157,10 +187,10 @@ router.delete("/investors/:id", (req, res, next) => {
 });
 
 //update statupEval
-router.post("/startups/:id", (req, res, next) => {
+router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
   const {
-    place,
-    industry,
+    place, 
+    industry, 
     stage,
     foundation,
     teamMembers,
@@ -170,6 +200,14 @@ router.post("/startups/:id", (req, res, next) => {
     experience,
     pitchDeck,
   } = req.body;
+  console.log("req file ", req.file);
+  // console.log("req file ", req.file.path);
+  // console.log("after req.body", pitchDeck);
+  // res.json({ secure_url: req.file.path });
+
+  // console.log("called post in backend", req.body)
+
+  
   //console.log("UPDATE STARTUP: ", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
@@ -183,18 +221,23 @@ router.post("/startups/:id", (req, res, next) => {
       skillsII,
       skillsIII,
       experience,
-      pitchDeck,
+      // pitchDeck: req.file.path
     },
-    { new: true }
-  )
-    .then((startup) => {
-      //console.log("startup",startup);
-      res.status(200).json(startup);
-    })
-    .catch((err) => {
-      console.log("err", error);
-    });
-});
+    { new: true}
+    )
+      .then(startup => {
+        console.log("startup",startup);
+        res.status(200).json({startup: startup});
+      })
+      .catch(err => {
+        console.log("err", err)
+      });
+      
+})
+
+// res.json({ secure_url: req.file.path });
+
+// , secure_url: req.file.path 
 
 //update/count the rating
 router.put("/startups/:id/rating", (req, res, next) => {

@@ -1,10 +1,17 @@
 import React, { Component } from "react";
+import service from "../services/service";
 
 export default class EditProject extends Component {
   render() {
     return (
       <div className="edit-container">
         <form onSubmit={this.props.handleSubmit}>
+
+         
+          <input 
+            type="file" 
+            onChange={e => this.props.handleFileUpload(e)} />
+
           <label htmlFor="username">Username: </label>
           <input
             type="text"
