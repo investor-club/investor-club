@@ -14,7 +14,7 @@ export default class Portfolio extends Component {
       .then((response) => {
         console.log(response.data);
         this.setState({
-          data: response.data,
+          data: response.data.inPortfolio,
         });
       })
       .catch((err) => {
@@ -22,11 +22,12 @@ export default class Portfolio extends Component {
       });
   }
   render() {
+    console.log(this.state.data);
     return (
       <div className="card-container">
         {this.state.data.map((startup) => {
           return (
-            <div className="card">
+            <div className="card" key={startup._id}>
               <div className="card-top">
                 <img src="#" alt="company image" />
                 <span>score</span>
