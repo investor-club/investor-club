@@ -164,12 +164,14 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
     skillsIII,
     experience
   } = req.body;
-  // console.log("req file ", req.file);
+  console.log("req file ", req.file);
   // console.log("req file ", req.file.path);
   // console.log("after req.body", pitchDeck);
   // res.json({ secure_url: req.file.path });
 
   // console.log("called post in backend", req.body)
+
+  
   StartUp.findByIdAndUpdate(
     req.params.id,
     {
@@ -188,7 +190,7 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
     )
       .then(startup => {
         console.log("startup",startup);
-        res.status(200).json({startup: startup, secure_url: req.file.path});
+        res.status(200).json({startup: startup});
       })
       .catch(err => {
         console.log("err", err)

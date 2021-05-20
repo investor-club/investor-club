@@ -19,7 +19,7 @@ const startUpSchema = new Schema({
   place: String,
   industry: String,
   stage: String,
-  foundation: Boolean,
+  foundation: String,
   teamMembers: String,
   skillsI: [String],
   skillsII: String,
@@ -30,7 +30,7 @@ const startUpSchema = new Schema({
       ref: 'Investor'
     }
   ],
-  experience: Boolean,
+  experience: String,
   pitchDeck: String,
   rating: Number,
   website: String,

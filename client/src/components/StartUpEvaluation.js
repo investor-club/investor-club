@@ -29,7 +29,7 @@ export default class StartUpEvaluation extends React.Component {
     skillsII: "",
     skillsIII: [],
     experience: "",
-    pitchDeck: "",
+    pitchDeck: "https://res.cloudinary.com/desxd5jb3/image/upload/v1621509639/investor-club/xt51uiofo6cjrf2xvkem.png",
   };
 
   componentDidMount() {
@@ -52,6 +52,7 @@ export default class StartUpEvaluation extends React.Component {
           skillsII: response.data.skillsII,
           skillsIII: response.data.skillsIII,
           experience: response.data.experience,
+          // pitchDeck: response.data.pitchDeck,
           
         });
       })
@@ -296,7 +297,6 @@ export default class StartUpEvaluation extends React.Component {
               <div className="progressBarBg">
                 <div className='progressBar' style={{width: `${progressWidth}%`}}></div>
               </div>
-              
             </div>
 
             <div class="questionContainer">
