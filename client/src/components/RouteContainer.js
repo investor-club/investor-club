@@ -5,6 +5,7 @@ import Login from "./Login";
 import SignUpInvestor from "./SignUpInvestor";
 import SignUpStartUp from "./SignUpStartUp";
 import StartUpList from "./StartUpList";
+import InvestorList from "./InvestorList";
 import InvestorDashboard from "./InvestorDashboard";
 import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
@@ -20,6 +21,7 @@ export default class RouteContainer extends React.Component {
     user: this.props.user,
     // displayStartupEval: true,
     type: this.props.type,
+    
   };
 
   setUser = (user) => {
@@ -28,12 +30,17 @@ export default class RouteContainer extends React.Component {
   setType = (type) => {
     this.setState({ type });
   };
+  setPortfolio = (startup) => {
+    this.setState((state) =>  ({
+      user: {
+        ...state.user,
+        inPortfolio: [...state.user.inPortfolio, startup],
+      }
+  }));;
+  };
 
-  // let landing;
-  // this.state.landing ? landing = (<LandingPage />) : landing = (<></>)
   render() {
-    console.log("I AM TYPE IN ROUTECONTAINER", this.type);
-
+    console.log("I AM USER IN ROUTECONTAINER", this.state.user);
     return (
       <div>
         <Route
@@ -120,9 +127,9 @@ export default class RouteContainer extends React.Component {
               {...this.state}
               {...this.props}
               setDisplayStartupEval={this.setDisplayStartupEval}
-              {...props}
-              user={this.state.user}
-              type={this.type}
+              // {...props}
+              // user={this.state.user}
+              // type={this.state.type}
             />
           )}
         />
@@ -170,10 +177,14 @@ export default class RouteContainer extends React.Component {
         <Route
           exact
           path="/startupdetails"
-          render={(props) => (
-            <StartUpDetails user={this.state.user} {...props} />
-          )}
-        />
+          render={(props) => <StartUpDetails user={this.state.user} {...props} />}
+        />  
+
+        <Route
+          exact
+          path="/investorlist"
+          render={(props) => <InvestorList user={this.state.user} {...props} />} 
+        />  
       </div>
     );
   }

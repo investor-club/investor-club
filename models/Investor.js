@@ -28,6 +28,7 @@ const investorSchema = new Schema({
   bio: String,
   location: String,
   // imageUrl: { type: String, required: true }
+  interest: String,
   
 });
 

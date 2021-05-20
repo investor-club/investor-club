@@ -4,7 +4,7 @@ import { logout } from "../services/auth";
 import "../App.css";
 
 export default function Navbar(props) {
-  console.log("User in navbar: ", props);
+  //console.log("User in navbar: ", props);
 
   const handleLogout = () => {
     logout().then(() => {
@@ -45,7 +45,7 @@ export default function Navbar(props) {
 
   return (
     <div>
-      <div id="navbarContainer" class="bodyPadding">
+      <div id="navbarContainer" className="bodyPadding">
         <div id="clubLogo">
           <Link to="/">Investment Club</Link>
         </div>

@@ -10,6 +10,8 @@ import Q8skillsIII from "./evalQuestions/Q8skillsIII";
 import Q9experience from "./evalQuestions/Q9experience";
 import Q10pitchDeck from "./evalQuestions/Q10pitchDeck";
 import axios from "axios";
+import { rating } from "../services/rating";
+
 export default class StartUpEvaluation extends React.Component {
   state = {
     index: 1,
@@ -28,13 +30,14 @@ export default class StartUpEvaluation extends React.Component {
     skillsII: "",
     skillsIII: [],
     experience: "",
+    rating: 0
   };
 
   componentDidMount() {
     axios
-      .get(`/api/startup/${this.props.user._id}`)
-      .then((response) => {
-        console.log("component did mount response data", response.data.skillsI);
+      .get(`/api/startups/${this.props.user._id}`)
+      .then(response => {
+        console.log("component did mount EVAL", response.data);
         this.setState({
           username: response.data.username,
           email: response.data.email,
@@ -50,6 +53,7 @@ export default class StartUpEvaluation extends React.Component {
           skillsII: response.data.skillsII,
           skillsIII: response.data.skillsIII,
           experience: response.data.experience,
+          rating: response.data.rating,
         });
       })
       .catch((err) => console.log(err));
@@ -137,11 +141,11 @@ export default class StartUpEvaluation extends React.Component {
       skillsII,
       skillsIII,
       experience,
-      pitchDeck,
+      pitchDeck
     } = this.state;
 
-    axios
-      .post(`/api/startup/${this.props.user._id}`, {
+    //post form data
+    axios.post(`/api/startups/${this.props.user._id}`, {
         place,
         industry,
         stage,
@@ -153,16 +157,18 @@ export default class StartUpEvaluation extends React.Component {
         experience,
         pitchDeck,
       })
-      .then(() => {
-        // console.log("response data", response.data);
+      .then(response => {
+        console.log("RESPONSE FROM EVAL FRONT: ", response.data);
+        console.log("STATE EVAL: ", this.state);
         this.setState({
           index: this.state.index + 1,
         });
-        console.log("props", this.props.user);
+        rating(response.data, this.props.user._id);  //call the rating service function
       })
       .catch((err) => {
         console.log(err, "🤷‍♀️🤷‍♂️");
       });
+
 
     //with using services, but it didn't work
     // updateEval(place, industry, stage)
@@ -175,6 +181,7 @@ export default class StartUpEvaluation extends React.Component {
     //         })
     //     })
   };
+    
 
   showPrevious = (e) => {
     e.preventDefault();
@@ -272,7 +279,7 @@ export default class StartUpEvaluation extends React.Component {
           <div class="purpleBackground"></div>
           <div class="bodyPadding">
             <div>
-              <a href="" onClick={this.showPrevious}>
+              <a onClick={this.showPrevious}>
                 Back
               </a>
               <div className="progressBarBg">

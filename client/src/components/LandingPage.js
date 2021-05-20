@@ -7,7 +7,7 @@ export default class LandingPage extends Component {
   render() {
     // let landing;
     // {
-    //   this.state.user ? (landing = <></>) : (landing = <LandingPage />);
+    //   !this.state.user ? return (landing = <LandingPage />) : (landing = <></>) ;
     // }
     if (!this.state.user) {
       return (

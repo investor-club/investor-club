@@ -11,13 +11,19 @@ export default class SignUpChoice extends Component {
       <div class='purpleBackground'></div>
       <div id='signupChoice'>
         <div id='startupChoice'>
-          <img src={startupImg} alt="startup image"/>
+         
+          <Link to="/signup/startup">
+            <img src={startupImg} alt="startup image"/>
+          </Link>          
           <h2>
             <Link to="/signup/startup">I'm a Startup</Link>
           </h2>
         </div>
         <div id='investorChoice'>
-          <img src={investorImg} alt="investor image"/>
+          
+          <Link to="/signup/investor">
+            <img src={investorImg} alt="investor image"/>
+          </Link>
           <h2>
             <Link to="/signup/investor">I'm an Investor</Link>
           </h2>
