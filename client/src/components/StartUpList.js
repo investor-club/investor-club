@@ -128,14 +128,14 @@ export default class StartUpList extends Component {
           <td>
             {" "}
             <h2>
-              <Link to="/startupdetails">{startup.companyName}></Link>
+              <Link to="/startupdetails">{startup.companyName}</Link>
             </h2>
           </td>
           <td>{startup.industry}</td>
           <td>{startup.email}</td>
           <td>{startup.place}</td>
           <td>{startup.stage}</td>
-          <td>{startup.rating}/6</td>
+          <td>{startup.rating === 0 ? 0 :  startup.rating}/6</td>
           {/* can only add if not in portfolio */}
           {/* {this.state.portfolio.includes(startup.id) ?  <td>Add to portfolio </td> :  <td>In portfolio </td>} */}
           <td>

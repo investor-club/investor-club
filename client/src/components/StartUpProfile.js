@@ -154,7 +154,8 @@ export default class StartUpProfile extends React.Component {
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
               user={this.state.user}
-              {...this.state}
+              skillsI={this.state.user.skillsI}
+              skillsIII={this.state.user.skillsIII}
             />
           )}
         </div>

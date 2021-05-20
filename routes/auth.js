@@ -76,9 +76,12 @@ router.post("/startups", (req, res, next) => {
         companyName,
         place: "",
         industry: "", 
-        stage: ""})
+        stage: "",
+        skillsI: [],
+        skillsII: "",
+        skillsIII: []})
         .then((startup) => {
-          console.log(startup)
+          console.log("NEW STARTUP: ", startup)
           res.status(200).json(startup);
         })
         .catch((err) => next(err));

@@ -81,7 +81,7 @@ body {
 #signupChoice {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 150px 50px 0px 50px;
 }
 
@@ -259,7 +259,11 @@ body {
 }
 
 
-
+.one-startup a {
+  text-decoration: none;
+  color:#5200ff;;
+  font-weight: bold;
+}
 
 
 

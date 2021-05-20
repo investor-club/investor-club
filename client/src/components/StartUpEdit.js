@@ -82,7 +82,7 @@ export default class StartUpEdit extends Component {
 
   componentDidMount() {
     this.getData();
-    console.log("check array: ", this.state.skillsIchecked);
+    console.log("check array: ", this.state.skillsI);
     for (let key in this.state.skillsIchecked) {
       if (this.state.skillsI.includes(key)) {
         this.setState({
