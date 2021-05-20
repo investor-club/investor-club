@@ -40,6 +40,9 @@ export default class RouteContainer extends React.Component {
 
   render() {
     console.log("I AM USER IN ROUTECONTAINER", this.state.user);
+
+
+
     return (
       <div>
         <Route
@@ -127,7 +130,7 @@ export default class RouteContainer extends React.Component {
               {...this.props}
               setDisplayStartupEval={this.setDisplayStartupEval}
               // {...props}
-              // user={this.state.user}
+              user={this.state.user}
               // type={this.state.type}
             />
           )}
@@ -159,8 +162,8 @@ export default class RouteContainer extends React.Component {
           path="/investor/profile"
           render={(props) => (
             <InvestorProfile
-              type={this.state.type}
-              user={this.state.user}
+                type={this.state.type}
+                user={this.state.user}
               setUser={this.setUser}
               setAppState={this.props.setAppState}
               {...props}

@@ -192,7 +192,8 @@ export default class StartUpEvaluation extends React.Component {
           index: this.state.index + 1,
         });
         if (this.state.index > 7){
-        rating(response.data); } //call the rating service function
+        rating(response.data); //call the rating service function
+        this.props.history.push("/startupdashboard") } 
       })
       .catch( err => {
         console.log(err);
