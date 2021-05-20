@@ -59,7 +59,7 @@ export default class StartUpEvaluation extends React.Component {
       .catch((err) => console.log(err));
   }
 
-  //componentDidMount go to data I need and set it to the state variables.
+  //componentDidMount gets to data I need and set it to the state variables.
   setPlace = (place) => {
     this.setState({
       place: place,
@@ -120,7 +120,6 @@ export default class StartUpEvaluation extends React.Component {
       pitchDeck: pitchDeck,
     });
   };
-
   // progressWidth = () => {
   //     return this.state.index * 10;
   // }
@@ -130,6 +129,7 @@ export default class StartUpEvaluation extends React.Component {
     if (this.state.index > 7) {
       console.log("this is the end of the questionnaire");
       this.props.setDisplayStartupEval(false);
+
     }
     const {
       place,
@@ -159,30 +159,19 @@ export default class StartUpEvaluation extends React.Component {
       })
       .then(response => {
         console.log("RESPONSE FROM EVAL FRONT: ", response.data);
-        console.log("STATE EVAL: ", this.state);
+        console.log("STATE IN EVAL: ", this.state);
         this.setState({
           index: this.state.index + 1,
         });
-        rating(response.data, this.props.user._id);  //call the rating service function
+        if (this.state.index > 7){
+        rating(response.data); } //call the rating service function
       })
       .catch((err) => {
         console.log(err, "🤷‍♀️🤷‍♂️");
       });
 
-
-    //with using services, but it didn't work
-    // updateEval(place, industry, stage)
-    //     .then(data => {
-    //         console.log("data is updated");
-    //         //if not empty
-    //         this.setState({
-    //             index: (this.state.index + 1)
-    //             currentQuestion: display
-    //         })
-    //     })
   };
     
-
   showPrevious = (e) => {
     e.preventDefault();
     this.setState({

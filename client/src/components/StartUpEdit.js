@@ -227,7 +227,7 @@ export default class StartUpEdit extends Component {
                 <label htmlFor="stage">In what stage is your idea?</label>
 
                 <div class="answerRadio">
-                  <label for="prototype">
+                  <label htmlFor="prototype">
                     <input
                       type="radio"
                       id="Prototype"
@@ -238,7 +238,7 @@ export default class StartUpEdit extends Component {
                     Prototype/MVP (Pre-Seed)
                   </label>
 
-                  <label for="concept">
+                  <label htmlFor="concept">
                     <input
                       type="radio"
                       id="Concept"
@@ -249,7 +249,7 @@ export default class StartUpEdit extends Component {
                     Proof of Concept (Pre-Seed)
                   </label>
 
-                  <label for="paying customers">
+                  <label htmlFor="paying customers">
                     <input
                       type="radio"
                       id="Customers"
@@ -260,7 +260,7 @@ export default class StartUpEdit extends Component {
                     First Paying Customers (Seed)
                   </label>
 
-                  <label for="beyond">
+                  <label htmlFor="beyond">
                     <input
                       type="radio"
                       id="beyond"
@@ -294,7 +294,7 @@ export default class StartUpEdit extends Component {
                   value={true}
                   checked={this.state.foundation}
                 />
-                <label for="yes">Yes</label>
+                <label htmlFor="yes">Yes</label>
 
                 <input
                   type="radio"
@@ -303,7 +303,7 @@ export default class StartUpEdit extends Component {
                   value={true}
                   checked={this.state.foundation}
                 />
-                <label for="no">No</label>
+                <label htmlFor="no">No</label>
               </div>
             </div>
           </div>
@@ -329,7 +329,7 @@ export default class StartUpEdit extends Component {
                   value="1"
                   checked={this.state.teamMembers === "1"}
                 />
-                <label for="1">1</label>
+                <label htmlFor="1">1</label>
               </div>
               <input
                 type="radio"
@@ -338,7 +338,7 @@ export default class StartUpEdit extends Component {
                 value="2"
                 checked={this.state.teamMembers === "2"}
               />
-              <label for="2">2</label>
+              <label htmlFor="2">2</label>
               <input
                 type="radio"
                 id="3"
@@ -346,7 +346,7 @@ export default class StartUpEdit extends Component {
                 value="3"
                 checked={this.state.teamMembers === "3"}
               />
-              <label for="3">3</label>
+              <label htmlFor="3">3</label>
               <input
                 type="radio"
                 id="4"
@@ -354,7 +354,7 @@ export default class StartUpEdit extends Component {
                 value="4"
                 checked={this.state.teamMembers === "4"}
               />
-              <label for="4">4</label>
+              <label htmlFor="4">4</label>
               <input
                 type="radio"
                 id="5orMore"
@@ -362,7 +362,7 @@ export default class StartUpEdit extends Component {
                 value="5orMore"
                 checked={this.state.teamMembers === "5orMore"}
               />
-              <label for="5orMore">5 or more</label>
+              <label htmlFor="5orMore">5 or more</label>
             </div>
           </div>
 
@@ -433,7 +433,7 @@ export default class StartUpEdit extends Component {
                 value="yes"
                 checked={this.state.skillsII === "yes"}
               />
-              <label for="yes">Yes</label>
+              <label htmlFor="yes">Yes</label>
 
               <input
                 type="radio"
@@ -442,7 +442,7 @@ export default class StartUpEdit extends Component {
                 value="no"
                 checked={this.state.skillsII === "yes"}
               />
-              <label for="no">No</label>
+              <label htmlFor="no">No</label>
             </div>
           </div>
 

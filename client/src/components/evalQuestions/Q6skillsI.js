@@ -26,6 +26,7 @@ export default class Q6skillsI extends React.Component{
     
     componentDidMount () {
         for (let key in this.state) {
+           // this.state.skillsI.length === 0 ? 
             if (this.state.skillsI.includes(key)) {
                this.setState({
                    [key]: true

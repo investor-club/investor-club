@@ -1,35 +1,28 @@
 import axios from "axios";
 
-const rating = (obj, id) => {
-  console.log("OBJ PASSED TO RATING: ", obj)
+const rating = (startupData) => {
+  //console.log("OBJ PASSED TO RATING: ", obj)
+  //console.log("TO COUNT : ",obj.rating)
   //helper function 👇🏼
-  const count = () => {
-    obj.rating =+ obj.skillsI.length
-    if ( [2, 3, 4].includes(obj.teamMembers) ) obj.rating =+ 1;
-    if (obj.skillsII === 'yes') obj.rating =+ 1;
-    return obj.rating
+  const getCount = (obj) => {
+    let count = 0;
+    count += obj.skillsI.length;
+    if ( [2, 3, 4].includes(obj.teamMembers) ) count += 1;
+    if (obj.skillsII === 'yes') count += 1;
+    console.log("IVE COUNTED: ", count)
+    return count
   }
-
-  axios
-    .get(`api/startups/${id}`)
-    .then((startup) => {
-      console.log("STARTUP TO RATE: ", startup);  //weird response
       axios
-        .put(`/api/startups/${id}/rating`, {
-          rating: count(startup.data),   // helper fnc from ☝🏻
+        .put(`/api/startups/${startupData._id}/rating`, {
+          rating: getCount(startupData),   // helper fnc from ☝🏻
         })
         .then((response) => {
-          console.log("RESPONSE FROM RATING POST: ", response)
-          return response.data;
+          console.log("RESPONSE AFTER COUNT PUT: ", response)
+          return response .data;
         })
         .catch((err) => {
           return err.response.data;
         });
-        })
-    .catch((err) => {
-      console.log(err)
-      //return err.startup.data;
-    });
 
 }
 

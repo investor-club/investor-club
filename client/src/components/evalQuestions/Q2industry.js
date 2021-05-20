@@ -28,9 +28,8 @@ export default class Q2industry extends React.Component {
           <option value="agriculture">Agriculture</option>
           <option value="robotics">Robotics</option>
           <option value="blockchain">Blockchain</option>
-          <option value="gaming,(cyber-)security">
-            Gaming,(Cyber-)Security
-          </option>
+          <option value="gaming">Gaming</option>
+          <option value="(cyber-)security">(Cyber-)Security</option>
           <option value="humanResources">Human Resources</option>
           <option value="craft">Craft</option>
           <option value="fashion">Fashion</option>

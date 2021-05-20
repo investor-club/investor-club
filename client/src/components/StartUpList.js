@@ -130,7 +130,7 @@ export default class StartUpList extends Component {
           <td>{startup.email}</td>
           <td>{startup.place}</td>
           <td>{startup.stage}</td>
-          <td>Rating</td>
+          <td>{startup.rating}/6</td>
           {/* can only add if not in portfolio */}
           {/* {this.state.portfolio.includes(startup.id) ?  <td>Add to portfolio </td> :  <td>In portfolio </td>} */}
           <td>
