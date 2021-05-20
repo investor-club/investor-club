@@ -34,6 +34,7 @@ const startUpSchema = new Schema({
   pitchDeck: [String],
   rating: Number,
   website: String,
+  // imageUrl: { type: String, required: true },
 });
 
 const StartUp = model("StartUp", startUpSchema);

@@ -194,6 +194,7 @@ body {
 
 .answerRadio > label{
   font-size: 18px  !important;
+  
   /* position: relative;
   cursor: pointer; */
   /* display: inline-block; */
@@ -201,9 +202,11 @@ body {
 }
 
 .answerRadio{
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  align-items: left;
+  justify-content: flex-start; */
+  text-align: left;
 }
 
 .startup-list-container{

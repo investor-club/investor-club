@@ -82,13 +82,38 @@ router.get("/investors/:id", (req, res, next) => {
     });
 });
 
+// specific investor
+router.get("/investors/portfolio/:id", (req, res, next) => {
+  Investor.findById(req.params.id)
+    .populate("inPortfolio")
+    .then((investor) => {
+      if (!investor) {
+        res.status(404).json(investor);
+      } else {
+        res.status(200).json(investor);
+      }
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 // update ivestor
 router.put("/investors/:id", (req, res, next) => {
-  const { firstName, lastName, email, username, password } = req.body;
+  const {
+    firstName,
+    lastName,
+    email,
+    username,
+    password,
+    industry,
+    location,
+    bio,
+  } = req.body;
   //console.log("REQ BODY UPDATE INVESTOR",req.body);
   Investor.findByIdAndUpdate(
     req.params.id,
-    { firstName, lastName, email, username, password },
+    { firstName, lastName, email, username, password, industry, location, bio },
     { new: true }
   )
     .then((investor) => {
@@ -103,16 +128,16 @@ router.put("/investors/:id", (req, res, next) => {
 //update investor portfolio
 router.put("/investors/portfolio/:id", (req, res, next) => {
   const { startupToAdd } = req.body;
- console.log("STARTUP TO ADD REQ BODY ",req.body);
-  Investor
-    .findByIdAndUpdate( req.params.id, {
-      $push: 
-        {inPortfolio: startupToAdd}
-    }, 
-        { new: true }
-    )
+  console.log("STARTUP TO ADD REQ BODY ", req.body);
+  Investor.findByIdAndUpdate(
+    req.params.id,
+    {
+      $push: { inPortfolio: startupToAdd },
+    },
+    { new: true }
+  )
     .then((investor) => {
-      console.log("PORTFOLIO UPDATED ", investor)
+      console.log("PORTFOLIO UPDATED ", investor);
       res.status(200).json(investor);
     })
     .catch((err) => {
@@ -133,8 +158,9 @@ router.delete("/investors/:id", (req, res, next) => {
 
 //update statupEval
 router.post("/startups/:id", (req, res, next) => {
-  const {place, 
-    industry, 
+  const {
+    place,
+    industry,
     stage,
     foundation,
     teamMembers,
@@ -142,14 +168,14 @@ router.post("/startups/:id", (req, res, next) => {
     skillsII,
     skillsIII,
     experience,
-    pitchDeck
+    pitchDeck,
   } = req.body;
   //console.log("UPDATE STARTUP: ", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
     {
-      place, 
-      industry, 
+      place,
+      industry,
       stage,
       foundation,
       teamMembers,
@@ -157,38 +183,37 @@ router.post("/startups/:id", (req, res, next) => {
       skillsII,
       skillsIII,
       experience,
-      pitchDeck
+      pitchDeck,
     },
-    { new: true}
-    )
-      .then(startup => {
-        //console.log("startup",startup);
-        res.status(200).json(startup);
-      })
-      .catch(err => {
-        console.log("err", error)
-      });
-      
-      })
+    { new: true }
+  )
+    .then((startup) => {
+      //console.log("startup",startup);
+      res.status(200).json(startup);
+    })
+    .catch((err) => {
+      console.log("err", error);
+    });
+});
 
 //update/count the rating
 router.put("/startups/:id/rating", (req, res, next) => {
   const { rating } = req.body;
-  console.log("REQ BODY FOR RATING ",req.body);
-  StartUp
-    .findByIdAndUpdate( req.params.id, {
-      rating: rating
-    }, 
-        { new: true }
-    )
+  console.log("REQ BODY FOR RATING ", req.body);
+  StartUp.findByIdAndUpdate(
+    req.params.id,
+    {
+      rating: rating,
+    },
+    { new: true }
+  )
     .then((investor) => {
-      console.log("STARTUP RATED ", investor)
+      console.log("STARTUP RATED ", investor);
       res.status(200).json(investor);
     })
     .catch((err) => {
       next(err);
     });
-  })
-
+});
 
 module.exports = router;

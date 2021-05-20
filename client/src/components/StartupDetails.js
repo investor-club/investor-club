@@ -24,79 +24,74 @@ export default class StartupDetails extends Component {
 
   render() {
     return (
-      <div className="detail-container">
-        <div className="main-info">
-          <img src="#" alt="company image" />
+      <div className="main-container">
+        <div className="left-side">
+          <h2>Hello {this.state.user.username}</h2>
           <h3>{this.state.user.companyName}</h3>
           <h4>{this.state.user.industry}</h4>
-          <p>{this.state.user.description}</p>
-          <p>{this.state.user.place}</p>
+          <textarea
+            name="bio"
+            id="bio"
+            cols="20"
+            rows="10"
+            value={this.state.user.description}
+          ></textarea>
+          <h4>{this.state.user.place}</h4>
           <div className="social-links">
-            <a href="#">Company Website</a>
-            <a href="#">Company PitchDeck</a>
+            <a href="#">companywebsite.com</a>
+            <a href="#">PitchDeck</a>
           </div>
         </div>
-
-        <div className="secondary-info">
-          <div className="score-info">
-            <h4>Startup Rating {this.state.user.rating}</h4>
-            <hr />
-            <div className="score-details">
-              <div className="details-df">
-                <h5>Team</h5>
-                <p>{this.state.user.teamMembers}</p>
-              </div>
-              <div className="details-df">
-                <h5>Skills I</h5>
-                <p>{this.state.user.skillsI}</p>
-              </div>
-              <div className="details-df">
-                <h5>Skills II</h5>
-                <p>{this.state.user.skillsII}</p>
-              </div>
-              <div className="details-df">
-                <h5>Skills III</h5>
-                <p>{this.state.user.skillsIII}</p>
-              </div>
-              <div className="details-df">
-                <h5>Pitch Deck</h5>
-                <p>{this.state.user.pitchDeck}</p>
-              </div>
+        <div className="right-side">
+          <h3 className="score">
+            Startup Score <span>5/6</span>
+          </h3>
+          <hr />
+          <div className="top">
+            <div className="top-detail">
+              <h4>Team</h4>
+              <h4>{this.state.user.teamMembers}</h4>
+            </div>
+            <div className="top-detail">
+              <h4>Skills I</h4>
+              <h4>{this.state.user.skillsI}</h4>
+            </div>
+            <div className="top-detail">
+              <h4>Skills II</h4>
+              <h4>{this.state.user.skillsII}</h4>
+            </div>
+            <div className="top-detail">
+              <h4>Pitch Deck</h4>
+              <h4>{this.state.user.pitchDeck}</h4>
             </div>
           </div>
-          <div className="overview-info">
-            <h4>Overview</h4>
-            <hr />
-            <div className="overview">
-              <div className="overview-detail">
-                <h5>Team</h5>
-                <h5>{this.state.user.teamMembers}</h5>
-              </div>
-              <div className="overview-detail">
-                <h5>Skills in team</h5>
-                <div className="flex-helper">
-                  <h5>{this.state.user.skillsI}/</h5>
-                  <h5>{this.state.user.skillsII}</h5>
+          <h3 className="overview">Overview</h3>
+          <hr />
+          <div className="bottom">
+              <div className="bot-left">
+                <div className="bot-detail">
+                  <h4>
+                    Team <span>{this.state.user.teamMembers}</span>
+                  </h4>
+                  <h4>
+                    Has all necessary skills: <span>{this.state.user.skillsII}</span>
+                  </h4>
+                  <h4>
+                    Experience <span>{this.state.user.experience}</span>
+                  </h4>
                 </div>
               </div>
-              <div className="overview-detail">
-                <h5>All skills available</h5>
-                <div className="flex-helper">
-                  <h5>{this.state.user.skillsIII}</h5>
+              <div className="bot-right">
+                <div className="bot-detail">
+                  <h4>
+                    Skills available { this.state.user.skillsI.map(a => {return (<span>{a} </span>) } ) }
+                  </h4>
+                  <h4>
+                    Skills missing { this.state.user.skillsIII.map(a => {return (<span> {a} </span>) } ) }
+                  </h4>
                 </div>
-              </div>
-              <div className="overview-detail">
-                <h5>Skills missing</h5>
-                <div className="flex-helper">
-                  <h5>{this.state.user.teamMembers}</h5>
-                </div>
-              </div>
-              <div className="overview-detail">
-                <h5>Experience</h5>
-                <h5>{this.state.user.experience}</h5>
               </div>
             </div>
-          </div>
         </div>
       </div>
     );

@@ -126,7 +126,7 @@ export default class StartUpProfile extends React.Component {
                     Team <span>{this.state.user.teamMembers}</span>
                   </h4>
                   <h4>
-                    Skills in team <span>{this.state.user.skillsII}</span>
+                    Has all necessary skills: <span>{this.state.user.skillsII}</span>
                   </h4>
                   <h4>
                     Experience <span>{this.state.user.experience}</span>
@@ -136,7 +136,7 @@ export default class StartUpProfile extends React.Component {
               <div className="bot-right">
                 <div className="bot-detail">
                   <h4>
-                    All skills available { this.state.user.skillsI.map(a => {return (<span>{a} </span>) } ) }
+                    Skills available { this.state.user.skillsI.map(a => {return (<span>{a} </span>) } ) }
                   </h4>
                   <h4>
                     Skills missing { this.state.user.skillsIII.map(a => {return (<span> {a} </span>) } ) }

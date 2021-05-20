@@ -205,9 +205,8 @@ export default class StartUpEdit extends Component {
                 <option value="agriculture">Agriculture</option>
                 <option value="robotics">Robotics</option>
                 <option value="blockchain">Blockchain</option>
-                <option value="gaming,(cyber-)security">
-                  Gaming,(Cyber-)Security
-                </option>
+                <option value="gaming">Gaming</option>
+                <option value="(cyber-)security">(Cyber-)Security</option>
                 <option value="humanResources">Human Resources</option>
                 <option value="craft">Craft</option>
                 <option value="fashion">Fashion</option>
@@ -379,7 +378,7 @@ export default class StartUpEdit extends Component {
                 type="checkbox"
                 id="finance"
                 name="finance"
-                checked={this.state.skillsI.finance}
+                checked={this.state.skillsIchecked.finance}
                 onChange={this.handleChecked}
               />
               <label htmlFor="finance">Finance</label>
@@ -388,7 +387,7 @@ export default class StartUpEdit extends Component {
                 type="checkbox"
                 id="marketing"
                 name="marketing"
-                checked={this.state.skillsI.marketing}
+                checked={this.state.skillsIchecked.marketing}
                 onChange={this.handleChecked}
               />
               <label htmlFor="marketing">Marketing</label>
@@ -397,7 +396,7 @@ export default class StartUpEdit extends Component {
                 type="checkbox"
                 id="sales"
                 name="sales"
-                checked={this.state.skillsI.sales}
+                checked={this.state.skillsIchecked.sales}
                 onChange={this.handleChecked}
               />
               <label htmlFor="sales">Sales</label>
@@ -406,7 +405,7 @@ export default class StartUpEdit extends Component {
                 type="checkbox"
                 id="it"
                 name="it"
-                checked={this.state.skillsI.it}
+                checked={this.state.skillsIchecked.it}
                 onChange={this.handleChecked}
               />
               <label htmlFor="it">IT/Tech</label>
@@ -458,7 +457,7 @@ export default class StartUpEdit extends Component {
                 type="checkbox"
                 id="finance"
                 name="finance"
-                checked={this.state.skillsIII.finance}
+                checked={this.state.skillsIIIchecked.finance}
                 onChange={this.handleChecked}
               />
               <label htmlFor="finance">Finance</label>
@@ -467,7 +466,7 @@ export default class StartUpEdit extends Component {
                 type="checkbox"
                 id="marketing"
                 name="marketing"
-                checked={this.state.skillsIII.marketing}
+                checked={this.state.skillsIIIchecked.marketing}
                 onChange={this.handleChecked}
               />
               <label htmlFor="marketing">Marketing</label>
@@ -476,7 +475,7 @@ export default class StartUpEdit extends Component {
                 type="checkbox"
                 id="sales"
                 name="sales"
-                checked={this.state.skillsIII.sales}
+                checked={this.state.skillsIIIchecked.sales}
                 onChange={this.handleChecked}
               />
               <label htmlFor="sales">Sales</label>
@@ -485,7 +484,7 @@ export default class StartUpEdit extends Component {
                 type="checkbox"
                 id="it"
                 name="it"
-                checked={this.state.skillsIII.it}
+                checked={this.state.skillsIIIchecked.it}
                 onChange={this.handleChecked}
               />
               <label htmlFor="it">IT/Tech</label>
