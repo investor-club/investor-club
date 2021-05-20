@@ -39,53 +39,58 @@ export default class SignUpStartUp extends Component {
 
   render() {
     return (
-      <div class='bodyPadding'>
-        <h2>Signup</h2>
+      <div className="signup-login">
+        <div className="left-part">
+          <div className="image-container"> </div>
+        </div>
+        <div className="right-part">
+          <div className="login-container">
+            <h2>Signup</h2>
 
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="companyName">Company Name: </label>
-          <input
-            type="text"
-            name="companyName"
-            value={this.state.companyName}
-            onChange={this.handleChange}
-            id="companyName"
-          />
-          <br/>
-
-          <label htmlFor="username">Username: </label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-            id="username"
-          />
-          <br/>
-
-          <label htmlFor="email">Email: </label>
-          <input
-            type="email"
-            name="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-            id="email"
-          />
-          <br/>
-
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-            id="password"
-          />
-          <br/>
-
-          <button type="submit">Sign Up</button>
-          {this.state.message && <h3>{this.state.message}</h3>}
-        </form>
+            <label htmlFor="companyName">Company Name: </label>
+            <input
+              type="text"
+              name="companyName"
+              value={this.state.companyName}
+              onChange={this.handleChange}
+              id="companyName"
+            />
+            <div class="login-detail">
+              <form onSubmit={this.handleSubmit}>
+                <label htmlFor="username">Username: </label>
+                <input
+                  type="text"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                  id="username"
+                />
+                <label htmlFor="email">Email: </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  id="email"
+                />
+                <label htmlFor="password">Password: </label>
+                <input
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  id="password"
+                />
+                <div>
+                  <button type="submit" className="form-button">
+                    Create account
+                  </button>
+                </div>
+                {this.state.message && <h3>{this.state.message}</h3>}
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
