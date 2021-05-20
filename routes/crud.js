@@ -153,7 +153,6 @@ router.get("/startup/:id", (req, res, next) => {
 
 //update statupEval
 router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
-  console.log("post startup id")
   const {
     place, 
     industry, 
@@ -166,8 +165,8 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
     experience,
     pitchDeck
   } = req.body;
-  // console.log("req file path", req.file.path)
-  console.log("after req.body", pitchDeck)
+  console.log("req body-file path", req.file);
+  // console.log("after req.body", pitchDeck);
   // res.json({ secure_url: req.file.path });
 
   // console.log("called post in backend", req.body)
@@ -189,7 +188,7 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
     )
       .then(startup => {
         console.log("startup",startup);
-        res.status(200).json({startup: startup, secure_url: req.file.path});
+        res.status(200).json({startup: startup});
       })
       .catch(err => {
         console.log("err", err)

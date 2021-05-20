@@ -131,6 +131,7 @@ export default class StartUpEvaluation extends React.Component {
     const uploadData = new FormData();
     // req.body to .create() method when creating a new thing in '/api/things/create' POST route
     uploadData.append('pitchDeck', e.target.files[0]);
+    console.log("upload data", uploadData)
 
     service
       .handleUpload(uploadData, this.props.user._id)
