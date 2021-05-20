@@ -70,15 +70,16 @@ export default class StartUpList extends Component {
         startups: [...state.startups.sort((a, b) => b.rating - a.rating)],
       }));
     }
+  };
 
-    handleAdd = id => {
+    handleAdd = (id) => {
       axios
         .get(`/api/startups/${id}`)
         .then(startupFromDB => {
-          console.log("FOUND STARTUP RESPONSE: ", startupFromDB.data.companyName)
+          console.log("FOUND STARTUP RESPONSE: ", startupFromDB.data._id)
           axios
             .put(`/api/investors/portfolio/${this.state.user._id}`, {
-              startupToAdd: startupFromDB.data.companyName // WHAT TO PASS?? companyName FOR NOW
+              startupToAdd: startupFromDB.data._id // WHAT TO PASS??
             })
             .then(investorFromDB => {
               console.log("INVESTOR FOUND ", investorFromDB, "USER: ", this.state.user);
@@ -93,7 +94,6 @@ export default class StartUpList extends Component {
         })
         .catch(err => console.log(err));
     }
-  };
 
   handleFilter = (e) => {
     const name = e.target.name;
@@ -139,6 +139,7 @@ export default class StartUpList extends Component {
         </tr>
       );
     });
+
     return (
       <div className="startup-list-container">
         <input

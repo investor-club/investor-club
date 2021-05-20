@@ -103,7 +103,7 @@ router.put("/investors/:id", (req, res, next) => {
 //update investor portfolio
 router.put("/investors/portfolio/:id", (req, res, next) => {
   const { startupToAdd } = req.body;
- //console.log("STARTUP TO ADD REQ BODY ",req.body);
+ console.log("STARTUP TO ADD REQ BODY ",req.body);
   Investor
     .findByIdAndUpdate( req.params.id, {
       $push: 

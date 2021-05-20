@@ -11,8 +11,7 @@ export default class InvestorDashboard extends Component {
   };
 
   render() {
-    //investor or startup
-
+ 
     return (
       <div>
         <h1>     

@@ -31,7 +31,7 @@ export default class RouteContainer extends React.Component {
   };
 
   render() {
-    //console.log("I AM TYPE IN ROUTECONTAINER", this.type);
+    console.log("I AM USER IN ROUTECONTAINER", this.state.user);
     return (
       <div>
         <Route

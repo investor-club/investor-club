@@ -144,13 +144,8 @@ export default class StartUpEvaluation extends React.Component {
       pitchDeck
     } = this.state;
 
-<<<<<<< Updated upstream
-    axios
-      .post(`/api/startup/${this.props.user._id}`, {
-=======
     //post form data
     axios.post(`/api/startups/${this.props.user._id}`, {
->>>>>>> Stashed changes
         place,
         industry,
         stage,
