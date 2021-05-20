@@ -86,26 +86,25 @@ router.get("/investors/:id", (req, res, next) => {
     });
 });
 
-// // update investor
-// router.post("/investors/:id", uploader.single('imageUrl'), (req, res, next) => {
-//   const { firstName, lastName, email, username, password } = req.body;
-//   console.log("REQ BODY UPDATE INVESTOR",req.body);
-//   Investor.findByIdAndUpdate(
-//     req.params.id,
-//     { imageUrl: req.file.path, firstName, lastName, email, username, password },
-//     { new: true }
-//   )
-//     .then((investor) => {
-//       //console.log("INVESTOR UPDATED ", investor)
-//       res.status(200).json({investor: investor});
-//     })
-//     .catch((err) => {
-      
-//       console.log("error after investors post",err);
-//     });
-// });
-
 // update investor
+router.post("/investors/:id", (req, res, next) => {
+  const { firstName, lastName, email, username, password, imageUrl } = req.body;
+  console.log("REQ BODY UPDATE INVESTOR",req.body);
+  Investor.findByIdAndUpdate(
+    req.params.id,
+    { firstName, lastName, email, username, password, imageUrl },
+    { new: true }
+  )
+    .then((investor) => {
+      //console.log("INVESTOR UPDATED ", investor)
+      res.status(200).json({investor: investor});
+    })
+    .catch((err) => {
+      console.log("error after investors post",err);
+    });
+});
+
+// update investorImage
 router.post('/upload', uploader.single('imageUrl'), (req, res, next) => {
   console.log('file is ,req.file.path: ', req.file.path)
  

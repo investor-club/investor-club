@@ -37,8 +37,11 @@ export default {
   saveNewThing(newThing, id) {
     // console.log('new thing is: ', newThing)
     return service
-      .post(`/profile/create`, newThing)
-      .then(res => res.data)
+      .post(`/investors/${id}`, newThing)
+      .then(res => {
+        console.log("res.data", res.data)
+        return res.data
+      })
       .catch(errorHandler);
   }
 };
