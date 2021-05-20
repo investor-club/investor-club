@@ -79,7 +79,8 @@ export default class InvestorProfile extends Component {
       .then(response => {
         // console.log('response is: ', response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-        console.log("response.secure_ur",response.secure_url)
+        console.log("response",response)
+        // console.log("response.secure_ur",response.secure_url)
         this.setState({ imageUrl: response.secure_url });
       })
       .catch(err => {

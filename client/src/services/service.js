@@ -26,8 +26,11 @@ export default {
   handleInvestorUpload(theFile, id) {  
     console.log('file in service Investor: ', theFile)
     return service
-      .post(`/investors/${id}`, theFile)
-      .then(res => res.data)
+      .post(`/upload`, theFile)
+      .then(res => {
+        console.log("res.data", res.data)
+        return res.data
+      })
       .catch(errorHandler);
   },
  
