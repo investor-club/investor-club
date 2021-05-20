@@ -26,8 +26,6 @@ export default class StartUpList extends Component {
   }
 
   handleSearch = (e) => {
-    // const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-    // const name = e.target.name;
     let regex = new RegExp(this.state.search, "gi");
     // If the search bar isn't empty assign the original list to currentList
     if (e.target.value === "") {
@@ -188,9 +186,7 @@ export default class StartUpList extends Component {
 
         <table>
           <tbody>
-            {/* <tr>
-                
-              </tr> */}
+
             {displayedList}
           </tbody>
         </table>
