@@ -162,10 +162,10 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
     skillsI,
     skillsII,
     skillsIII,
-    experience,
-    pitchDeck
+    experience
   } = req.body;
-  console.log("req body-file path", req.file);
+  // console.log("req file ", req.file);
+  // console.log("req file ", req.file.path);
   // console.log("after req.body", pitchDeck);
   // res.json({ secure_url: req.file.path });
 
@@ -182,7 +182,7 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
       skillsII,
       skillsIII,
       experience,
-      pitchDeck
+      // pitchDeck: req.file.path
     },
     { new: true}
     )

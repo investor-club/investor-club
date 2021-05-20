@@ -16,7 +16,7 @@ export default {
   handleUpload(theFile, id) {  
     console.log('file in service: ', theFile)
     return service
-      .post(`/startup/${id}`, {theFile})
+      .post(`/startup/${id}`, theFile)
       .then(res => {
         console.log("res.data", res.data)
         return res.data})
