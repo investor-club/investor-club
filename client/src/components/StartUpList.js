@@ -21,7 +21,6 @@ export default class StartUpList extends Component {
       .catch((err) => console.log(err));
   };
 
-
   componentDidMount() {
     this.getData();
   }
@@ -73,29 +72,37 @@ export default class StartUpList extends Component {
     }
   };
 
-    handleAdd = (id) => {
-      axios
-        .get(`/api/startups/${id}`)
-        .then(startupFromDB => {
-          console.log("FOUND STARTUP RESPONSE: ", startupFromDB.data._id)
-          axios
-            .put(`/api/investors/portfolio/${this.state.user._id}`, {
-              startupToAdd: startupFromDB.data._id // WHAT TO PASS??
-            })
-            .then(investorFromDB => {
-              console.log("INVESTOR FOUND ", investorFromDB, "USER: ", this.state.user);
-               this.setState((state) =>  ({
-                  user: {
-                    ...state.user,
-                    inPortfolio: [...state.user.inPortfolio, startupFromDB.data._id],
-                  }
-              }));
-              this.props.setPortfolio(startupFromDB)
-            })
-            .catch(err => console.log(err));
-        })
-        .catch(err => console.log(err));
-    }
+  handleAdd = (id) => {
+    axios
+      .get(`/api/startups/${id}`)
+      .then((startupFromDB) => {
+        console.log("FOUND STARTUP RESPONSE: ", startupFromDB.data._id);
+        axios
+          .put(`/api/investors/portfolio/${this.state.user._id}`, {
+            startupToAdd: startupFromDB.data._id, // WHAT TO PASS??
+          })
+          .then((investorFromDB) => {
+            console.log(
+              "INVESTOR FOUND ",
+              investorFromDB,
+              "USER: ",
+              this.state.user
+            );
+            this.setState((state) => ({
+              user: {
+                ...state.user,
+                inPortfolio: [
+                  ...state.user.inPortfolio,
+                  startupFromDB.data._id,
+                ],
+              },
+            }));
+            this.props.setPortfolio(startupFromDB);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
 
   handleFilter = (e) => {
     const name = e.target.name;
@@ -108,9 +115,7 @@ export default class StartUpList extends Component {
     }));
   };
 
-
   render() {
-
     const displayedList = this.state.startups.map((startup) => {
       return (
         <tr className="one-startup" key={startup._id}>
