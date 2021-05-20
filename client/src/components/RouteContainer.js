@@ -21,7 +21,6 @@ export default class RouteContainer extends React.Component {
     user: this.props.user,
     // displayStartupEval: true,
     type: this.props.type,
-    
   };
 
   setUser = (user) => {

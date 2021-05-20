@@ -4,8 +4,8 @@
   align-items: center;
   border: 1px solid #222;
   margin: 0 auto;
-  margin-top: 10%;
-  margin-bottom: 10%;
+  margin-top: 5%;
+  margin-bottom: 4%;
   width: 80vw;
   height: 60vh;
   border-radius: 15px;
@@ -13,11 +13,13 @@
   padding: 30px;
 }
 
-.left-side h2,
-h3,
+.left-side h2 {
+  margin-bottom: 35px;
+}
+.left-side h3,
 h4,
 textarea {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .social-links {

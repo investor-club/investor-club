@@ -126,20 +126,20 @@ export default class StartUpProfile extends React.Component {
                     Team <span>{this.state.user.teamMembers}</span>
                   </h4>
                   <h4>
-                    Skills in team <span>{this.state.user.skillsIII}</span>
+                    Skills in team <span>{this.state.user.skillsII}</span>
                   </h4>
                   <h4>
-                    Experience <span>{this.state.user.skillsIII}</span>
+                    Experience <span>{this.state.user.experience}</span>
                   </h4>
                 </div>
               </div>
               <div className="bot-right">
                 <div className="bot-detail">
                   <h4>
-                    All skills available <span>{this.state.user.skillsIII}</span>
+                    All skills available { this.state.user.skillsI.map(a => {return (<span>{a} </span>) } ) }
                   </h4>
                   <h4>
-                    Skills missing <span>{this.state.user.experience}</span>
+                    Skills missing { this.state.user.skillsIII.map(a => {return (<span> {a} </span>) } ) }
                   </h4>
                 </div>
               </div>
@@ -148,7 +148,7 @@ export default class StartUpProfile extends React.Component {
         </div>
 
         <div className="edit-form">
-          <button onClick={this.toggleEditForm}>Show Edit Form</button>
+          <button onClick={this.toggleEditForm}>Edit Profile</button>
           {this.state.editForm && (
             <StartUpEdit
               handleChange={this.handleChange}
