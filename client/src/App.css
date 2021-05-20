@@ -200,26 +200,16 @@ a {
   font-weight: normal;
 }
 
-<<<<<<< HEAD
 .answerRadio > label{
   font-size: 18px  !important;
   
-=======
-.answerRadio > label {
-  font-size: 18px !important;
->>>>>>> alkin
   /* position: relative;
   cursor: pointer; */
   /* display: inline-block; */
 }
 
-<<<<<<< HEAD
 .answerRadio{
   /* display: flex;
-=======
-.answerRadio {
-  display: flex;
->>>>>>> alkin
   flex-direction: row;
   align-items: left;
   justify-content: flex-start; */
@@ -276,7 +266,6 @@ a {
   padding: 10px;
 }
 
-<<<<<<< HEAD
 
 .one-startup a {
   text-decoration: none;
@@ -287,8 +276,6 @@ a {
 
 
 
-=======
->>>>>>> alkin
 /* .App {
   text-align: center;
 } */
