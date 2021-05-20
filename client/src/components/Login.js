@@ -4,6 +4,7 @@ import "./Login.css";
 
 export default class Login extends Component {
   state = {
+    user: {},
     type: "",
     username: "",
     password: "",

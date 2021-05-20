@@ -21,7 +21,7 @@ export default class LandingPage extends Component {
       })
       .catch((err) => console.log(err));
   }
-
+  
   componentDidMount() {
     this.getData();
   }
