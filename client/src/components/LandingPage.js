@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import "./LandingPage.css"
 
 export default class LandingPage extends Component {
   state = {
@@ -9,7 +11,19 @@ export default class LandingPage extends Component {
 
   // axios req with a limit to first 5
   getData = () => {
-      console.log("")
+    axios
+      .get("/api/startups")
+      .then((response) => {
+        console.log("STARTUP LIST: ", response.data)
+        this.setState({
+          topRated: response.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
+
+  componentDidMount() {
+    this.getData();
   }
 
   render() {
@@ -38,14 +52,15 @@ export default class LandingPage extends Component {
     if (!this.state.user) {
       return (
         <div>
-          <div class="purpleBackground"></div>
-          <div class="bodyPadding">
+          <div className="purpleBackground"></div>
+          <div className="bodyPadding">
+            <h1>Startups that recently joined us:</h1>
             <table>
-          <tbody>
-            <h1>I'm still watching you, your Landing Page</h1>
-            {topDisplayed}
-          </tbody>
-        </table>
+              <tbody>
+                
+                {topDisplayed}
+              </tbody>
+           </table>
           </div>
         </div>
       );
