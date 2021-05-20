@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import RouteContainer from "./components/RouteContainer";
 import LandingPage from "./components/LandingPage";
 import axios from "axios";
+import Footer from "./components/Footer";
 
 export default class App extends React.Component {
   state = {
@@ -38,12 +39,13 @@ export default class App extends React.Component {
           user={this.state.user}
           type={this.state.type}
         />
-      
+
         <RouteContainer
           user={this.state.user}
           setAppState={this.setAppState}
           type={this.state.type}
         />
+        {/* <div className="footer"><Footer></Footer></div> */}
       </div>
     );
   }
