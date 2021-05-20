@@ -21,7 +21,6 @@ export default class RouteContainer extends React.Component {
     user: this.props.user,
     // displayStartupEval: true,
     type: this.props.type,
-    
   };
 
   setUser = (user) => {
@@ -31,12 +30,12 @@ export default class RouteContainer extends React.Component {
     this.setState({ type });
   };
   setPortfolio = (startup) => {
-    this.setState((state) =>  ({
+    this.setState((state) => ({
       user: {
         ...state.user,
         inPortfolio: [...state.user.inPortfolio, startup],
-      }
-  }));;
+      },
+    }));
   };
 
   render() {
@@ -177,14 +176,16 @@ export default class RouteContainer extends React.Component {
         <Route
           exact
           path="/startupdetails"
-          render={(props) => <StartUpDetails user={this.state.user} {...props} />}
-        />  
+          render={(props) => (
+            <StartUpDetails user={this.state.user} {...props} />
+          )}
+        />
 
         <Route
           exact
           path="/investorlist"
-          render={(props) => <InvestorList user={this.state.user} {...props} />} 
-        />  
+          render={(props) => <InvestorList user={this.state.user} {...props} />}
+        />
       </div>
     );
   }
