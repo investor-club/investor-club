@@ -10,6 +10,7 @@ import Q8skillsIII from "./evalQuestions/Q8skillsIII";
 import Q9experience from "./evalQuestions/Q9experience";
 import Q10pitchDeck from "./evalQuestions/Q10pitchDeck";
 import axios from "axios";
+import service from "../services/service";
 import { rating } from "../services/rating";
 
 export default class StartUpEvaluation extends React.Component {
@@ -30,6 +31,7 @@ export default class StartUpEvaluation extends React.Component {
     skillsII: "",
     skillsIII: [],
     experience: "",
+    pitchDeck: "https://res.cloudinary.com/desxd5jb3/image/upload/v1621509639/investor-club/xt51uiofo6cjrf2xvkem.png",
     rating: 0
   };
 
@@ -53,6 +55,8 @@ export default class StartUpEvaluation extends React.Component {
           skillsII: response.data.skillsII,
           skillsIII: response.data.skillsIII,
           experience: response.data.experience,
+          // pitchDeck: response.data.pitchDeck,
+          
           rating: response.data.rating,
         });
       })
@@ -124,9 +128,33 @@ export default class StartUpEvaluation extends React.Component {
   //     return this.state.index * 10;
   // }
 
+  // this method handles just the file upload
+  handleFileUpload = e => {
+    console.log('The file to be uploaded is: ', e.target.files[0]);
+ 
+    const uploadData = new FormData();
+    // req.body to .create() method when creating a new thing in '/api/things/create' POST route
+    uploadData.append('pitchDeck', e.target.files[0]);
+    console.log("upload data", uploadData)
+
+    service
+      .handleUpload(uploadData, this.props.user._id)
+      .then(response => {
+        // console.log('response is: ', response);
+        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        this.setState({ pitchDeck: response.secure_url });
+      })
+      .catch(err => {
+        console.log('Error while uploading the file: ', err);
+      });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
-    if (this.state.index > 7) {
+    // service
+    //   .saveNewThing(this.state)
+
+    if (this.state.index > 9) {
       console.log("this is the end of the questionnaire");
       this.props.setDisplayStartupEval(false);
 
@@ -166,8 +194,8 @@ export default class StartUpEvaluation extends React.Component {
         if (this.state.index > 7){
         rating(response.data); } //call the rating service function
       })
-      .catch((err) => {
-        console.log(err, "🤷‍♀️🤷‍♂️");
+      .catch( err => {
+        console.log(err);
       });
 
   };
@@ -257,9 +285,10 @@ export default class StartUpEvaluation extends React.Component {
             <Q10pitchDeck
               skillsII={this.state.pitchDeck}
               setPitchDeck={this.setPitchDeck}
+              handleFileUpload={this.handleFileUpload}
             />
           );
-          break;
+          break; 
         default:
           break;
       }

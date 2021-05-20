@@ -11,8 +11,9 @@ require("./db");
 const express = require("express");
 
 const app = express();
+const cors = require('cors');
 
-// express builds folder containing the react app
+// express builds folder containing the react app 
 const path = require('path');
 app.use(express.static(path.join(__dirname, "/client/build")));
 
@@ -61,11 +62,19 @@ const bcrypt = require("bcrypt");
 // 👇 Start handling routes here
 // Contrary to the views version, all routes are controled from the routes/index.js
 
+app.use(
+  cors({
+    // this could be multiple domains/origins, but we will allow just our React app
+    origin: ['http://localhost:3000']
+  })
+);
+
 const crud = require("./routes/crud");
 app.use("/api", crud);
 
 const auth = require("./routes/auth");
 app.use("/api/auth", auth);
+
 
 app.use((req, res) => {
   // If no routes match, send them the React HTML.
