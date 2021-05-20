@@ -11,11 +11,11 @@ const rating = (obj, id) => {
   }
 
   axios
-    .get(`api/crud/startups/${id}`)
+    .get(`api/startups/${id}`)
     .then((startup) => {
-      console.log("STARTUP TO RATE: ", startup);  
+      console.log("STARTUP TO RATE: ", startup);  //weird response
       axios
-        .post("/api/crud/startups/:id/rating", {
+        .put(`/api/startups/${id}/rating`, {
           rating: count(startup.data),   // helper fnc from ☝🏻
         })
         .then((response) => {

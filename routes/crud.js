@@ -171,12 +171,13 @@ router.post("/startups/:id", (req, res, next) => {
       
       })
 
-router.put("/startup/:id/rating", (req, res, next) => {
+//update/count the rating
+router.put("/startups/:id/rating", (req, res, next) => {
   const { rating } = req.body;
   console.log("REQ BODY FOR RATING ",req.body);
-  Startup
+  StartUp
     .findByIdAndUpdate( req.params.id, {
-      inPortfolio: startupToAdd
+      rating: rating
     }, 
         { new: true }
     )
