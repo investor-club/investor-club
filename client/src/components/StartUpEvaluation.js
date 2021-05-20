@@ -154,11 +154,11 @@ export default class StartUpEvaluation extends React.Component {
     // service
     //   .saveNewThing(this.state)
 
-    // if (this.state.index > 9) {
-    //   console.log("this is the end of the questionnaire");
-    //   this.props.setDisplayStartupEval(false);
+    if (this.state.index > 9) {
+      console.log("this is the end of the questionnaire");
+      this.props.setDisplayStartupEval(false);
 
-    // }
+    }
     const {
       place,
       industry,
@@ -171,7 +171,7 @@ export default class StartUpEvaluation extends React.Component {
       experience,
       pitchDeck
     } = this.state;
-    console.log("state at beginning of handleSubmit", this.state);
+    console.log("state at beginning of handleSubmit", this.state); //is updating
 
     //post form data
     axios.post(`/api/startups/${this.props.user._id}`, {
@@ -184,10 +184,10 @@ export default class StartUpEvaluation extends React.Component {
         skillsII,
         skillsIII,
         experience,
-        pitchDeck,
+        // pitchDeck,
       })
       .then(response => {
-        // console.log("RESPONSE FROM EVAL FRONT: ", response.data);
+        console.log("RESPONSE FROM EVAL FRONT: ", response.data);
         // console.log("STATE IN EVAL: ", this.state);
         this.setState({
           index: this.state.index + 1,

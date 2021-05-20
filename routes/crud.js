@@ -187,7 +187,7 @@ router.delete("/investors/:id", (req, res, next) => {
 });
 
 //update statupEval
-router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
+router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
   const {
     place, 
     industry, 
