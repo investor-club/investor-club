@@ -15,7 +15,7 @@ export default class StartUpDashboard extends Component {
       };
 
     render() {
-        console.log(this.props)
+        console.log("props",this.props)
 
         return (
             <div>

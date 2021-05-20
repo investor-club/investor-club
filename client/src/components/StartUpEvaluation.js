@@ -39,7 +39,7 @@ export default class StartUpEvaluation extends React.Component {
     axios
       .get(`/api/startups/${this.props.user._id}`)
       .then(response => {
-        console.log("component did mount EVAL", response.data);
+        // console.log("component did mount EVAL", response.data);
         this.setState({
           username: response.data.username,
           email: response.data.email,
@@ -154,11 +154,11 @@ export default class StartUpEvaluation extends React.Component {
     // service
     //   .saveNewThing(this.state)
 
-    if (this.state.index > 9) {
-      console.log("this is the end of the questionnaire");
-      this.props.setDisplayStartupEval(false);
+    // if (this.state.index > 9) {
+    //   console.log("this is the end of the questionnaire");
+    //   this.props.setDisplayStartupEval(false);
 
-    }
+    // }
     const {
       place,
       industry,
@@ -171,6 +171,7 @@ export default class StartUpEvaluation extends React.Component {
       experience,
       pitchDeck
     } = this.state;
+    console.log("state at beginning of handleSubmit", this.state);
 
     //post form data
     axios.post(`/api/startups/${this.props.user._id}`, {
@@ -186,12 +187,12 @@ export default class StartUpEvaluation extends React.Component {
         pitchDeck,
       })
       .then(response => {
-        console.log("RESPONSE FROM EVAL FRONT: ", response.data);
-        console.log("STATE IN EVAL: ", this.state);
+        // console.log("RESPONSE FROM EVAL FRONT: ", response.data);
+        // console.log("STATE IN EVAL: ", this.state);
         this.setState({
           index: this.state.index + 1,
         });
-        if (this.state.index > 7){
+        if (this.state.index > 9){
         rating(response.data); //call the rating service function
         this.props.history.push("/startupdashboard") } 
       })
