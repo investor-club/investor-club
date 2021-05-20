@@ -8,8 +8,8 @@ export default class InvestorProfile extends Component {
   state = {
     error: null,
     editForm: false,
-    username: "",
-    email: "",
+    username: this.props.user.username,
+    email: this.props.user.email,
     password: "",
     firstName: "",
     lastName: "",
@@ -35,6 +35,7 @@ export default class InvestorProfile extends Component {
           industry: response.data.industry,
           bio: response.data.bio,
           location: response.data.location,
+          imageUrl: response.data.imageUrl,
         });
       })
       .catch((err) => {
@@ -95,8 +96,15 @@ export default class InvestorProfile extends Component {
     service
       .saveNewThing(this.state, this.props.user._id)
       .then(res => {
-        console.log('added: ', res);
-        // here you would redirect to some other page
+        console.log('added username: ', res.investor.username);
+        console.log("this state",this.state);
+        // assign state back to what we're getting.
+        this.setState({
+          username: res.investor.username,
+          firstName: res.investor.firstName,
+        });
+        console.log("this props",this.props);
+        console.log("this state",this.state);
       })
       .catch(err => {
         console.log('Error while adding the thing: ', err);
