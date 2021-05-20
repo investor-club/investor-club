@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import RouteContainer from "./components/RouteContainer";
-import LandingPage from "./components/LandingPage";
 import axios from "axios";
 
 export default class App extends React.Component {
