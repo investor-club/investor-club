@@ -16,13 +16,9 @@ export default class InvestorDashboard extends Component {
     return (
       <div>
         <h1>     
-          <Link to="/startuplist">ALL STARTUPS</Link>
+         <StartUpList user={this.state.user} type={this.state.type}/>
         </h1>
-        {/* <Route
-          exact
-          path="/startuplist"
-          render={(props) => <StartUpList user={this.state.user} {...props} />}
-        /> */}
+        <Link to='/investorlist'> Investors </Link>
       </div>
     );
   }

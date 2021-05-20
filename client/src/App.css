@@ -78,7 +78,7 @@ body {
   margin: 60px 0 0 0;
 }
 
-#signupChoice{
+#signupChoice {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -102,10 +102,12 @@ body {
   margin-bottom: 30px;
 }
 
-#signupChoice a{
+#signupChoice a {
   text-decoration: none;
   color: black;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
 }
 
 #signupChoice a:hover{
@@ -226,14 +228,14 @@ body {
   width: 45vw;
   margin-top: 15px;
   margin-bottom: 15px;
-  font-size: 1.1em;
+  font-size: 12px;
 }
 .startup-list-container td{
   border-bottom: 2px dotted #5200FF;
   font-size: 20px;
 }
 .startup-list-container h2{
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 15px;
   margin-bottom: 15px;
 }

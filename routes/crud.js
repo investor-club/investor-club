@@ -85,14 +85,14 @@ router.get("/investors/:id", (req, res, next) => {
 // update ivestor
 router.put("/investors/:id", (req, res, next) => {
   const { firstName, lastName, email, username, password } = req.body;
-  console.log("REQ BODY ",req.body);
+  //console.log("REQ BODY UPDATE INVESTOR",req.body);
   Investor.findByIdAndUpdate(
     req.params.id,
     { firstName, lastName, email, username, password },
     { new: true }
   )
     .then((investor) => {
-      console.log("INVESTOR UPDATED ", investor)
+      //console.log("INVESTOR UPDATED ", investor)
       res.status(200).json(investor);
     })
     .catch((err) => {
@@ -103,7 +103,7 @@ router.put("/investors/:id", (req, res, next) => {
 //update investor portfolio
 router.put("/investors/portfolio/:id", (req, res, next) => {
   const { startupToAdd } = req.body;
- // console.log("REQ BODY ",req.body);
+ //console.log("STARTUP TO ADD REQ BODY ",req.body);
   Investor
     .findByIdAndUpdate( req.params.id, {
       $push: 
@@ -131,24 +131,8 @@ router.delete("/investors/:id", (req, res, next) => {
     });
 });
 
-//get startup data from database
-router.get("/startup/:id", (req, res, next) => {
-  StartUp.findById(req.params.id)
-    .then((startup) => {
-      console.log("get startup comp mount", startup);
-      if (!startup) {
-        res.status(404).json(startup);
-      } else {
-        res.status(200).json(startup);
-      }
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
-
 //update statupEval
-router.post("/startup/:id", (req, res, next) => {
+router.post("/startups/:id", (req, res, next) => {
   const {place, 
     industry, 
     stage,
@@ -160,7 +144,7 @@ router.post("/startup/:id", (req, res, next) => {
     experience,
     pitchDeck
   } = req.body;
-  console.log("called post in backend", req.body)
+  //console.log("UPDATE STARTUP: ", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
     {
@@ -178,7 +162,7 @@ router.post("/startup/:id", (req, res, next) => {
     { new: true}
     )
       .then(startup => {
-        console.log("startup",startup);
+        //console.log("startup",startup);
         res.status(200).json(startup);
       })
       .catch(err => {
@@ -187,7 +171,23 @@ router.post("/startup/:id", (req, res, next) => {
       
       })
 
-
+router.put("/startup/:id/rating", (req, res, next) => {
+  const { rating } = req.body;
+  console.log("REQ BODY FOR RATING ",req.body);
+  Startup
+    .findByIdAndUpdate( req.params.id, {
+      inPortfolio: startupToAdd
+    }, 
+        { new: true }
+    )
+    .then((investor) => {
+      console.log("STARTUP RATED ", investor)
+      res.status(200).json(investor);
+    })
+    .catch((err) => {
+      next(err);
+    });
+  })
 
 
 module.exports = router;
