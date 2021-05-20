@@ -247,6 +247,7 @@ body {
   width: 30px;
   /* clip-path: circle(30px at center); */
   clip-path: circle(40%);
+  margin-right: 10px;
 }
 
 /* #navbar a:visited{
@@ -254,7 +255,7 @@ body {
 } */
 
 .startup-list-container td {
-  text-align: center;
+  text-align: left;
   padding: 10px;
 }
 

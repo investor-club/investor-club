@@ -5,7 +5,8 @@ import "./Portfolio.css";
 
 export default class Portfolio extends Component {
   state = {
-    data: [],
+    user: this.props.user,
+    data: []//this.props.user.inPortfolio,
   };
 
   componentDidMount() {

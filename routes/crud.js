@@ -71,6 +71,7 @@ router.get("/investors", (req, res, next) => {
 router.get("/investors/:id", (req, res, next) => {
   Investor.findById(req.params.id)
     .then((investor) => {
+      console.log("IS THERE AN INVESTOR? ", investor)
       if (!investor) {
         res.status(404).json(investor);
       } else {

@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import StartUpEdit from "./StartUpEdit";
 import "./StartUpProfile.css";
+import { rating } from "../services/rating";
+
 
 export default class StartUpProfile extends React.Component {
   state = {
@@ -66,6 +68,8 @@ export default class StartUpProfile extends React.Component {
           user: response.data,
           editForm: false,
         });
+        console.log("SECOND RATING CALL", response)
+        rating(response.data)
       })
       .catch((err) => {
         console.log(err);
