@@ -20,7 +20,7 @@ export default class App extends React.Component {
     axios
       .get("/api/auth/loggedin")
       .then((response) => {
-        //console.log("AXIOS RESPONSE ", response.data);
+        //console.log("RESPONSE APP", response.data);
         this.setState({ user: response.data.user, type: response.data.type });
       })
       .catch((err) => {
@@ -29,7 +29,7 @@ export default class App extends React.Component {
   }
 
   render() {
-   // console.log("I AM TYPE IN APP", this.state.type);
+    // console.log("I AM TYPE IN APP", this.state.type);
 
     return (
       <div className="App">
@@ -38,7 +38,7 @@ export default class App extends React.Component {
           user={this.state.user}
           type={this.state.type}
         />
-
+      
         <RouteContainer
           user={this.state.user}
           setAppState={this.setAppState}

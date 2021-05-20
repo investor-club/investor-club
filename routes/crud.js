@@ -86,28 +86,46 @@ router.get("/investors/:id", (req, res, next) => {
     });
 });
 
-// update ivestor
-router.put("/investors/:id", (req, res, next) => {
-  const { firstName, lastName, email, username, password } = req.body;
-  console.log("REQ BODY ",req.body);
-  Investor.findByIdAndUpdate(
-    req.params.id,
-    { firstName, lastName, email, username, password },
-    { new: true }
-  )
-    .then((investor) => {
-      console.log("INVESTOR UPDATED ", investor)
-      res.status(200).json(investor);
-    })
-    .catch((err) => {
-      next(err);
-    });
+// // update investor
+// router.post("/investors/:id", uploader.single('imageUrl'), (req, res, next) => {
+//   const { firstName, lastName, email, username, password } = req.body;
+//   console.log("REQ BODY UPDATE INVESTOR",req.body);
+//   Investor.findByIdAndUpdate(
+//     req.params.id,
+//     { imageUrl: req.file.path, firstName, lastName, email, username, password },
+//     { new: true }
+//   )
+//     .then((investor) => {
+//       //console.log("INVESTOR UPDATED ", investor)
+//       res.status(200).json({investor: investor});
+//     })
+//     .catch((err) => {
+      
+//       console.log("error after investors post",err);
+//     });
+// });
+
+// update investor
+router.post('/upload', uploader.single('imageUrl'), (req, res, next) => {
+  console.log('file is ,req.file.path: ', req.file.path)
+ 
+  if (!req.file) {
+    next(new Error('No file uploaded!'));
+    return;
+  }
+  // get the URL of the uploaded file and send it as a response.
+  // 'secure_url' can be any name, just make sure you remember to use the same when accessing it on the frontend
+ 
+  res.json({ secure_url: req.file.path });
 });
+ 
+
+//update investorimage
 
 //update investor portfolio
 router.put("/investors/portfolio/:id", (req, res, next) => {
   const { startupToAdd } = req.body;
-  console.log(typeof startupToAdd);//("REQ BODY ",req.body);
+ console.log("STARTUP TO ADD REQ BODY ",req.body);
   Investor
     .findByIdAndUpdate( req.params.id, {
       $push: 
@@ -135,22 +153,6 @@ router.delete("/investors/:id", (req, res, next) => {
     });
 });
 
-//get startup data from database
-router.get("/startup/:id", (req, res, next) => {
-  StartUp.findById(req.params.id)
-    .then((startup) => {
-      console.log("get startup comp mount", startup);
-      if (!startup) {
-        res.status(404).json(startup);
-      } else {
-        res.status(200).json(startup);
-      }
-    })
-    .catch((err) => {
-      next(err);
-    });
-});
-
 //update statupEval
 router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
   const {
@@ -172,6 +174,7 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
   // console.log("called post in backend", req.body)
 
   
+  //console.log("UPDATE STARTUP: ", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
     {
@@ -202,7 +205,24 @@ router.post("/startup/:id", uploader.single('pitchDeck'), (req, res, next) => {
 
 // , secure_url: req.file.path 
 
-
+//update/count the rating
+router.put("/startups/:id/rating", (req, res, next) => {
+  const { rating } = req.body;
+  console.log("REQ BODY FOR RATING ",req.body);
+  StartUp
+    .findByIdAndUpdate( req.params.id, {
+      rating: rating
+    }, 
+        { new: true }
+    )
+    .then((investor) => {
+      console.log("STARTUP RATED ", investor)
+      res.status(200).json(investor);
+    })
+    .catch((err) => {
+      next(err);
+    });
+  })
 
 
 module.exports = router;

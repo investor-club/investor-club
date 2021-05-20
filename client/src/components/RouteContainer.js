@@ -5,12 +5,15 @@ import Login from "./Login";
 import SignUpInvestor from "./SignUpInvestor";
 import SignUpStartUp from "./SignUpStartUp";
 import StartUpList from "./StartUpList";
+import InvestorList from "./InvestorList";
 import InvestorDashboard from "./InvestorDashboard";
 import StartUpProfile from "./StartUpProfile";
 import StartUpDashboard from "./StartUpDashboard";
 import LandingPage from "./LandingPage";
 import InvestorProfile from "./InvestorProfile";
-import StartUpDetails from "./StartupDetails"; 
+import StartUpDetails from "./StartupDetails";
+import Favourites from "./Favourites";
+import Portfolio from "./Portfolio";
 import axios from "axios";
 
 export default class RouteContainer extends React.Component {
@@ -18,6 +21,7 @@ export default class RouteContainer extends React.Component {
     user: this.props.user,
     // displayStartupEval: true,
     type: this.props.type,
+    
   };
 
   setUser = (user) => {
@@ -26,12 +30,17 @@ export default class RouteContainer extends React.Component {
   setType = (type) => {
     this.setState({ type });
   };
+  setPortfolio = (startup) => {
+    this.setState((state) =>  ({
+      user: {
+        ...state.user,
+        inPortfolio: [...state.user.inPortfolio, startup],
+      }
+  }));;
+  };
 
-  // let landing;
-  // this.state.landing ? landing = (<LandingPage />) : landing = (<></>)
   render() {
-    console.log("I AM TYPE IN ROUTECONTAINER", this.type);
-
+    console.log("I AM USER IN ROUTECONTAINER", this.state.user);
     return (
       <div>
         <Route
@@ -88,15 +97,39 @@ export default class RouteContainer extends React.Component {
 
         <Route
           exact
+          path="/portfolio"
+          render={(props) => (
+            <Portfolio
+              {...props}
+              user={this.state.user}
+              type={this.state.type}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/favourites"
+          render={(props) => (
+            <Favourites
+              {...props}
+              user={this.state.user}
+              type={this.state.type}
+            />
+          )}
+        />
+
+        <Route
+          exact
           path="/startupdashboard"
           render={(props) => (
             <StartUpDashboard
               {...this.state}
               {...this.props}
               setDisplayStartupEval={this.setDisplayStartupEval}
-              {...props}
-              user={this.state.user}
-              type={this.type}
+              // {...props}
+              // user={this.state.user}
+              // type={this.state.type}
             />
           )}
         />
@@ -135,7 +168,6 @@ export default class RouteContainer extends React.Component {
             />
           )}
         />
-        {/* I wanted to put this one in the Invst Dashboard but didn't work */}
         <Route
           exact
           path="/startuplist"
@@ -146,6 +178,12 @@ export default class RouteContainer extends React.Component {
           exact
           path="/startupdetails"
           render={(props) => <StartUpDetails user={this.state.user} {...props} />}
+        />  
+
+        <Route
+          exact
+          path="/investorlist"
+          render={(props) => <InvestorList user={this.state.user} {...props} />} 
         />  
       </div>
     );

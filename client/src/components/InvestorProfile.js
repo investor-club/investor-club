@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import EditInvestor from "./EditInvestor";
 import service from "../services/service";
+import "./InvestorProfile.css";
 
 export default class InvestorProfile extends Component {
   state = {
@@ -65,6 +66,7 @@ export default class InvestorProfile extends Component {
   };
 
   handleFileUpload = e => {
+    
     console.log('The file to be uploaded is: ', e.target.files[0]);
  
     const uploadData = new FormData();
@@ -73,10 +75,11 @@ export default class InvestorProfile extends Component {
     uploadData.append('imageUrl', e.target.files[0]);
  
     service
-      .handleUpload(uploadData)
+      .handleInvestorUpload(uploadData, this.props.user._id)
       .then(response => {
         // console.log('response is: ', response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
+        console.log("response.secure_ur",response.secure_url)
         this.setState({ imageUrl: response.secure_url });
       })
       .catch(err => {
@@ -89,7 +92,7 @@ export default class InvestorProfile extends Component {
     console.log("update");
 
     service
-      .saveNewThing(this.state)
+      .saveNewThing(this.state, this.props.user._id)
       .then(res => {
         console.log('added: ', res);
         // here you would redirect to some other page
@@ -100,6 +103,7 @@ export default class InvestorProfile extends Component {
   
     axios
       .put(`/api/investors/${this.props.user._id}`, {
+        imageUrl: this.state.imageUrl,
         username: this.state.username,
         email: this.state.email,
         password: this.state.password,
@@ -111,6 +115,7 @@ export default class InvestorProfile extends Component {
       })
       .then((response) => {
         this.setState({
+          imageUrl: this.state.imageUrl,
           username: response.data.username,
           email: response.data.email,
           password: response.data.password,
@@ -130,29 +135,28 @@ export default class InvestorProfile extends Component {
   render() {
     if (this.state.error) return <h3>{this.state.error}</h3>;
     return (
-      <div>
-        <img src={this.state.imageUrl} alt="investor profile img"/>
-        <h1>username: {this.state.username}</h1>
-        <br />
-        <h1>email: {this.state.email}</h1>
-        <br />
-        <h1>password: {this.state.password}</h1>
-        <br />
-        <h1>firstName: {this.state.firstName}</h1>
-        <br />
-        <h1>lastName: {this.state.lastName}</h1>
-        <br />
-        <h1>industry: {this.state.industry}</h1>
-        <br />
-        <h1>bio: {this.state.bio}</h1>
-        <br />
-        <h1>location: {this.state.location}</h1>
-        <br />
-        <button onClick={this.toggleEditForm}>Show Edit Form</button>
+      <div className="info-container">
+        <img src={this.state.imageUrl} alt="investor profile picture"/>
+        <h3>Username: {this.state.username}</h3>
+        <h3>Email: {this.state.email}</h3>
+        <h3>First Name: {this.state.firstName}</h3>
+        <h3>Last Name: {this.state.lastName}</h3>
+        <h3>Industry: {this.state.industry}</h3>
+        <h3>Location: {this.state.location}</h3>
+        <h3>Bio: </h3>
+        <textarea
+          name="bio"
+          id="bio"
+          cols="30"
+          rows="10"
+          value={this.state.bio}
+        ></textarea>
+        <button onClick={this.toggleEditForm}>Edit</button>
         {this.state.editForm && (
           <EditInvestor
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
+            handleFileUpload={this.handleFileUpload}
             {...this.state}
           />
         )}

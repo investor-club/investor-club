@@ -6,7 +6,7 @@ const service = axios.create({
 });
  
 const errorHandler = err => {
-  // console.error(err);
+  console.error(err);
   throw err;
 };
  
@@ -22,11 +22,19 @@ export default {
         return res.data})
       .catch(errorHandler);
   },
+
+  handleInvestorUpload(theFile, id) {  
+    console.log('file in service Investor: ', theFile)
+    return service
+      .post(`/investors/${id}`, theFile)
+      .then(res => res.data)
+      .catch(errorHandler);
+  },
  
-  saveNewThing(newThing) {
+  saveNewThing(newThing, id) {
     // console.log('new thing is: ', newThing)
     return service
-      .post('/things/create', newThing)
+      .post(`/profile/create`, newThing)
       .then(res => res.data)
       .catch(errorHandler);
   }

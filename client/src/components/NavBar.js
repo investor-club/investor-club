@@ -4,7 +4,7 @@ import { logout } from "../services/auth";
 import "../App.css";
 
 export default function Navbar(props) {
-  console.log("User in navbar: ", props);
+  //console.log("User in navbar: ", props);
 
   const handleLogout = () => {
     logout().then(() => {
@@ -25,6 +25,16 @@ export default function Navbar(props) {
     dashboard = "/startupdashboard";
   }
 
+  let favourites;
+  if (props.type === "investor") {
+    favourites = "/favourites";
+  }
+
+  let portfolio;
+  if (props.type === "investor") {
+    portfolio = "/portfolio";
+  }
+
   let profile;
   if (props.type === "investor") {
     profile = "/investor/profile/";
@@ -35,18 +45,27 @@ export default function Navbar(props) {
 
   return (
     <div>
-      <div id="navbarContainer" class="bodyPadding">
+      <div id="navbarContainer" className="bodyPadding">
         <div id="clubLogo">
           <Link to="/">Investment Club</Link>
         </div>
         <div id="navbar">
+          {props.type === "investor" ? (
+            <>
+              <Link to="/startuplist">Startups</Link>
+              <Link to={portfolio}>Portfolio</Link>
+              <Link to={favourites}>Favourites</Link>
+            </>
+          ) : (
+            <></>
+          )}
           {props.user ? (
             <>
               <Link to={dashboard}>Dashboard</Link>
+              <Link to={profile}>Profile</Link>
               <Link to="/" onClick={() => handleLogout()}>
                 Logout
               </Link>
-              <Link to={profile}>Profile</Link>
             </>
           ) : (
             <>

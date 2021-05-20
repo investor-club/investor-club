@@ -30,6 +30,7 @@ const investorSchema = new Schema({
   imageUrl: String,
   imageName: String,
   imageDescription: String,
+  interest: String,
   
 });
 

@@ -11,6 +11,8 @@ import Q9experience from "./evalQuestions/Q9experience";
 import Q10pitchDeck from "./evalQuestions/Q10pitchDeck";
 import axios from "axios";
 import service from "../services/service";
+import { rating } from "../services/rating";
+
 export default class StartUpEvaluation extends React.Component {
   state = {
     index: 1,
@@ -30,13 +32,14 @@ export default class StartUpEvaluation extends React.Component {
     skillsIII: [],
     experience: "",
     pitchDeck: "https://res.cloudinary.com/desxd5jb3/image/upload/v1621509639/investor-club/xt51uiofo6cjrf2xvkem.png",
+    rating: 0
   };
 
   componentDidMount() {
     axios
-      .get(`/api/startup/${this.props.user._id}`)
+      .get(`/api/startups/${this.props.user._id}`)
       .then(response => {
-        console.log("component did mount response data", response.data.skillsI);
+        console.log("component did mount EVAL", response.data);
         this.setState({
           username: response.data.username,
           email: response.data.email,
@@ -54,6 +57,7 @@ export default class StartUpEvaluation extends React.Component {
           experience: response.data.experience,
           // pitchDeck: response.data.pitchDeck,
           
+          rating: response.data.rating,
         });
       })
       .catch((err) => console.log(err));
@@ -91,10 +95,10 @@ export default class StartUpEvaluation extends React.Component {
   };
 
   setSkillsI = (skills) => {
-      console.log("SKILLS LIFTED:", skills)
-    this.setState( ({
-        skillsI: skills,
-      }));
+    console.log("SKILLS LIFTED:", skills);
+    this.setState({
+      skillsI: skills,
+    });
   };
 
   setSkillsII = (skillsII) => {
@@ -153,9 +157,7 @@ export default class StartUpEvaluation extends React.Component {
 
     if (this.state.index > 9) {
       console.log("this is the end of the questionnaire");
-      {
-        this.props.setDisplayStartupEval(false);
-      }
+      this.props.setDisplayStartupEval(false);
     }
     const {
       place,
@@ -167,9 +169,11 @@ export default class StartUpEvaluation extends React.Component {
       skillsII,
       skillsIII,
       experience,
-      pitchDeck,
+      pitchDeck
     } = this.state;
-    axios.post(`/api/startup/${this.props.user._id}`, {
+
+    //post form data
+    axios.post(`/api/startups/${this.props.user._id}`, {
         place,
         industry,
         stage,
@@ -181,29 +185,43 @@ export default class StartUpEvaluation extends React.Component {
         experience,
         pitchDeck,
       })
-      .then(() => {
-        // console.log("response data", response.data);
+      .then(response => {
+        console.log("RESPONSE FROM EVAL FRONT: ", response.data);
+        console.log("STATE EVAL: ", this.state);
         this.setState({
           index: this.state.index + 1,
         });
-        console.log("props", this.props.user);
+        rating(response.data, this.props.user._id);  //call the rating service function
       })
       .catch( err => {
         console.log(err);
       });
+
+
+
+    //with using services, but it didn't work
+    // updateEval(place, industry, stage)
+    //     .then(data => {
+    //         console.log("data is updated");
+    //         //if not empty
+    //         this.setState({
+    //             index: (this.state.index + 1)
+    //             currentQuestion: display
+    //         })
+    //     })
   };
+    
 
   showPrevious = (e) => {
     e.preventDefault();
     this.setState({
       index: this.state.index - 1,
     });
-  
   };
 
   render() {
     if (this.props.displayStartupEval) {
-      let progressWidth = this.state.index *10;
+      let progressWidth = this.state.index * 10;
       // console.log("progressWidth",progressWidth)
       let displayedComponent;
       switch (this.state.index) {
@@ -291,11 +309,14 @@ export default class StartUpEvaluation extends React.Component {
           <div class="purpleBackground"></div>
           <div class="bodyPadding">
             <div>
-              <a href="" onClick={this.showPrevious}>
+              <a onClick={this.showPrevious}>
                 Back
               </a>
               <div className="progressBarBg">
-                <div className='progressBar' style={{width: `${progressWidth}%`}}></div>
+                <div
+                  className="progressBar"
+                  style={{ width: `${progressWidth}%` }}
+                ></div>
               </div>
             </div>
 

@@ -14,7 +14,7 @@ export default class StartUpDashboard extends Component {
       };
 
     render() {
-
+        console.log(this.props)
         return (
             <div>
             <StartUpEvaluation {...this.state} {...this.props} setDisplayStartupEval={this.setDisplayStartupEval}/>

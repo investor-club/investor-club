@@ -19,10 +19,10 @@ const startUpSchema = new Schema({
   place: String,
   industry: String,
   stage: String,
-  foundation: String,
-  teamMembers: String,
-  skillsI: [String],
-  skillsII: String,
+  foundation: Boolean,  
+  teamMembers: String, //for rating: 1 or 5 => 0, 2,3,4 => 1
+  skillsI: [String], // for ratingL 1 for each
+  skillsII: String, // for rating: 1 for yes
   skillsIII: [String],
   inPortfolio: [
     {
