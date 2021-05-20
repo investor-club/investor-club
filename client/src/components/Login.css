@@ -1,0 +1,54 @@
+.signup-login {
+  display: flex;
+  flex-direction: row;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 215px;
+  border: 1px solid #222;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  margin: 0 auto;
+  margin-top: 16%;
+}
+
+.login-container h2 {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.login-container input {
+  margin-top: 5px;
+  padding: 2px;
+}
+
+.form-button {
+  margin-left: 3%;
+  width: 200px;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+}
+
+.image-container {
+  background-image: url("../public/pexels-fauxels-3182755\ 1\ \(1\).jpg");
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+  width: 50%;
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.right-part {
+  width: 50%;
+  position: absolute;
+  right: 0px;
+  height: 100%;
+}
