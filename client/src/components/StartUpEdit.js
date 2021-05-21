@@ -105,8 +105,23 @@ export default class StartUpEdit extends Component {
 
   render() {
     return (
+
+
+      
+          
       <div className="form-container">
         <form onSubmit={this.props.handleSubmit}>
+
+        <div className="form-detail">
+            <div className="question">
+              <label htmlFor="username">Company logo: </label>
+              <input 
+                type="file" 
+                onChange={e => this.props.handleFileUpload(e)} 
+                />
+            </div>
+          </div>
+
           <div className="form-detail">
             <div className="question">
               <label htmlFor="username">Username: </label>

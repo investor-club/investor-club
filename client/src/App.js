@@ -44,7 +44,7 @@ export default class App extends React.Component {
           setAppState={this.setAppState}
           type={this.state.type}
         />
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
       </div>
     );
   }
