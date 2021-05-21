@@ -9,8 +9,8 @@
 } */
 
 .footer{
-  height: 80px;
-  margin-top: 1rem;
+  height: 200px;
+  margin-top: 60vh;
   padding: 1rem;
   background-color: #333;
   position: fixed;
