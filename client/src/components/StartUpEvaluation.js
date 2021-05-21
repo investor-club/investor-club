@@ -125,9 +125,6 @@ export default class StartUpEvaluation extends React.Component {
       pitchDeck: pitchDeck,
     });
   };
-  // progressWidth = () => {
-  //     return this.state.index * 10;
-  // }
 
   // this method handles just the file upload
   handleFileUpload = e => {
@@ -158,7 +155,6 @@ export default class StartUpEvaluation extends React.Component {
     if (this.state.index > 9) {
       console.log("this is the end of the questionnaire");
       this.props.setDisplayStartupEval(false);
-
     }
     const {
       place,

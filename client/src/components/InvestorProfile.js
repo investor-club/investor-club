@@ -155,13 +155,7 @@ export default class InvestorProfile extends Component {
         <h3>Industry: {this.state.industry}</h3>
         <h3>Location: {this.state.location}</h3>
         <h3>Bio: </h3>
-        <textarea
-          name="bio"
-          id="bio"
-          cols="30"
-          rows="10"
-          value={this.state.bio}
-        ></textarea>
+        <h3>{this.state.bio}</h3>
         <button onClick={this.toggleEditForm}>Edit</button>
         {this.state.editForm && (
           <EditInvestor

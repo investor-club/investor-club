@@ -10,8 +10,8 @@ export default class Q9experience extends React.Component {
 
   render() {
     return (
-      <div>
-        <label htmlFor="pitchDeck" >
+      <div className="setHeight">
+        <label htmlFor="pitchDeck"  className="questionHeader" >
           If you have a Pitch Deck you can upload it here:
         </label>
         <br />

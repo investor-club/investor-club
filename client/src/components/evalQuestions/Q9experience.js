@@ -7,8 +7,8 @@ export default class Q9experience extends React.Component {
 
   render() {
     return (
-      <div>
-        <label htmlFor="experience">Did you found a startup before?</label>
+      <div className="setHeight">
+        <label htmlFor="experience" className="questionHeader">Did you found a startup before?</label>
         <br />
         <input
           type="text"

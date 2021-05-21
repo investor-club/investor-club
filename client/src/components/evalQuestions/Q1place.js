@@ -7,8 +7,8 @@ export default class Q1place extends React.Component {
 
   render() {
     return (
-      <div>
-        <label htmlFor="place">Where are you located?</label>
+      <div className="setHeight">
+        <label htmlFor="place" className="questionHeader">Where are you located? </label>
         <br />
         <input
           type="text"
@@ -16,6 +16,7 @@ export default class Q1place extends React.Component {
           name="place"
           value={this.props.place}
           onChange={this.handleChange}
+          
         />
       </div>
     );

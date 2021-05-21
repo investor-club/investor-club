@@ -8,8 +8,8 @@ export default class Q2industry extends React.Component {
 
   render() {
     return (
-      <div>
-        <label htmlFor="industry">In which industry are you operating?</label>
+      <div className="setHeight">
+        <label htmlFor="industry" className="questionHeader">In which industry are you operating?</label>
         <br />
         <select
           id="industry"

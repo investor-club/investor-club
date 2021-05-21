@@ -7,8 +7,8 @@ export default class Q3stage extends React.Component {
 
   render() {
     return (
-      <div onChange={this.handleChange} value={this.props.stage} checked={this.props.stage}>
-        <label htmlFor="stage">In what stage is your idea?</label>
+      <div onChange={this.handleChange} value={this.props.stage} checked={this.props.stage} className="setHeight">
+        <label htmlFor="stage" className="questionHeader">In what stage is your idea?</label>
         <br />
         <div class="answerRadio">
           <label for="prototype">
