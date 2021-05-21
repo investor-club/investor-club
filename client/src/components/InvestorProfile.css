@@ -1,4 +1,4 @@
-.info-container {
+/* .info-container {
   display: flex;
   flex-direction: column;
   width: 300px;
@@ -9,15 +9,71 @@
   padding: 2rem;
   border-radius: 15px;
   box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+} */
+
+.bodyDiv {
+  padding: 150px 100px 100px 100px;
+}
+
+.editDiv{
+  padding: 0 0 0 50px;
+  width: 200px;
+}
+h1{
+  font-family: "IBM Plex Sans Condensed";
+  font-size: 32px;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+hr{
+  background-color: #5200ff;
+  height: 1px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  width: 20em;
 }
 
 .info-container h3 {
   margin-bottom: 10px;
 }
 
-.info-container button {
+.sideBySide{
+  display: flex;
+}
+
+.image-cropper {
+  width: 370px;
+  height: 370px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+
+}
+
+.textRight{
+  margin-left: 100px;
+}
+
+.profile-pic {
+display: inline;
+margin: 0 auto;
+margin-left: -25%; 
+height: 100%;
+width: auto;
+
+}
+
+.purple{
+  color: #5200FF
+}
+
+
+button {
   width: 100px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
+  margin-top: 20px;
   padding: 8px;
   border-radius: 8px;
   background-color: #000;

@@ -3,6 +3,7 @@ import axios from "axios";
 import EditInvestor from "./EditInvestor";
 import service from "../services/service";
 import "./InvestorProfile.css";
+import pin from "../public/pin1.svg";
 
 export default class InvestorProfile extends Component {
   state = {
@@ -146,25 +147,47 @@ export default class InvestorProfile extends Component {
   render() {
     if (this.state.error) return <h3>{this.state.error}</h3>;
     return (
-      <div className="info-container">
-        <img src={this.state.imageUrl} alt="investor profile picture"/>
-        <h3>Username: {this.state.username}</h3>
-        <h3>Email: {this.state.email}</h3>
-        <h3>First Name: {this.state.firstName}</h3>
-        <h3>Last Name: {this.state.lastName}</h3>
-        <h3>Industry: {this.state.industry}</h3>
-        <h3>Location: {this.state.location}</h3>
-        <h3>Bio: </h3>
-        <h3>{this.state.bio}</h3>
-        <button onClick={this.toggleEditForm}>Edit</button>
-        {this.state.editForm && (
-          <EditInvestor
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-            handleFileUpload={this.handleFileUpload}
-            {...this.state}
-          />
-        )}
+      <div>
+        <div class="purpleBackground"></div>
+        <div class="bodyPadding" className="sideBySide bodyDiv">
+        
+          <div className="image-cropper">
+            <img src={this.state.imageUrl} alt="investor profile picture" className="profile-pic"/>
+          </div>
+
+          <div className="textRight">
+            <h1>{this.state.firstName} {this.state.lastName}</h1>
+            <div className="sideBySide">
+                <div> <img id="pin" src={pin} alt="pin" /></div>
+                <div><p2>{this.state.location.toUpperCase()}</p2></div>
+            </div>
+            <hr />
+
+            <h3>Industry: {this.state.industry}</h3>
+            <h3>Location: {this.state.location}</h3>
+            <h3>About me </h3>
+            <h3>{this.state.bio}</h3>
+            <h3 className="purple">{this.state.email}</h3>
+            <button onClick={this.toggleEditForm} className="info-Container">Edit</button>
+
+          </div>
+          <div className="editDiv">
+          {this.state.editForm && (
+            <EditInvestor
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+              handleFileUpload={this.handleFileUpload}
+              {...this.state}
+            />
+          )}
+
+          </div>
+
+        </div>
+          <div>
+         
+          </div>
+       
       </div>
     );
   }

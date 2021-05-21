@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import service from "../services/service";
+import "./InvestorProfile.css"
 
 export default class EditProject extends Component {
   render() {
