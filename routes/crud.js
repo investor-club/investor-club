@@ -122,11 +122,11 @@ router.get("/investors/portfolio/:id", (req, res, next) => {
 
 // update investor
 router.post("/investors/:id", (req, res, next) => {
-  const { firstName, lastName, email, username, password, bio, industry, location, imageUrl } = req.body;
+  const { firstName, lastName, email, username, bio, industry, location, imageUrl } = req.body;
   console.log("REQ BODY UPDATE INVESTOR",req.body);
   Investor.findByIdAndUpdate(
     req.params.id,
-    { firstName, lastName, email, username, password, bio, industry, location, imageUrl },
+    { firstName, lastName, email, username, bio, industry, location, imageUrl },
     { new: true }
   )
     .then((investor) => {
