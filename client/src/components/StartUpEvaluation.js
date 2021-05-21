@@ -12,6 +12,7 @@ import Q10pitchDeck from "./evalQuestions/Q10pitchDeck";
 import axios from "axios";
 import service from "../services/service";
 import { rating } from "../services/rating";
+import "./StartUpEvaluation.css"
 
 export default class StartUpEvaluation extends React.Component {
   state = {
@@ -55,7 +56,7 @@ export default class StartUpEvaluation extends React.Component {
           skillsII: response.data.skillsII,
           skillsIII: response.data.skillsIII,
           experience: response.data.experience,
-          // pitchDeck: response.data.pitchDeck,
+          pitchDeck: response.data.pitchDeck,
           
           rating: response.data.rating,
         });

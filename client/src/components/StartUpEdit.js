@@ -34,8 +34,10 @@ export default class StartUpEdit extends Component {
     },
     experience: this.props.experience,
   };
+  
 
   getData = () => {
+
     axios
       .get(`/api/startups/${this.props.user._id}`)
       .then((response) => {
@@ -57,6 +59,8 @@ export default class StartUpEdit extends Component {
           skillsIII: response.data.skillsIII,
           experience: response.data.experience,
         });
+        console.log("state in edit", this.state);
+        console.log("props in edit", this.props);
       })
       .catch((err) => console.log(err));
   };

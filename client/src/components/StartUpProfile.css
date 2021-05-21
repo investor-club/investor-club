@@ -1,20 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
 .main-container {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid #222;
+  /* border: 1px solid #222; */
   margin: 0 auto;
   margin-top: 5%;
   margin-bottom: 4%;
   width: 80vw;
   height: 60vh;
   border-radius: 15px;
-  box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.5); */
   padding: 30px;
 }
 
 .left-side h2 {
   margin-bottom: 35px;
+  font-family: "IBM Plex Sans Condensed";
+  font-weight: 500;
+  font-size: 32px;
 }
 .left-side h3,
 h4,
@@ -22,15 +27,49 @@ textarea {
   margin-bottom: 15px;
 }
 
+
+h4{
+  font-family: "IBM Plex Sans Condensed";
+  font-weight: 500;
+}
+
+p{
+  font-family: "IBM Plex Sans Condensed";
+  font-weight: 400;
+  color: #7E7E7E;
+}
+#profilePic{
+  height: 75px;
+}
+a:hover{
+  text-decoration: underline;
+}
+
+.profileLinks{
+  text-decoration: underline;
+}
+
+#pin{
+  width: 20px;
+}
+
+.sideBySide{
+  display: flex;
+}
 .social-links {
   display: flex;
   flex-direction: column;
 }
 
 .social-links a {
-  font-size: 13px;
-  color: black;
-  text-decoration: none;
+  font-size: 18px;
+  font-family: "IBM Plex Sans Condensed";
+  font-weight: 400;
+  color: #5200FF;
+}
+
+.social-links a:visited {
+  font-size: 18px;
 }
 
 .right-side {
@@ -38,11 +77,14 @@ textarea {
   flex-direction: column;
   width: 600px;
 }
-
+.score{
+  font-size: 20px;
+}
 .top {
   display: flex;
   margin-bottom: 2rem;
   justify-content: space-between;
+  font-family: "IBM Plex Sans Condensed" !important;
 }
 
 .top-detail {
@@ -50,11 +92,13 @@ textarea {
   flex-direction: column;
   align-items: center;
   margin-right: 2.5rem;
+  font-family: "IBM Plex Sans Condensed" !important;
 }
 .right-side hr {
   background-color: #5200ff;
-  height: 0.5px;
+  height: 1px;
   margin-bottom: 15px;
+  margin-top: 15px;
 }
 .bottom {
   display: flex;
@@ -87,6 +131,7 @@ textarea {
 
 .overview {
   margin-top: 3rem;
+  font-size: 20px;
 }
 
 .startup-container {

@@ -198,6 +198,7 @@ router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
     skillsII,
     skillsIII,
     experience,
+    description,
     pitchDeck,
   } = req.body;
   console.log("req file ", req.file);
@@ -221,6 +222,7 @@ router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
       skillsII,
       skillsIII,
       experience,
+      description,
       // pitchDeck: req.file.path
     },
     { new: true}

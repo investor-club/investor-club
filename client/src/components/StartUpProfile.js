@@ -3,13 +3,18 @@ import axios from "axios";
 import StartUpEdit from "./StartUpEdit";
 import "./StartUpProfile.css";
 import { rating } from "../services/rating";
-
+import pin from "../public/pin1.svg";
 
 export default class StartUpProfile extends React.Component {
   state = {
     user: this.props.user,
     error: null,
     editForm: false,
+    username: this.props.user.username,
+    email: this.props.user.email,
+    companyName: this.props.user.companyName,
+    place: this.props.user.place,
+    description: this.props.user.description,
   };
 
   getData = () => {
@@ -82,20 +87,27 @@ export default class StartUpProfile extends React.Component {
       <div className="startup-container">
         <div className="main-container">
           <div className="left-side">
-            <h2>Hello {this.state.user.username}</h2>
-            <h3>{this.state.user.companyName}</h3>
+            <img id="profilePic"src={this.state.user.imageUrl} alt="profile pic" />
+            <h2>{this.state.user.companyName}</h2>
+            {/* <h3>{this.state.user.companyName}</h3> */}
             <h4>{this.state.user.industry}</h4>
-            <textarea
+            <p3>{"Description"}{this.state.user.description}</p3>
+            {/* <textarea
               name="bio"
               id="bio"
               cols="20"
               rows="10"
               value={this.state.user.description}
-            ></textarea>
-            <h4>{this.state.user.place}</h4>
+            ></textarea> */}
+            <br />
+            <div className="sideBySide">
+              <div> <img id="pin" src={pin} alt="pin" /></div>
+              <div><p2>{this.state.user.place.toUpperCase()}</p2></div>
+            </div>
+            
             <div className="social-links">
               <a href="#">{this.state.user.website}</a>
-              <a href="#">PitchDeck</a>
+              <a href={this.state.user.pitchDeck}>PitchDeck</a>
             </div>
           </div>
           <div className="right-side">
@@ -106,15 +118,15 @@ export default class StartUpProfile extends React.Component {
             <div className="top">
               <div className="top-detail">
                 <h4>Team</h4>
-                <h4>{this.state.user.teamMembers}</h4>
+                <p>{this.state.user.teamMembers}{"/1"}</p>
               </div>
               <div className="top-detail">
                 <h4>Skills I</h4>
-                <h4>{this.state.user.skillsI}</h4>
+                <p>{this.state.user.skillsI}</p>
               </div>
               <div className="top-detail">
                 <h4>Skills II</h4>
-                <h4>{this.state.skillsII}</h4>
+                <p>{this.state.skillsII}</p>
               </div>
               <div className="top-detail">
                 <h4>Pitch Deck</h4>
@@ -127,23 +139,23 @@ export default class StartUpProfile extends React.Component {
               <div className="bot-left">
                 <div className="bot-detail">
                   <h4>
-                    Team <span>{this.state.user.teamMembers}</span>
+                    Team <span><p>{this.state.user.teamMembers}</p></span>
                   </h4>
                   <h4>
-                    Has all necessary skills: <span>{this.state.user.skillsII}</span>
+                    Has all necessary skills: <span><p>{this.state.user.skillsII}</p></span>
                   </h4>
                   <h4>
-                    Experience <span>{this.state.user.experience}</span>
+                    Experience <span><p>{this.state.user.experience}</p></span>
                   </h4>
                 </div>
               </div>
               <div className="bot-right">
                 <div className="bot-detail">
                   <h4>
-                    Skills available { this.state.user.skillsI.map(a => {return (<span>{a} </span>) } ) }
+                    Skills available { this.state.user.skillsI.map(a => {return (<span><p>{a}</p> </span>) } ) }
                   </h4>
                   <h4>
-                    Skills missing { this.state.user.skillsIII.map(a => {return (<span> {a} </span>) } ) }
+                    Skills missing { this.state.user.skillsIII.map(a => {return (<span> <p>{a}</p></span>) } ) }
                   </h4>
                 </div>
               </div>
@@ -155,8 +167,10 @@ export default class StartUpProfile extends React.Component {
           <button onClick={this.toggleEditForm}>Edit Profile</button>
           {this.state.editForm && (
             <StartUpEdit
+              {...this.state}
               handleChange={this.handleChange}
               handleSubmit={this.handleSubmit}
+              getData={this.getData}
               user={this.state.user}
               skillsI={this.state.user.skillsI}
               skillsIII={this.state.user.skillsIII}
