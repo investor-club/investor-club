@@ -161,7 +161,7 @@ export default class InvestorProfile extends Component {
                 <div> <img id="pin" src={pin} alt="pin" /></div>
                 <div><p2>{this.state.location.toUpperCase()}</p2></div>
             </div>
-            <hr />
+            <hr className="hrInvestorProfile"/>
 
             <h3>Industry: {this.state.industry}</h3>
             <h3>Location: {this.state.location}</h3>
