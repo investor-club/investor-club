@@ -5,29 +5,33 @@ export default class Q3stage extends React.Component {
     this.props.setStage(event.target.value);
   };
 
+  componentDidUpdate () {
+    console.log(this.props.stage)
+  }
+
   render() {
     return (
-      <div onChange={this.handleChange} value={this.props.stage} checked={this.props.stage} className="setHeight">
+      <div className="setHeight">
         <label htmlFor="stage" className="questionHeader">In what stage is your idea?</label>
         <br />
-        <div class="answerRadio">
-          <label for="prototype">
-            <input type="radio" id="Prototype" name="stage" value="prototype" checked={this.props.stage==='prototype'}/>
+         <div class="answerRadio">
+          <label htmlFor="prototype">
+            <input onChange={this.handleChange} type="radio" id="Prototype" name="stage" value="prototype" checked={this.props.stage==='prototype'}/>
             Prototype/MVP (Pre-Seed)
           </label>
           <br />
-          <label for="concept">
-            <input type="radio" id="Concept" name="stage" value="concept" checked={this.props.stage==='concept'} />
+          <label htmlFor="concept">
+            <input onChange={this.handleChange} type="radio" id="Concept" name="stage" value="concept" checked={this.props.stage==='concept'} />
             Proof of Concept (Pre-Seed)
           </label>
           <br />
-          <label for="paying customers">
-            <input type="radio" id="Customers" name="stage" value="customers" checked={this.props.stage==='customers'}/>
+          <label htmlFor="paying customers">
+            <input onChange={this.handleChange} type="radio" id="Customers" name="stage" value="customers" checked={this.props.stage==='customers'}/>
             First Paying Customers (Seed)
           </label>
           <br />
-          <label for="beyond">
-            <input type="radio" id="beyond" name="stage" value="beyond" checked={this.props.stage==='beyond'}/>
+          <label htmlFor="beyond">
+            <input onChange={this.handleChange} type="radio" id="beyond" name="stage" value="beyond" checked={this.props.stage==='beyond'}/>
             beyond the mentioned ones
           </label>
         </div>

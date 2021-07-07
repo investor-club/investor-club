@@ -30,7 +30,7 @@ app.use(
     saveUninitialized: false,
     resave: true,
     store: MongoStore.create({
-      mongoUrl: MONGO_URI
+      mongoUrl: "mongodb://localhost/server"//MONGO_URI
     })
   })
 )
@@ -39,25 +39,6 @@ app.use(
 require("./config")(app);
 
 const bcrypt = require("bcrypt");
-
-// session configuration
-// const session = require('express-session');
-// const MongoStore = require('connect-mongo');
-
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     cookie: {
-//       maxAge: 1000 * 60 * 60 * 24
-//     },
-//     saveUninitialized: false,
-//     resave: true,
-//     store: MongoStore.create({
-//       mongoUrl: "mongodb://localhost/server"
-//     })
-//   })
-// )
-// end of session
 
 // 👇 Start handling routes here
 // Contrary to the views version, all routes are controled from the routes/index.js

@@ -38,8 +38,8 @@ export default class StartupDetails extends Component {
           ></textarea>
           <h4>{this.state.user.place}</h4>
           <div className="social-links">
-            <a href="#">companywebsite.com</a>
-            <a href="#">PitchDeck</a>
+            <a>companywebsite.com</a>
+            <a>PitchDeck</a>
           </div>
         </div>
         <div className="right-side">

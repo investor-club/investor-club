@@ -128,8 +128,8 @@ export default class RouteContainer extends React.Component {
             <StartUpDashboard
               {...this.state}
               {...this.props}
+              {...props}
               setDisplayStartupEval={this.setDisplayStartupEval}
-              // {...props}
               user={this.state.user}
               // type={this.state.type}
             />

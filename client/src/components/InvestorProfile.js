@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import EditInvestor from "./EditInvestor";
-import service from "../services/service";
+import {service} from "../services/service";
 import "./InvestorProfile.css";
 import pin from "../public/pin1.svg";
 
@@ -152,7 +152,7 @@ export default class InvestorProfile extends Component {
         <div class="bodyPadding" className="sideBySide bodyDiv">
         
           <div className="image-cropper">
-            <img src={this.state.imageUrl} alt="investor profile picture" className="profile-pic"/>
+            <img src={this.state.imageUrl} alt="investor-profile" className="profile-pic"/>
           </div>
 
           <div className="textRight">

@@ -10,7 +10,7 @@ import Q8skillsIII from "./evalQuestions/Q8skillsIII";
 import Q9experience from "./evalQuestions/Q9experience";
 import Q10pitchDeck from "./evalQuestions/Q10pitchDeck";
 import axios from "axios";
-import service from "../services/service";
+import {service} from "../services/service";
 import { rating } from "../services/rating";
 import "./StartUpEvaluation.css"
 
@@ -149,13 +149,11 @@ export default class StartUpEvaluation extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // service
-    //   .saveNewThing(this.state)
 
     if (this.state.index > 9) {
       console.log("this is the end of the questionnaire");
       this.props.setDisplayStartupEval(false);
-    }
+
     const {
       place,
       industry,
@@ -166,7 +164,7 @@ export default class StartUpEvaluation extends React.Component {
       skillsII,
       skillsIII,
       experience,
-      pitchDeck
+      //pitchDeck
     } = this.state;
     console.log("state at beginning of handleSubmit", this.state); //is updating
 
@@ -185,18 +183,16 @@ export default class StartUpEvaluation extends React.Component {
       })
       .then(response => {
         console.log("RESPONSE FROM EVAL FRONT: ", response.data);
-        // console.log("STATE IN EVAL: ", this.state);
-        this.setState({
-          index: this.state.index + 1,
-        });
-        if (this.state.index > 9){
-        rating(response.data); //call the rating service function
-        this.props.history.push("/startupdashboard") } 
-      })
+        rating(response.data.startup); //call the rating service function
+        this.props.history.push("/startup/profile") } 
+      )
       .catch( err => {
-        console.log(err);
+        console.log("EVALUATION ERROR ", err);
       });
-
+    }
+    this.setState({
+      index: this.state.index + 1,
+    });
   };
     
   showPrevious = (e) => {
