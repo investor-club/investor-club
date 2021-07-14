@@ -30,7 +30,7 @@ app.use(
     saveUninitialized: false,
     resave: true,
     store: MongoStore.create({
-      mongoUrl: MONGODB_URI
+      mongoUrl: MONGO_URI
     })
   })
 )
