@@ -106,7 +106,7 @@ router.post("/login", (req, res) => {
           // console.log('THIS WORKS: ', investorFromDB.password, password);
           if (bcrypt.compareSync(password, investorFromDB.password)) {
             req.session.user = investorFromDB;
-            req.session.type = "investor";
+            req.session.type = "investor"; 
             //console.log("LOGGEIN IN AS INVESTOR ", req.session)
             res.status(200).json({ user: investorFromDB, type:"investor" });
           } else {
