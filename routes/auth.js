@@ -12,7 +12,7 @@ router.post("/investors", (req, res, next) => {
       .status(400)
       .json({ message: "Your password has to be 8 chars min" });
   }
-  if (username === "") {
+  if (username === "") {  
     return res.status(400).json({ message: "Your username cannot be empty" });
   }
 
