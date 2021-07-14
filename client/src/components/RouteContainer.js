@@ -14,7 +14,6 @@ import InvestorProfile from "./InvestorProfile";
 import StartUpDetails from "./StartupDetails";
 import Favourites from "./Favourites";
 import Portfolio from "./Portfolio";
-import axios from "axios";
 
 export default class RouteContainer extends React.Component {
   state = {
@@ -129,7 +128,7 @@ export default class RouteContainer extends React.Component {
               {...this.state}
               {...this.props}
               {...props}
-              setDisplayStartupEval={this.setDisplayStartupEval}
+              //setDisplayStartupEval={this.setDisplayStartupEval}
               user={this.state.user}
               // type={this.state.type}
             />
