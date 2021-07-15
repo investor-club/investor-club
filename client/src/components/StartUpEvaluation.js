@@ -37,10 +37,11 @@ export default class StartUpEvaluation extends React.Component {
   };
 
   componentDidMount() {
+    console.log(this.props.user._id)
     axios
       .get(`/api/startups/${this.props.user._id}`)
       .then(response => {
-        // console.log("component did mount EVAL", response.data);
+        console.log("component did mount EVAL", response.data);
         this.setState({
           username: response.data.username,
           email: response.data.email,

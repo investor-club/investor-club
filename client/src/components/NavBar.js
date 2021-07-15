@@ -37,7 +37,7 @@ export default function Navbar(props) {
 
   let profile;
   if (props.type === "investor") {
-    profile = "/investor/profile/";
+    profile = "/investor/profile";
   }
   if (props.type === "startup") {
     profile = "/startup/profile";

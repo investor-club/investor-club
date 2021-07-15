@@ -10,7 +10,6 @@ const errorHandler = err => {
   throw err;
 };
  
-
  
  function handleUpload(theFile, id) {  
     console.log('file in service: ', theFile)
