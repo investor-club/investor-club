@@ -103,8 +103,8 @@ body {
   align-items: center;
 }
 
-#signupChoice img {
-  /* width: 400px; */
+.signupImg {
+  width: 400px; 
   margin-bottom: 30px;
 }
 
