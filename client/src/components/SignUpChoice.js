@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import '../public' from '../public'
 import startupImg from "../public/undraw_upgrade_06a0.svg"; 
 import investorImg from "../public/undraw_revenue_3osh.svg"
 

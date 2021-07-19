@@ -201,14 +201,6 @@ router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
     description,
     pitchDeck,
   } = req.body;
-  console.log("req file ", req.file);
-  // console.log("req file ", req.file.path);
-  // console.log("after req.body", pitchDeck);
-  // res.json({ secure_url: req.file.path });
-
-  // console.log("called post in backend", req.body)
-
-  
   //console.log("UPDATE STARTUP: ", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
@@ -228,7 +220,7 @@ router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
     { new: true}
     )
       .then(startup => {
-        console.log("startup",startup);
+        //console.log("startup updated", startup);
         res.status(200).json({startup: startup});
       })
       .catch(err => {
@@ -236,8 +228,6 @@ router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
       });
       
 })
-
-// res.json({ secure_url: req.file.path });
 
 // , secure_url: req.file.path 
 

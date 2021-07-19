@@ -125,13 +125,13 @@ export default class StartUpList extends Component {
           <td>
             <img
               src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png"
-              width="150px"
+              width="150px" alt='thumbnail'
             ></img>
           </td>
           <td>
             {" "}
             <h2>
-              <Link to="/startupdetails">{startup.companyName}</Link>
+              <Link to={`/startups/${startup._id}`}>{startup.companyName}</Link>
             </h2>
           </td>
           <td>{startup.industry}</td>

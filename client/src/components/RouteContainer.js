@@ -38,9 +38,6 @@ export default class RouteContainer extends React.Component {
   };
 
   render() {
-    console.log("I AM USER IN ROUTECONTAINER", this.state.user);
-
-
 
     return (
       <div>
@@ -177,7 +174,7 @@ export default class RouteContainer extends React.Component {
 
         <Route
           exact
-          path="/startupdetails"
+          path="/startups/:id"
           render={(props) => (
             <StartUpDetails user={this.state.user} {...props} />
           )}

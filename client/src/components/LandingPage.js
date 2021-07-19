@@ -15,7 +15,6 @@ export default class LandingPage extends Component {
     axios
       .get("/api/startups")
       .then((response) => {
-        console.log("STARTUP LIST: ", response.data)
         this.setState({
           topRated: response.data,
         });

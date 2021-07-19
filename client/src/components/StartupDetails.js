@@ -4,39 +4,38 @@ import "./StartupDetails.css";
 
 export default class StartupDetails extends Component {
   state = { 
-    user: this.props.user
+    startup: {}
   };
 
-  getStartupDetails = () => {
+  componentDidMount() {
     axios
       .get(`/api/startups/${this.props.match.params.id}`)
-      .then((response) => {
-        console.log("STARTUP DETAILS RESPONSE", response.data);
+      .then((response) => {   //this works
         this.setState({
-          user: response.data
+          startup: response.data
         });
       })
       .catch((err) => console.log(err));
-  };
-  componentDidMount() {
-    this.getStartupDetails();
+   
   }
 
   render() {
+
     return (
       <div className="main-container">
         <div className="left-side">
-          <h2>Hello {this.state.user.username}</h2>
-          <h3>{this.state.user.companyName}</h3>
-          <h4>{this.state.user.industry}</h4>
-          <textarea
+          <h2>Hello {this.state.startup.companyName}</h2>
+          <h4>{this.state.startup.industry}</h4>
+          {/* <textarea
             name="bio"
             id="bio"
             cols="20"
             rows="10"
-            value={this.state.user.description}
-          ></textarea>
-          <h4>{this.state.user.place}</h4>
+            value={this.state.startup.description}
+          ></textarea> */}
+          <h4>Where: {this.state.startup.place}</h4>
+          <h4>Bio: {this.state.startup.description}</h4>
+          
           <div className="social-links">
             <a>companywebsite.com</a>
             <a>PitchDeck</a>
@@ -50,19 +49,19 @@ export default class StartupDetails extends Component {
           <div className="top">
             <div className="top-detail">
               <h4>Team</h4>
-              <h4>{this.state.user.teamMembers}</h4>
+              <h4>{this.state.startup.teamMembers}</h4>
             </div>
             <div className="top-detail">
               <h4>Skills I</h4>
-              <h4>{this.state.user.skillsI}</h4>
+              <h4>{this.state.startup.skillsI}</h4>
             </div>
             <div className="top-detail">
               <h4>Skills II</h4>
-              <h4>{this.state.user.skillsII}</h4>
+              <h4>{this.state.startup.skillsII}</h4>
             </div>
             <div className="top-detail">
               <h4>Pitch Deck</h4>
-              <h4>{this.state.user.pitchDeck}</h4>
+              <h4>{this.state.startup.pitchDeck}</h4>
             </div>
           </div>
           <h3 className="overview">Overview</h3>
@@ -71,24 +70,24 @@ export default class StartupDetails extends Component {
               <div className="bot-left">
                 <div className="bot-detail">
                   <h4>
-                    Team <span>{this.state.user.teamMembers}</span>
+                    Team <span>{this.state.startup.teamMembers}</span>
                   </h4>
                   <h4>
-                    Has all necessary skills: <span>{this.state.user.skillsII}</span>
+                    Has all necessary skills: <span>{this.state.startup.skillsII}</span>
                   </h4>
                   <h4>
-                    Experience <span>{this.state.user.experience}</span>
+                    Experience <span>{this.state.startup.experience}</span>
                   </h4>
                 </div>
               </div>
               <div className="bot-right">
                 <div className="bot-detail">
                   <h4>
-                    Skills available { this.state.user.skillsI.map(a => {return (<span>{a} </span>) } ) }
+                     {/* Skills available { this.state.startup.skillsI.map(a => {return (<span>{a}  </span>) } ) }  */}
                   </h4>
-                  <h4>
-                    Skills missing { this.state.user.skillsIII.map(a => {return (<span> {a} </span>) } ) }
-                  </h4>
+                  {/* <h4>
+                    Skills missing { this.state.startup.skillsIII.map(a => {return (<span> {a}  </span>) } ) }
+                  </h4> */}
                 </div>
               </div>
             </div>

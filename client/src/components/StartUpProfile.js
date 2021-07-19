@@ -122,7 +122,7 @@ export default class StartUpProfile extends React.Component {
               </div>
               <div className="top-detail">
                 <h4>Skills I</h4>
-                <p>{this.state.user.skillsI}</p>
+                <p>{this.state.user.skillsI.length}/6</p>
               </div>
               <div className="top-detail">
                 <h4>Skills II</h4>
@@ -152,10 +152,10 @@ export default class StartUpProfile extends React.Component {
               <div className="bot-right">
                 <div className="bot-detail">
                   <h4>
-                    Skills available { this.state.user.skillsI.map(a => {return (<span><p>{a}</p> </span>) } ) }
+                    Skills available { this.state.user.skillsI.map(a => {return (<span> <p>  {a}</p></span>) } ) }
                   </h4>
                   <h4>
-                    Skills missing { this.state.user.skillsIII.map(a => {return (<span> <p>{a}</p></span>) } ) }
+                    Skills missing { this.state.user.skillsIII.map(a => {return (<span> <p>  {a}</p></span>) } ) }
                   </h4>
                 </div>
               </div>

@@ -7,7 +7,7 @@
   /* border: 1px solid #222; */
   margin: 0 auto;
   margin-top: 5%;
-  margin-bottom: 4%;
+ /* margin-bottom: 2%; */
   width: 80vw;
   height: 60vh;
   border-radius: 15px;
@@ -75,7 +75,7 @@ a:hover{
 .right-side {
   display: flex;
   flex-direction: column;
-  width: 600px;
+  width: 650px;
 }
 .score{
   font-size: 20px;
@@ -83,6 +83,8 @@ a:hover{
 .top {
   display: flex;
   margin-bottom: 2rem;
+  
+  padding: 10px;
   justify-content: space-between;
   font-family: "IBM Plex Sans Condensed" !important;
 }
@@ -91,6 +93,7 @@ a:hover{
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* width:  */
   margin-right: 2.5rem;
   font-family: "IBM Plex Sans Condensed" !important;
 }
@@ -117,7 +120,7 @@ a:hover{
 .bot-detail {
   flex-direction: row;
   padding: 10px;
-  width: 260px;
+  width: 290px;
   justify-content: space-around;
 }
 
@@ -147,11 +150,13 @@ a:hover{
   color: #fff;
   border: none;
   font-size: 1rem;
+  margin-left: 68vw;
 }
 
 .edit-form {
   width: 80vw;
   margin: 0 auto;
+
 }
 
 .edit-form label,

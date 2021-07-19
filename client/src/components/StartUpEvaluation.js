@@ -304,7 +304,7 @@ export default class StartUpEvaluation extends React.Component {
               </div>
             </div>
 
-            <div class="questionContainer">
+            <div className="questionContainer">
               <form onSubmit={this.handleSubmit}>
                 {displayedComponent}
 
