@@ -32,7 +32,7 @@ export default class LandingPage extends Component {
         return (
           <tr key={startup._id}>
             <td>
-              <img
+              <img className='landingPageimg'
                 src="https://www.kindpng.com/picc/m/430-4304834_anonymous-guy-fawkes-mask-logo-hd-png-download.png"
                 width="150px"
               ></img>

@@ -13,7 +13,7 @@ export default class SignUpChoice extends Component {
         <div id='startupChoice'>
          
           <Link to="/signup/startup">
-            <img src={startupImg} alt="startup"/>
+            <img src={startupImg} alt="startup" width='400px'/>
           </Link>          
           <h2>
             <Link to="/signup/startup">I'm a Startup</Link>
@@ -22,7 +22,7 @@ export default class SignUpChoice extends Component {
         <div id='investorChoice'>
           
           <Link to="/signup/investor">
-            <img src={investorImg} alt="investor"/>
+            <img src={investorImg} alt="investor" width='400px'/>
           </Link>
           <h2>
             <Link to="/signup/investor">I'm an Investor</Link>
