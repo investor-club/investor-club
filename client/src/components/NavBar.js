@@ -8,7 +8,6 @@ export default function Navbar(props) {
 
   const handleLogout = () => {
     logout().then(() => {
-      console.log("LOGGING OUT??");
       props.setAppState(null, null);
     });
   };
@@ -17,12 +16,12 @@ export default function Navbar(props) {
     props.toggleLanding();
   };
 
-  let dashboard;
+  let dashboardLink;
   if (props.type === "investor") {
-    dashboard = "/investordashboard";
+    dashboardLink = "/investordashboard";
   }
   if (props.type === "startup") {
-    dashboard = "/startupdashboard";
+    dashboardLink = "/startupdashboard";
   }
 
   let favourites;
@@ -35,12 +34,12 @@ export default function Navbar(props) {
     portfolio = "/portfolio";
   }
 
-  let profile;
+  let profileLink;
   if (props.type === "investor") {
-    profile = "/investor/profile";
+    profileLink = "/investor/profile";
   }
   if (props.type === "startup") {
-    profile = "/startup/profile";
+    profileLink = "/startup/profile";
   }
 
   return (
@@ -61,8 +60,8 @@ export default function Navbar(props) {
           )}
           {props.user ? (
             <>
-              <Link to={dashboard}>Dashboard</Link>
-              <Link to={profile}>Profile</Link>
+              <Link to={dashboardLink}>Dashboard</Link>
+              <Link to={profileLink}>Profile</Link>
               <Link to="/" onClick={() => handleLogout()}>
                 Logout
               </Link>

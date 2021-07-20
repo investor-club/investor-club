@@ -135,6 +135,7 @@ router.get("/loggedin", (req, res) => {
 
 //logout
 router.delete("/logout", (req, res) => {
+  // @ts-ignore
   req.session.destroy();
   res.status(200).json({ message: "Successful Logout" });
 });

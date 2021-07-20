@@ -290,8 +290,8 @@ export default class StartUpEvaluation extends React.Component {
       }
       return (
         <div>
-          <div class="purpleBackground"></div>
-          <div class="bodyPadding">
+          <div className="purpleBackground"></div>
+          <div className="bodyPadding">
             <div>
               <a onClick={this.showPrevious}>
                 Back

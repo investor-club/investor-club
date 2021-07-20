@@ -148,8 +148,8 @@ export default class InvestorProfile extends Component {
     if (this.state.error) return <h3>{this.state.error}</h3>;
     return (
       <div>
-        <div class="purpleBackground"></div>
-        <div class="bodyPadding" className="sideBySide bodyDiv">
+        <div className="purpleBackground"></div>
+        <div className="bodyPadding" className="sideBySide bodyDiv">
         
           <div className="image-cropper">
             <img src={this.state.imageUrl} alt="investor-profile" className="profile-pic"/>

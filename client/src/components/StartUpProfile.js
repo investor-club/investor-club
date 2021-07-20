@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import StartUpEdit from "./StartUpEdit";
 import "./StartUpProfile.css";
-import { rating } from "../services/rating";
+import rating from "../services/rating";
 import pin from "../public/pin1.svg";
 
 export default class StartUpProfile extends React.Component {
@@ -91,7 +91,7 @@ export default class StartUpProfile extends React.Component {
             <h2>{this.state.user.companyName}</h2>
             {/* <h3>{this.state.user.companyName}</h3> */}
             <h4>{this.state.user.industry}</h4>
-            <p3>{"Description"}{this.state.user.description}</p3>
+            <p>{"Description"}{this.state.user.description}</p>
             {/* <textarea
               name="bio"
               id="bio"
@@ -102,11 +102,11 @@ export default class StartUpProfile extends React.Component {
             <br />
             <div className="sideBySide">
               <div> <img id="pin" src={pin} alt="pin" /></div>
-              <div><p2>{this.state.user.place.toUpperCase()}</p2></div>
+              <div><p>{this.state.user.place.toUpperCase()}</p></div>
             </div>
             
             <div className="social-links">
-              <a href="#">{this.state.user.website}</a>
+              <a href="google.com">{this.state.user.website}</a>
               <a href={this.state.user.pitchDeck}>PitchDeck</a>
             </div>
           </div>
