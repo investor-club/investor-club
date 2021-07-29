@@ -5,9 +5,9 @@ export default class Q3stage extends React.Component {
     this.props.setStage(event.target.value);
   };
 
-  componentDidUpdate () {
-    console.log(this.props.stage)
-  }
+  // componentDidUpdate () {
+  //   console.log(this.props.stage)
+  // }
 
   render() {
     return (
