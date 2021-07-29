@@ -36,7 +36,7 @@ export default class StartUpList extends Component {
       search: e.target.value,
       startups: [...state.startups].filter((startup) => {
         return `${startup.companyName}${startup.place}${startup.industry}${startup.statement}`
-          // .toLowerCase()
+           //removed tolowercase
           .match(regex);
       }),
     }));
