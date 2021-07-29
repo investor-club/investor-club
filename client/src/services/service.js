@@ -1,7 +1,7 @@
 import axios from 'axios';
  
 const service = axios.create({
-  baseURL: 'https://investor-club.herokuapp.com/'
+  baseURL: 'https://investor-club.herokuapp.com/api'
   // withCredentials: true // => you might need this when having the users in the app
 });
  
