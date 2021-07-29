@@ -37,7 +37,7 @@ export default class InvestorList extends Component {
         search: e.target.value,
         startups: [...state.investors].filter(investor=>{
           return `${investor.companyName}${investor.place}${investor.industry}${investor.statement}`
-          .toLowerCase().match(regex);
+          .match(regex);
         }),
       }))
     }
