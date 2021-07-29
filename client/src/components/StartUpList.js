@@ -68,7 +68,14 @@ export default class StartUpList extends Component {
         startups: [...state.startups.sort((a, b) => b.rating - a.rating)],
       }));
     }
+    if (e.target.value === "lowest") {
+      this.setState((state) => ({
+        startups: [...state.startups.sort((a, b) => a.rating - b.rating)],
+      }));
+    }
   };
+
+  
 
   handleAdd = (id) => {
     axios

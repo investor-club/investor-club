@@ -159,7 +159,7 @@ export default class InvestorProfile extends Component {
             <h1>{this.state.firstName} {this.state.lastName}</h1>
             <div className="sideBySide">
                 <div> <img id="pin" src={pin} alt="pin" /></div>
-                <div><p2>{this.state.location.toUpperCase()}</p2></div>
+                <div><p2>{this.state.location && this.state.location.toUpperCase()}</p2></div>
             </div>
             <hr className="hrInvestorProfile"/>
 
