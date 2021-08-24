@@ -30,7 +30,7 @@ export default class StartUpList extends Component {
     // If the search bar isn't empty assign the original list to currentList
     if (e.target.value === "") {
       this.getData();
-    } //IS THERE A BETTER WAY???
+    } //IS THERE A BETTER WAY???  
 
     this.setState((state) => ({
       search: e.target.value,

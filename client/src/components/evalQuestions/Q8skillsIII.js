@@ -42,7 +42,7 @@ export default class Q8skillsIII extends React.Component {
             type="checkbox"
             id="marketing"
             name="skillsIII"
-            value="marketing"
+            value={this.state.marketing}
             checked={marketing}
           />
           <label htmlFor="marketing">Marketing</label>
