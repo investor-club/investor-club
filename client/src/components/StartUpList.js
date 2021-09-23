@@ -81,18 +81,13 @@ export default class StartUpList extends Component {
     axios
       .get(`/api/startups/${id}`)
       .then((startupFromDB) => {
-        console.log("FOUND STARTUP RESPONSE: ", startupFromDB.data._id);
+        console.log("first then startup",startupFromDB);
         axios
           .put(`/api/investors/portfolio/${this.state.user._id}`, {
-            startupToAdd: startupFromDB.data._id, // WHAT TO PASS??
+            startupToAdd: startupFromDB.data._id, 
           })
           .then((investorFromDB) => {
-            console.log(
-              "INVESTOR FOUND ",
-              investorFromDB,
-              "USER: ",
-              this.state.user
-            );
+            console.log("second then startup", startupFromDB);
             this.setState((state) => ({
               user: {
                 ...state.user,
@@ -119,9 +114,12 @@ export default class StartUpList extends Component {
       }),
     }));
   };
+  
 
   render() {
+    
     const displayedList = this.state.startups.map((startup) => {
+      
       return (
         <tr className="one-startup" key={startup._id}>
           <td>
@@ -141,13 +139,22 @@ export default class StartUpList extends Component {
           <td>{startup.place}</td>
           <td>{startup.stage}</td>
           <td>{startup.rating === 0 ? 0 :  startup.rating}/6</td>
-          {/* can only add if not in portfolio */}
-          {/* {this.state.portfolio.includes(startup.id) ?  <td>Add to portfolio </td> :  <td>In portfolio </td>} */}
-          <td>
-            <button onClick={() => this.handleAdd(startup._id)}>
+          {
+              this.state.user.inPortfolio.find(startupFromPortfolio => {
+                //console.log('compare', startupFromPortfolio, startup._id )
+              return startupFromPortfolio === startup._id 
+              })           
+              ?  
+              <td>In portfolio </td> 
+              :
+              <td>
+              <button onClick={() => this.handleAdd(startup._id)}>
               Add to portfolio
-            </button>
-          </td>
+              </button>
+              </td>
+          }
+
+      
         </tr>
       );
     });
