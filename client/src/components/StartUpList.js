@@ -17,6 +17,15 @@ export default class StartUpList extends Component {
         this.setState({
           startups: response.data,
         });
+        axios
+          .get(`/api/investors/portfolio/${this.props.user._id}`)
+          .then((responseInvestor) => {
+            //console.log("response investor",responseInvestor.data);
+            this.setState({
+              user: responseInvestor.data,
+            })
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   };
@@ -81,13 +90,11 @@ export default class StartUpList extends Component {
     axios
       .get(`/api/startups/${id}`)
       .then((startupFromDB) => {
-        console.log("first then startup",startupFromDB);
         axios
           .put(`/api/investors/portfolio/${this.state.user._id}`, {
             startupToAdd: startupFromDB.data._id, 
           })
-          .then((investorFromDB) => {
-            console.log("second then startup", startupFromDB);
+          .then(() => {
             this.setState((state) => ({
               user: {
                 ...state.user,
@@ -97,7 +104,7 @@ export default class StartUpList extends Component {
                 ],
               },
             }));
-            this.props.setPortfolio(startupFromDB);
+          //  this.props.setPortfolio(startupFromDB.data);
           })
           .catch((err) => console.log(err));
       })
@@ -141,8 +148,8 @@ export default class StartUpList extends Component {
           <td>{startup.rating === 0 ? 0 :  startup.rating}/6</td>
           {
               this.state.user.inPortfolio.find(startupFromPortfolio => {
-                //console.log('compare', startupFromPortfolio, startup._id )
-              return startupFromPortfolio === startup._id 
+                console.log('compare', startupFromPortfolio, startup._id,startupFromPortfolio === startup._id )
+              return startupFromPortfolio._id === startup._id 
               })           
               ?  
               <td>In portfolio </td> 
