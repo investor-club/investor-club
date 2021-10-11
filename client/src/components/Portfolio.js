@@ -24,6 +24,7 @@ export default class Portfolio extends Component {
   }
   render() {
     console.log(this.state.data);
+    if (!this.state.user)  return (<p>loading</p>)
     return (
       <div className="card-container">
         {this.state.data.map((startup) => {

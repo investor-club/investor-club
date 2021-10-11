@@ -11,7 +11,8 @@ export default class InvestorDashboard extends Component {
   };
 
   render() {
- 
+    
+    if (!this.state.user)  return (<p>Refresh page 😬</p>)
     return (
       <div>
         <h1>     

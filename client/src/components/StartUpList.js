@@ -100,7 +100,7 @@ export default class StartUpList extends Component {
                 ...state.user,
                 inPortfolio: [
                   ...state.user.inPortfolio,
-                  startupFromDB.data._id,
+                  startupFromDB.data,
                 ],
               },
             }));
