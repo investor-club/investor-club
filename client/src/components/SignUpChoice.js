@@ -18,6 +18,7 @@ export default class SignUpChoice extends Component {
           <h2>
             <Link to="/signup/startup">I'm a Startup</Link>
           </h2>
+          <p style={{color: "red"}}>BETA VERSION</p>
         </div>
         <div id='investorChoice'>
           
