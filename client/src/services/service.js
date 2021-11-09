@@ -12,36 +12,29 @@ const errorHandler = err => {
  
  
  function handleUpload(theFile, id) {  
-    console.log('file in service: ', theFile)
     return service
       .post(`/startup/${id}`, theFile)
       .then(res => {
-        console.log("res.data", res.data)
         return res.data})
       .catch(errorHandler);
   }
 
   function handleInvestorUpload(theFile, id) {  
-    console.log('file in service Investor: ', theFile)
     return service
       .post(`/upload`, theFile)
       .then(res => {
-        console.log("res.data", res.data)
         return res.data
       })
       .catch(errorHandler);
   }
  
   function saveNewThing(newThing, id) {
-    console.log('new thing is: ', newThing) //works
     return service
-      .post(`/investors/${id}`, newThing) //works
+      .post(`/investors/${id}`, newThing) 
       .then(res => {
-        console.log("res.data", res.data) //works
         return res.data
       })
       .catch(errorHandler);
   }
-
 
 export {service, handleUpload, handleInvestorUpload, saveNewThing}

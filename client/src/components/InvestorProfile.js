@@ -26,7 +26,6 @@ export default class InvestorProfile extends Component {
     axios
       .get(`/api/investors/${this.props.user._id}`)
       .then((response) => {
-        console.log("investor profile: ", response);
         this.setState({
           username: response.data.username,
           email: response.data.email,
@@ -51,7 +50,6 @@ export default class InvestorProfile extends Component {
 
   componentDidMount() {
     this.getData();
-    console.log("hello from did mount");
   }
 
   toggleEditForm = () => {
@@ -68,9 +66,6 @@ export default class InvestorProfile extends Component {
   };
 
   handleFileUpload = e => {
-    
-    console.log('The file to be uploaded is: ', e.target.files[0]);
- 
     const uploadData = new FormData();
     // imageUrl => this name has to be the same as in the model since we pass
     // req.body to .create() method when creating a new thing in '/api/things/create' POST route
@@ -79,10 +74,6 @@ export default class InvestorProfile extends Component {
     service
       .handleInvestorUpload(uploadData, this.props.user._id)
       .then(response => {
-        // console.log('response is: ', response);
-        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-        console.log("response",response)
-        // console.log("response.secure_ur",response.secure_url)
         this.setState({ imageUrl: response.secure_url });
       })
       .catch(err => {
@@ -92,20 +83,14 @@ export default class InvestorProfile extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("update");
 
     service
       .saveNewThing(this.state, this.props.user._id)
       .then(res => {
-        console.log('added username: ', res.investor.username);
-        console.log("this state",this.state);
-        // assign state back to what we're getting.
-        this.setState({ //does not work
+        this.setState({ 
           username: res.investor.username,
           firstName: res.investor.firstName,
         });
-        console.log("this props",this.props);
-        console.log("this state",this.state);
       })
       .catch(err => {
         console.log('Error while adding the thing: ', err);
@@ -125,7 +110,6 @@ export default class InvestorProfile extends Component {
       })
       
       .then((response) => {
-        console.log("this state",this.state); //correct
         this.setState({
           imageUrl: this.state.imageUrl,
           username: response.data.username,

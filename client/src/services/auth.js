@@ -37,7 +37,6 @@ const login = (username, password) => {
   return axios
     .post("/api/auth/login", { username, password })
     .then((response) => {
-      //console.log("RESPONSE DATA: ", response.data);
       return response.data;
     })
     .catch((err) => {

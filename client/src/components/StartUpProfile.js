@@ -21,7 +21,6 @@ export default class StartUpProfile extends React.Component {
     axios
       .get(`/api/startups/${this.props.user._id}`)
       .then((response) => {
-        console.log("response data", response.data);
         this.setState({
           user: response.data
         });
@@ -48,7 +47,6 @@ export default class StartUpProfile extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("update");
     axios
       .put(`/api/startups/${this.props.user._id}`, {
         username: this.state.username,
@@ -73,7 +71,6 @@ export default class StartUpProfile extends React.Component {
           user: response.data,
           editForm: false,
         });
-        console.log("SECOND RATING CALL", response)
         rating(response.data)
       })
       .catch((err) => {
@@ -91,13 +88,6 @@ export default class StartUpProfile extends React.Component {
             <h2>{this.state.user.companyName}</h2>
             <h4>{this.state.user.industry}</h4>
             <p>{"Description"}{this.state.user.description}</p>
-            {/* <textarea
-              name="bio"
-              id="bio"
-              cols="20"
-              rows="10"
-              value={this.state.user.description}
-            ></textarea> */}
             <br />
             <div className="sideBySide">
               <div> <img id="pin" src={pin} alt="pin" /></div>

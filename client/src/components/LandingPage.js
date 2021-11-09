@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./LandingPage.css";
 
@@ -10,7 +9,6 @@ export default class LandingPage extends Component {
     topRated: []
   };
 
-  // axios req with a limit to first 5
   getData = () => {
     axios
       .get("/api/startups")

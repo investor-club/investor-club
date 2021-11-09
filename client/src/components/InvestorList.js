@@ -14,7 +14,6 @@ export default class InvestorList extends Component {
         axios
           .get('/api/investors')
           .then(response => {
-           // console.log("INVESTOR LIST: ", response.data)
             this.setState({
               investors: response.data,
             });
@@ -27,11 +26,9 @@ export default class InvestorList extends Component {
     }
 
     handleSearch = e => {
-      // const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-      // const name = e.target.name;
       let regex = new RegExp(this.state.search, "gi")
            // If the search bar isn't empty assign the original list to currentList
-      if (e.target.value === "") { this.getData() };   //IS THERE A BETTER WAY???
+      if (e.target.value === "") { this.getData() };   //review
       
       this.setState((state) => ({
         search: e.target.value,
@@ -58,7 +55,6 @@ export default class InvestorList extends Component {
 
     handleFilter = e => {
       const name = e.target.name;
-      //console.log("stage: ", e.target.value);
       this.setState( state => ({
         [name]: e.target.value,
         investors: [...state.investors].filter(startup => {

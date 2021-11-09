@@ -11,7 +11,8 @@ export default class App extends React.Component {
     type: this.props.type,
     landing: true,
   };
-  //for lifting state up to here
+
+  //passing down as a prop -> check for redundancy
   setAppState = (user, type) => {
     this.setState({ user, type });
   };
@@ -20,7 +21,6 @@ export default class App extends React.Component {
     axios
       .get("/api/auth/loggedin")
       .then((response) => {
-        //console.log("RESPONSE APP", response.data);
         this.setState({ user: response.data.user, type: response.data.type });
       })
       .catch((err) => {
@@ -29,8 +29,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    // console.log("I AM TYPE IN APP", this.state.type);
-
     return (
       <div className="App">
         <NavBar

@@ -13,7 +13,6 @@ export default class StartUpList extends Component {
     axios
       .get("/api/startups")
       .then((response) => {
-        // console.log("STARTUP LIST: ", response.data)
         this.setState({
           startups: response.data,
         });
@@ -30,7 +29,7 @@ export default class StartUpList extends Component {
     // If the search bar isn't empty assign the original list to currentList
     if (e.target.value === "") {
       this.getData();
-    } //IS THERE A BETTER WAY???  
+    } //review for efficiency
 
     this.setState((state) => ({
       search: e.target.value,
@@ -75,22 +74,15 @@ export default class StartUpList extends Component {
     }
   };
 
-  handleAdd = (id) => {
+  handleAdd = (id) => { //review naming: suggested handdleAddToPortfolio
     axios
       .get(`/api/startups/${id}`)
       .then((startupFromDB) => {
-        console.log("FOUND STARTUP RESPONSE: ", startupFromDB.data._id);
         axios
           .put(`/api/investors/portfolio/${this.state.user._id}`, {
-            startupToAdd: startupFromDB.data._id, // WHAT TO PASS??
+            startupToAdd: startupFromDB.data._id, 
           })
           .then((investorFromDB) => {
-            console.log(
-              "INVESTOR FOUND ",
-              investorFromDB,
-              "USER: ",
-              this.state.user
-            );
             this.setState((state) => ({
               user: {
                 ...state.user,
@@ -109,7 +101,6 @@ export default class StartUpList extends Component {
 
   handleFilter = (e) => {
     const name = e.target.name;
-    //console.log("stage: ", e.target.value);
     this.setState((state) => ({
       [name]: e.target.value,
       startups: [...state.startups].filter((startup) => {
@@ -139,8 +130,6 @@ export default class StartUpList extends Component {
           <td>{startup.place}</td>
           <td>{startup.stage}</td>
           <td>{startup.rating === 0 ? 0 :  startup.rating}/6</td>
-          {/* can only add if not in portfolio */}
-          {/* {this.state.portfolio.includes(startup.id) ?  <td>Add to portfolio </td> :  <td>In portfolio </td>} */}
           <td>
             <button onClick={() => this.handleAdd(startup._id)}>
               Add to portfolio

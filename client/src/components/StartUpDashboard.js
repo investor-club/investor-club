@@ -19,25 +19,9 @@ export default class StartUpDashboard extends Component {
 
         return (
             <div>
-            <StartUpEvaluation {...this.state} {...this.props} setDisplayStartupEval={this.setDisplayStartupEval}/>
-        </div>
+              <StartUpEvaluation {...this.state} {...this.props} setDisplayStartupEval={this.setDisplayStartupEval}/>
+            </div>
         )
-        // //TO CHECK BEFORE PUSHING
-        // if (!this.state.user.place || !!this.state.user.foundation || !this.state.user.industry || !this.state.user.foundation  ) {
-        //   return (
-        //   <div>
-        //   <StartUpEvaluation {...this.state} {...this.props} setDisplayStartupEval={this.setDisplayStartupEval}/>
-        //   <article>Profile</article>
-        //   <article>Who invested?</article>
-        //   <article>Evaluation</article>
-        // </div>
-        // )
-        // } else {
-        //   return <></>;
-        // }
-
-        
-        
     }
 }
 

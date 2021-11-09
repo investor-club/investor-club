@@ -22,6 +22,7 @@ export default class SignUpInvestor extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { firstName, lastName, username, email, password } = this.state;
+    
     signUpInvestor(email, username, password, firstName, lastName).then(
       (user) => {
         if (user.message) {
@@ -34,7 +35,6 @@ export default class SignUpInvestor extends Component {
             password: "",
           });
         } else {
-          //console.log(user);
           this.props.setUser(user);
           this.props.history.push("/login");
         }

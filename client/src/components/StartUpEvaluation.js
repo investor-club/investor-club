@@ -65,7 +65,6 @@ export default class StartUpEvaluation extends React.Component {
       .catch((err) => console.log(err));
   }
 
-  //componentDidMount gets to data I need and set it to the state variables.
   setPlace = (place) => {
     this.setState({
       place: place,
@@ -97,7 +96,6 @@ export default class StartUpEvaluation extends React.Component {
   };
 
   setSkillsI = (skills) => {
-    console.log("SKILLS LIFTED:", skills);
     this.setState({
       skillsI: skills,
     });
@@ -129,18 +127,13 @@ export default class StartUpEvaluation extends React.Component {
 
   // this method handles just the file upload
   handleFileUpload = e => {
-    console.log('The file to be uploaded is: ', e.target.files[0]);
- 
     const uploadData = new FormData();
     // req.body to .create() method when creating a new thing in '/api/things/create' POST route
     uploadData.append('pitchDeck', e.target.files[0]);
-    console.log("upload data", uploadData)
 
     service
       .handleUpload(uploadData, this.props.user._id)
       .then(response => {
-        // console.log('response is: ', response);
-        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
         this.setState({ pitchDeck: response.secure_url });
       })
       .catch(err => {
@@ -152,7 +145,6 @@ export default class StartUpEvaluation extends React.Component {
     e.preventDefault();
 
     if (this.state.index > 9) {
-      console.log("this is the end of the questionnaire");
       this.props.setDisplayStartupEval(false);
 
     const {
@@ -167,7 +159,6 @@ export default class StartUpEvaluation extends React.Component {
       experience,
       //pitchDeck
     } = this.state;
-    console.log("state at beginning of handleSubmit", this.state); //is updating
 
     //post form data
     axios.post(`/api/startups/${this.props.user._id}`, {
@@ -206,7 +197,6 @@ export default class StartUpEvaluation extends React.Component {
   render() {
     if (this.props.displayStartupEval) {
       let progressWidth = this.state.index * 10;
-      // console.log("progressWidth",progressWidth)
       let displayedComponent;
       switch (this.state.index) {
         case 1:
@@ -246,7 +236,7 @@ export default class StartUpEvaluation extends React.Component {
         case 6:
           displayedComponent = (
             <Q6skillsI
-              skillsI={this.state.skillsI} //array!!!
+              skillsI={this.state.skillsI} 
               setSkillsI={this.setSkillsI}
             />
           );
@@ -307,7 +297,6 @@ export default class StartUpEvaluation extends React.Component {
             <div className="questionContainer">
               <form onSubmit={this.handleSubmit}>
                 {displayedComponent}
-
                 <button type="submit">Next</button>
               </form>
             </div>

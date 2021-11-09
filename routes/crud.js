@@ -10,7 +10,6 @@ const uploader = require('../config/cloudinary.config')
 router.get("/startups", (req, res, next) => {
   StartUp.find()
     .then((response) => {
-      //console.log("STARTUP LIST: ", response)
       res.json(response);
     })
     .catch((err) => {
@@ -75,7 +74,6 @@ router.get("/investors", (req, res, next) => {
 router.get("/investors/:id", (req, res, next) => {
   Investor.findById(req.params.id)
     .then((investor) => {
-      console.log("IS THERE AN INVESTOR? ", investor)
       if (!investor) {
         res.status(404).json(investor);
       } else {
@@ -103,23 +101,6 @@ router.get("/investors/portfolio/:id", (req, res, next) => {
     });
 });
 
-// // update ivestor
-// router.put("/investors/:id", (req, res, next) => {
-//   const {
-//     firstName,
-//     lastName,
-//     email,
-//     username,
-//     password,
-//     industry,
-//     location,
-//     bio,
-//   } = req.body;
-//   //console.log("REQ BODY UPDATE INVESTOR",req.body);
-//   Investor.findByIdAndUpdate(
-//     req.params.id,
-//     { firstName, lastName, email, username, password, industry, location, bio },
-
 // update investor
 router.post("/investors/:id", (req, res, next) => {
   const { firstName, lastName, email, username, bio, industry, location, imageUrl } = req.body;
@@ -130,7 +111,6 @@ router.post("/investors/:id", (req, res, next) => {
     { new: true }
   )
     .then((investor) => {
-      //console.log("INVESTOR UPDATED ", investor)
       res.status(200).json({investor: investor});
     })
     .catch((err) => {
@@ -140,8 +120,6 @@ router.post("/investors/:id", (req, res, next) => {
 
 // update investorImage
 router.post('/upload', uploader.single('imageUrl'), (req, res, next) => {
-  console.log('file is ,req.file.path: ', req.file.path)
- 
   if (!req.file) {
     next(new Error('No file uploaded!'));
     return;
@@ -151,14 +129,10 @@ router.post('/upload', uploader.single('imageUrl'), (req, res, next) => {
  
   res.json({ secure_url: req.file.path });
 });
- 
-
-//update investorimage
 
 //update investor portfolio
 router.put("/investors/portfolio/:id", (req, res, next) => {
   const { startupToAdd } = req.body;
-  console.log("STARTUP TO ADD REQ BODY ", req.body);
   Investor.findByIdAndUpdate(
     req.params.id,
     {
@@ -167,7 +141,6 @@ router.put("/investors/portfolio/:id", (req, res, next) => {
     { new: true }
   )
     .then((investor) => {
-      console.log("PORTFOLIO UPDATED ", investor);
       res.status(200).json(investor);
     })
     .catch((err) => {
@@ -201,7 +174,6 @@ router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
     description,
     pitchDeck,
   } = req.body;
-  //console.log("UPDATE STARTUP: ", req.body)
   StartUp.findByIdAndUpdate(
     req.params.id,
     {
@@ -220,7 +192,6 @@ router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
     { new: true}
     )
       .then(startup => {
-        //console.log("startup updated", startup);
         res.status(200).json({startup: startup});
       })
       .catch(err => {
@@ -229,12 +200,10 @@ router.post("/startups/:id", uploader.single('pitchDeck'), (req, res, next) => {
       
 })
 
-// , secure_url: req.file.path 
 
 //update/count the rating
 router.put("/startups/:id/rating", (req, res, next) => {
   const { rating } = req.body;
-  console.log("REQ BODY FOR RATING ", req.body);
   StartUp.findByIdAndUpdate(
     req.params.id,
     {
@@ -243,7 +212,6 @@ router.put("/startups/:id/rating", (req, res, next) => {
     { new: true }
   )
     .then((investor) => {
-      console.log("STARTUP RATED ", investor);
       res.status(200).json(investor);
     })
     .catch((err) => {

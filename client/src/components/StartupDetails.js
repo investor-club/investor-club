@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./StartupDetails.css";
 
-export default class StartupDetails extends Component {
+export default class StartupDetails extends Component { //implementation is unfinished, incorrect linkng startup data
   state = { 
     startup: {}
   };
@@ -10,7 +10,7 @@ export default class StartupDetails extends Component {
   componentDidMount() {
     axios
       .get(`/api/startups/${this.props.match.params.id}`)
-      .then((response) => {   //this works
+      .then((response) => { 
         this.setState({
           startup: response.data
         });
@@ -26,13 +26,6 @@ export default class StartupDetails extends Component {
         <div className="left-side">
           <h2>Hello {this.state.startup.companyName}</h2>
           <h4>{this.state.startup.industry}</h4>
-          {/* <textarea
-            name="bio"
-            id="bio"
-            cols="20"
-            rows="10"
-            value={this.state.startup.description}
-          ></textarea> */}
           <h4>Where: {this.state.startup.place}</h4>
           <h4>Bio: {this.state.startup.description}</h4>
           

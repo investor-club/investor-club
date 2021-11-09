@@ -20,6 +20,7 @@ export default class SignUpStartUp extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { companyName, username, email, password } = this.state;
+
     signUpStartUp(companyName, email, username, password).then((user) => {
       if (user.message) {
         this.setState({
@@ -30,7 +31,6 @@ export default class SignUpStartUp extends Component {
           password: "",
         });
       } else {
-        console.log(user);
         this.props.setUser(user);
         this.props.history.push("/login");
       }

@@ -18,7 +18,6 @@ import Portfolio from "./Portfolio";
 export default class RouteContainer extends React.Component {
   state = {
     user: this.props.user,
-    // displayStartupEval: true,
     type: this.props.type,
   };
 
@@ -72,9 +71,9 @@ export default class RouteContainer extends React.Component {
           path="/login"
           render={(props) => (
             <Login
-              // setUser={this.setUser}
-              // setType={this.setType}
-              setAppState={this.props.setAppState}
+              setUser={this.setUser}
+              setType={this.setType}
+              setAppState={this.props.setAppState} //review all for redundancy
               {...props}
             />
           )}
@@ -88,7 +87,7 @@ export default class RouteContainer extends React.Component {
               {...props}
               user={this.state.user}
               type={this.state.type}
-              setAppState={this.props.setAppState}
+              setAppState={this.props.setAppState} 
             />
           )}
         />
@@ -125,9 +124,7 @@ export default class RouteContainer extends React.Component {
               {...this.state}
               {...this.props}
               {...props}
-              //setDisplayStartupEval={this.setDisplayStartupEval}
               user={this.state.user}
-              // type={this.state.type}
             />
           )}
         />
@@ -158,8 +155,8 @@ export default class RouteContainer extends React.Component {
           path="/investor/profile"
           render={(props) => (
             <InvestorProfile
-                type={this.state.type}
-                user={this.state.user}
+              type={this.state.type}
+              user={this.state.user}
               setUser={this.setUser}
               setAppState={this.props.setAppState}
               {...props}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 
-export default class StartUpEdit extends Component {
+export default class StartUpEdit extends Component { //review to refactor, all data comes from this.props
   state = {
     user: this.props.user,
     error: null,
@@ -68,7 +68,7 @@ export default class StartUpEdit extends Component {
   handleChecked = async (e) => {
     const name = e.target.name;
     await this.setState((state) => ({
-      [name]: !state[name], //this works
+      [name]: !state[name], 
     }));
 
     const skills = [];
@@ -104,11 +104,7 @@ export default class StartUpEdit extends Component {
   }
 
   render() {
-    return (
-
-
-      
-          
+    return (   
       <div className="form-container">
         <form onSubmit={this.props.handleSubmit}>
 
@@ -326,8 +322,7 @@ export default class StartUpEdit extends Component {
             </div>
           </div>
 
-          {/* MEMBERS */}
-
+          {/* TEAMMEMBERS */}
           <div
             onChange={this.handleChange}
             value={this.state.teamMembers}
@@ -385,7 +380,6 @@ export default class StartUpEdit extends Component {
           </div>
 
           {/* SKILLSI */}
-
           <div className="form-detail">
             <div className="question">
               <h3>
@@ -432,7 +426,6 @@ export default class StartUpEdit extends Component {
           </div>
 
           {/* SKILLSII */}
-
           <div
             onChange={this.handleChange}
             value={this.state.skillsII}
@@ -465,7 +458,6 @@ export default class StartUpEdit extends Component {
           </div>
 
           {/* SKILLSIII */}
-
           <div className="form-detail">
             <div className="question">
               <label htmlFor="finance" value={this.props.stage}>
@@ -536,8 +528,6 @@ export default class StartUpEdit extends Component {
                 type="text"
                 id="pitchDeck"
                 name="pitchDeck"
-                // value=
-                // onChange=
               />
             </div>
           </div>
